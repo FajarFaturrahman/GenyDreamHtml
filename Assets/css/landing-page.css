@@ -232,7 +232,7 @@ header .carousel-inner .carousel-item {
 }
 
 .img-cloud-top {
-    background-image: url('/images/cloud-top.png');
+    background-image: url('../images/cloud-top.png');
     height: 290px;
     background-repeat: no-repeat;    
     background-size: cover;
@@ -306,7 +306,7 @@ header .carousel-inner .carousel-item {
 }
 
 .img-cloud-bottom {
-    background-image: url('/images/cloud-bottom.png');
+    background-image: url('../images/cloud-bottom.png');
     height: 290px;
     background-repeat: no-repeat;    
     background-size: cover;
