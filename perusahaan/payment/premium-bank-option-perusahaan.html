@@ -48,10 +48,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav" id="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" data-value="beranda" href="">BERANDA</a>
+                <a class="nav-link" data-value="beranda" href="../beranda-perusahaan.html">BERANDA</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-value="list-lowongan" href="}">LOWONGAN KERJA</a>
+                <a class="nav-link" data-value="list-lowongan" href="../daftar-lowongan.html">LOWONGAN KERJA</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link " data-value="list-kursus" href="#">KURSUS</a>
@@ -63,13 +63,12 @@
                 </button>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
                     <li role="presentation"><a class="dropdown-item" role="menuitem" id="profilebutton"
-                            href="">Profile</a></li>
+                            href="../profile-perusahaan.html">Profile</a></li>
                     <li role="presentation">
-                        <a class="dropdown-item" role="menuitem" href=""
-                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-                        <form id="logout-form" action="" method="POST" style="display: none;">
+                        <a class="dropdown-item" role="menuitem" href="../../welcome.html">Logout</a>
+                        <!-- <form id="logout-form" action="" method="POST" style="display: none;">
 
-                        </form>
+                        </form> -->
                     </li>
 
                 </ul>
@@ -128,9 +127,9 @@
                 <span>OPSI PEMBAYARAN</span>
             </label>
 
-            <a href="{{ route('perusahaan.bank.elektronik') }}"
+            <a href="premium-ebanking-perusahaan.html"
                 class="btn btn-lg btn-mbanking pl-5 pr-5 mt-5">LANJUTKAN</a>
-            <a href="{{ route('perusahaan.bank.manual') }}" class="btn btn-lg btn-atm pl-5 pr-5 mt-5">LANJUTKAN</a>
+            <a href="premium-bank-atm-perusahaan.html" class="btn btn-lg btn-atm pl-5 pr-5 mt-5">LANJUTKAN</a>
         </div>
     </div>
 </div>

@@ -87,6 +87,35 @@ hr {
     height: 2px;
 }
 
+/* modal delete */
+.img-delete-container{    
+    width: 120px;
+    height: 120px;
+    border-radius: 100px;
+    background-color: rgb(242, 201, 76, 0.1);
+}
+
+.img-delete{
+    margin-top: 20%;
+    margin-left: auto;
+    width: 100%;
+}
+.box-text-delete{
+    border: 1px dashed #EB5757;
+    background-color: rgb(235, 87, 87, 0.1);
+    color: #4F4F4F;
+}
+
+.img-info{
+    height: 20px;
+}
+
+.btn-cancel{
+    width: 150px;
+    background-color: #FAFAFA;
+    color: #BDBDBD;
+    border-radius: 100px;
+}
 
 /* info pekerjaan */
 .company-image {
