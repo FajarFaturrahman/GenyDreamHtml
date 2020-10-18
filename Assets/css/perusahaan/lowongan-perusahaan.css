@@ -1,29 +1,30 @@
-
-body{
+body {
     background-color: rgb(63, 149, 169, 0.1);
 }
 
 
-hr{
+hr {
     background-color: rgb(63, 149, 169, 0.1);
     height: 2px;
 }
 
 /* page daftar lowongan */
-.card-img-top{
+.card-img-top {
     height: 90px;
 }
+
 .lowongan-kerja .update-time i {
     color: #BDBDBD;
     font-size: 15px;
 }
 
 
-.lowongan-kerja{
-    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.4);
+.lowongan-kerja {
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.4);
 }
 
-.lowongan-kerja .company-location p, .lowongan-kerja .company-location i {
+.lowongan-kerja .company-location p,
+.lowongan-kerja .company-location i {
     color: #219653;
 }
 
@@ -36,9 +37,10 @@ hr{
     height: 20px;
 }
 
-.jml-pelamar-tag{
+.jml-pelamar-tag {
     color: #4F4F4F;
 }
+
 .lowongan-kerja .btn-detail {
     background: #68C8D8;
     border-radius: 100px;
@@ -47,138 +49,139 @@ hr{
     font-weight: lighter;
 }
 
-.select-sortby{
+.select-sortby {
     background: white;
-    border: 2px solid #68C8D8;    
-    width: 15%;    
-    
+    border: 2px solid #68C8D8;
+    width: 15%;
+
 }
 
-.select-sortby{
+.select-sortby {
     outline: 0px transparent !important;
 }
 
 @media screen and (max-width: 1204px) and (min-width: 600px) {
-    .select-sortby{        
-        width: 35%;    
-        
+    .select-sortby {
+        width: 35%;
+
     }
 }
 
 @media screen and (max-width: 736px) {
-    
-    .select-sortby{        
-        width: 70%;    
-        
+
+    .select-sortby {
+        width: 70%;
+
     }
 }
 
 /* detail lowongan */
 
-.box-shadow{
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+.box-shadow {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     background-color: white;
 }
 
-hr{
+hr {
     background-color: rgb(63, 149, 169, 0.1);
     height: 2px;
 }
 
 
 /* info pekerjaan */
-.company-image{
+.company-image {
     width: 160px;
-    height: 160px;    
+    height: 160px;
     border-radius: 100px;
     background-color: white;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);    
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.nama-lowongan{
+.nama-lowongan {
     color: #000000;
     font-weight: bolder;
     text-transform: capitalize;
     font-size: 24px;
 }
 
-p.nama-perusahaan{
+p.nama-perusahaan {
     color: #4F4F4F;
     text-transform: uppercase;
 }
 
-.info-title{
+.info-title {
     font-weight: bolder;
     font-size: 18px;
-    margin-bottom: 5px; 
+    margin-bottom: 5px;
 }
 
-.bookmark-share button{
+.bookmark-share button {
     border: 1px solid #68C8D8;
     color: #68C8D8;
     background-color: white;
 }
 
-.bookmark-share button:hover{
+.bookmark-share button:hover {
     background-color: #68C8D8;
     color: white;
-}   
+}
 
 
 /* deskripsi pekerjaan */
-.deskripsi-title{
-    font-weight: bolder;    
+.deskripsi-title {
+    font-weight: bolder;
 }
 
-.deskripsi{
+.deskripsi {
     white-space: pre-wrap;
 }
 
 /* jumlah pelamar */
-.jml-pelamar-title{
+.jml-pelamar-title {
     font-weight: bold;
 }
 
-.box-jml-pelamar{
+.box-jml-pelamar {
     border: 1px dashed #3F95A9;
     background-color: rgb(63, 149, 169, 0.1);
 }
 
-.box-jml-pelamar p, h2{
+.box-jml-pelamar p,
+h2 {
     color: #3F95A9;
-    font-weight: bold;        
+    font-weight: bold;
 }
 
-.btn-lihat-pelamar-side{
+.btn-lihat-pelamar-side {
     display: flex;
     justify-content: center;
-    align-items: center;    
+    align-items: center;
 }
 
-.btn-lihat-pelamar-side a{
-    background: #68C8D8;    
+.btn-lihat-pelamar-side a {
+    background: #68C8D8;
     padding: 15px;
-    color: white; 
-    box-shadow: 0 4px 10px 0 rgba(104,200,216,0.4);    
+    color: white;
+    box-shadow: 0 4px 10px 0 rgba(104, 200, 216, 0.4);
 }
 
 
 
 
 /* skill yg dibutuhkan */
-.skill-title{
+.skill-title {
     font-weight: bolder;
 }
 
-.skill{
+.skill {
     color: #3F95A9;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-right: 20px;
-    padding-left: 20px;        
+    padding-left: 20px;
     background: rgb(63, 149, 169, 0.1);
     margin-right: 10px;
 }
@@ -187,35 +190,473 @@ p.nama-perusahaan{
 
 /* right side */
 /* opsi */
-.title-opsi{
+.title-opsi {
     font-weight: bolder;
 }
 
-.lowongan-lain-title{
+.lowongan-lain-title {
     font-weight: bolder;
 }
 
-.wrap-opsi .btn-edit-lowongan{
+.wrap-opsi .btn-edit-lowongan {
     background-color: white;
     color: #68C8D8;
     border: 1px solid #68C8D8;
     border-radius: 100px;
 }
 
-.wrap-opsi .btn-edit-lowongan:hover{
+.wrap-opsi .btn-edit-lowongan:hover {
     background-color: #68C8D8;
-    color: white;    
+    color: white;
 }
 
-.wrap-opsi .btn-delete-lowongan{
+.wrap-opsi .btn-delete-lowongan {
     background-color: white;
     color: #EB5757;
     border: 1px solid #EB5757;
     border-radius: 100px;
 }
 
-.wrap-opsi .btn-delete-lowongan:hover{
+.wrap-opsi .btn-delete-lowongan:hover {
     background-color: #EB5757;
-    color: white;    
+    color: white;
 }
 
+/*Nav and footeer/
+/* navbar */
+.navbar {
+    background: white;
+}
+
+.nav-link,
+.navbar-brand {
+    color: #BDBDBD;
+    cursor: pointer;
+}
+
+.active {
+    color: #68C8D8;
+}
+
+.nav-link {
+    margin-right: 1em !important;
+}
+
+.nav-link:hover {
+    background: #f4f4f4;
+    color: #3F95A9;
+}
+
+#navbar-nav {
+    margin-left: auto;
+}
+
+.navbar-toggle {
+    background: #ffffff !important;
+}
+
+#navButton {
+    color: #3F95A9;
+    border: solid 1px #3F95A9;
+    border-radius: 100px;
+}
+
+#navButton:hover {
+    background: #3F95A9;
+    color: #ffffff;
+}
+
+.navbar-toggler-icon {
+    background-image: url('https://cdn4.iconfinder.com/data/icons/wirecons-free-vector-icons/32/menu-alt-512.png');
+}
+
+#profilebutton {
+    height: 30px;
+}
+
+.dropdown-menu {
+    left: -120px;
+}
+
+.dropdown-menu hr {
+    border: 1px solid rgb(63, 149, 169, 0.1);
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.premium-link {
+    color: #F2C94C;
+}
+
+.premium-link:hover {
+    color: #F2C94C;
+}
+
+/*Footer*/
+.footer-widget p {
+    margin-bottom: 27px;
+}
+
+
+.animate-border {
+    position: relative;
+    display: block;
+    width: 115px;
+    height: 3px;
+    background: #3F95A9;
+}
+
+.animate-border:after {
+    position: absolute;
+    content: "";
+    width: 35px;
+    height: 3px;
+    left: 0;
+    bottom: 0;
+    border-left: 10px solid #fff;
+    border-right: 10px solid #fff;
+    -webkit-animation: animborder 2s linear infinite;
+    animation: animborder 2s linear infinite;
+}
+
+@-webkit-keyframes animborder {
+    0% {
+        -webkit-transform: translateX(0px);
+        transform: translateX(0px);
+    }
+
+    100% {
+        -webkit-transform: translateX(113px);
+        transform: translateX(113px);
+    }
+}
+
+@keyframes animborder {
+    0% {
+        -webkit-transform: translateX(0px);
+        transform: translateX(0px);
+    }
+
+    100% {
+        -webkit-transform: translateX(113px);
+        transform: translateX(113px);
+    }
+}
+
+.animate-border.border-white:after {
+    border-color: #fff;
+}
+
+.animate-border.border-yellow:after {
+    border-color: #F5B02E;
+}
+
+.animate-border.border-orange:after {
+    border-right-color: #3F95A9;
+    border-left-color: #3F95A9;
+}
+
+.animate-border.border-ash:after {
+    border-right-color: #EEF0EF;
+    border-left-color: #EEF0EF;
+}
+
+.animate-border.border-offwhite:after {
+    border-right-color: #F7F9F8;
+    border-left-color: #F7F9F8;
+}
+
+/* Animated heading border */
+@keyframes primary-short {
+    0% {
+        width: 15%;
+    }
+
+    50% {
+        width: 90%;
+    }
+
+    100% {
+        width: 10%;
+    }
+}
+
+@keyframes primary-long {
+    0% {
+        width: 80%;
+    }
+
+    50% {
+        width: 0%;
+    }
+
+    100% {
+        width: 80%;
+    }
+}
+
+.dk-footer {
+    padding: 55px 0 0;
+    background-color: #151414;
+    position: relative;
+    z-index: 2;
+}
+
+.dk-footer .contact-us {
+    margin-top: 0;
+    margin-bottom: 0px;
+    padding-left: 0px;
+}
+
+.dk-footer .contact-us .contact-info {
+    margin-left: 50px;
+}
+
+.dk-footer .contact-icon i {
+    font-size: 24px;
+    top: -15px;
+    position: relative;
+    color: #3F95A9;
+}
+
+/*.dk-footer-box-info {
+    position: absolute;
+    top: -122px;
+    background: #202020;
+    padding: 40px;
+    z-index: 2;
+}*/
+
+.dk-footer-box-info .footer-social-link h3 {
+    color: #fff;
+    font-size: 24px;
+    margin-bottom: 25px;
+}
+
+.dk-footer-box-info .footer-social-link ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dk-footer-box-info .footer-social-link li {
+    display: inline-block;
+}
+
+.dk-footer-box-info .footer-social-link a i {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    background: #000;
+    margin-right: 5px;
+    color: #fff;
+}
+
+.dk-footer-box-info .footer-social-link a i.fa-facebook {
+    background-color: #3B5998;
+}
+
+.dk-footer-box-info .footer-social-link a i.fa-twitter {
+    background-color: #55ACEE;
+}
+
+.dk-footer-box-info .footer-social-link a i.fa-google-plus {
+    background-color: #DD4B39;
+}
+
+.dk-footer-box-info .footer-social-link a i.fa-linkedin {
+    background-color: #0976B4;
+}
+
+.dk-footer-box-info .footer-social-link a i.fa-instagram {
+    background-color: #B7242A;
+}
+
+.footer-awarad {
+    margin-top: 285px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 100%;
+    -moz-box-flex: 0;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.footer-awarad p {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+    margin-left: 20px;
+    padding-top: 15px;
+}
+
+.footer-info-text {
+    color: #FFF;
+    margin: 26px 0 32px;
+}
+
+.footer-left-widget {
+    padding-left: 0px;
+}
+
+.footer-widget .section-heading {
+    margin-bottom: 35px;
+}
+
+.footer-widget h3 {
+    font-size: 24px;
+    color: #fff;
+    position: relative;
+    margin-bottom: 15px;
+    max-width: -webkit-fit-content;
+    max-width: -moz-fit-content;
+    max-width: fit-content;
+}
+
+.footer-widget ul {
+    width: 50%;
+    float: left;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-widget li {
+    margin-bottom: 18px;
+}
+
+.footer-widget p {
+    margin-bottom: 27px;
+}
+
+.footer-widget a {
+    color: #878787;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.footer-widget a:hover {
+    color: #3F95A9;
+}
+
+.footer-widget:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.dk-footer-form {
+    position: relative;
+}
+
+.dk-footer-form input[type=email] {
+    padding: 14px 28px;
+    border-radius: 50px;
+    background: #2E2E2E;
+    border: 1px solid #2E2E2E;
+}
+
+.dk-footer-form input::-webkit-input-placeholder,
+.dk-footer-form input::-moz-placeholder,
+.dk-footer-form input:-ms-input-placeholder,
+.dk-footer-form input::-ms-input-placeholder,
+.dk-footer-form input::-webkit-input-placeholder {
+    color: #878787;
+    font-size: 14px;
+}
+
+.dk-footer-form input::-webkit-input-placeholder,
+.dk-footer-form input::-moz-placeholder,
+.dk-footer-form input:-ms-input-placeholder,
+.dk-footer-form input::-ms-input-placeholder,
+.dk-footer-form input::placeholder {
+    color: #878787;
+    font-size: 14px;
+}
+
+.dk-footer-form button[type=submit] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 12px 24px 12px 17px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border: 1px solid #3F95A9;
+    background: #3F95A9;
+    color: #fff;
+}
+
+.dk-footer-form button:hover {
+    cursor: pointer;
+}
+
+/* ==========================
+
+    Contact
+
+=============================*/
+.contact-us {
+    position: relative;
+    z-index: 2;
+    margin-top: 65px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.contact-icon {
+    position: absolute;
+}
+
+.contact-icon i {
+    font-size: 36px;
+    top: -5px;
+    position: relative;
+    color: #3F95A9;
+}
+
+.contact-info {
+    margin-left: 75px;
+    color: #fff;
+}
+
+.contact-info h3 {
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 0;
+}
+
+.copyright {
+    padding: 15px 0;
+    margin-top: 25px;
+    background-color: #202020;
+}
+
+.copyright span,
+.copyright a {
+    color: #878787;
+}
+
+.copyright a:hover {
+    color: #3F95A9;
+}
