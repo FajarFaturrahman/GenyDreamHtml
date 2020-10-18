@@ -161,10 +161,6 @@ label:focus {
 /*NAV dan FOOT*/
 
 
-body {
-	font-family: 'Source Sans Pro';
-}
-
 /* navbar */
 .navbar {
 	background: white;
@@ -220,6 +216,19 @@ body {
 	left: -120px;
 }
 
+.dropdown-menu hr {
+	border: 1px solid rgb(63, 149, 169, 0.1);
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.premium-link {
+	color: #F2C94C;
+}
+
+.premium-link:hover {
+	color: #F2C94C;
+}
 
 /*Footer*/
 .footer-widget p {
