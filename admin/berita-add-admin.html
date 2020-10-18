@@ -1,73 +1,180 @@
-@extends('layouts.admin-master')
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-@section('content')
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>GenyDream | Tambah Berita</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 
 
-<!-- Styles -->
-<link rel="stylesheet" href="{{ asset('css/admin/berita-admin.css') }}">    
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
-<div class="container">
-    <div class="row justify-content-center">    
-        <div class="col-md-11 add-berita mt-5 mb-5 p-5">
-            <h2 class="font-weight-bold">TAMBAH KONTEN</h2>
+    <!-- bootstrap select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 
-            <hr>
-            @if($errors->any())
-                <div class="alert alert-danger">
-                <ul>
-                @foreach($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-                </ul>
-                </div>
-                @endif
-            <form action="{{ url('admin/berita') }}" method="POST" enctype="multipart/form-data">
-            {{ csrf_field() }}                
-                <div class="row">
-                    <div class="col-md-6">                                         
-                        <div class="form-group">                 
-                            <input id="image" class="inputfile" name="image" type="file">                                   
-                            <label for="image"><i class="fa fa-camera mr-2 mt-3"></i> <br> Upload Gambar</label>
-                                                                                
-                        </div>
-                    </div>
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-                    <div class="col-md-6">
+    <!-- slick carousel -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css">
 
-                        <div class="form-group mt-5">
-                            <span class="has-float-label">
-                                <input type="text" name="judul" value="{{ old('judul',@$berita->judul) }}" class="form-control" id="judul" placeholder="JUDUL" required>
-                                <label for="judul">JUDUL</label>
-                            </span>
-                        </div>
+    <!-- Styles -->
+    <link href="../assets/css/admin/berita-admin.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <header class="main-header">
+
+    <!-- navbar -->
+
+    <nav class="navbar navbar-expand-lg flex-row pl-4 sticky-top">
+        <a class="navbar-brand" href="#">
+            <img src="../assets/images/LogoGenyDream.png" alt="">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav" id="navbar-nav">                
+                <li class="nav-item">
+                    <a class="nav-link " data-value="contact" href="#"><img src="../assets/images/cil_chat-bubble.png" alt=""></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " data-value="contact" href="#"><img src="../assets/images/clarity_notification-line.png" alt=""></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <button class="btn btn-default" type="button" id="menu1" data-toggle="dropdown">
+                        <img id="profilebutton" style=" width: 30px; height:30px;" src="../assets/images/mentor-img.png">
+
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
                         
-                        <label class="form-group has-float-label">
-                            <select class="form-control" name="id_kategori" id="id_kategori">
-                                <option>-- Kategori --</option>                                
-                                @foreach($kategori as $listkategori)                                
-                                <option value="{{ $listkategori->id }}"{{ (old("id", @$berita->id_kategori) == $listkategori->id ? "selected":"") }}>{{ $listkategori->nama }}</option>
-                                @endforeach
-                            </select>
-                            <span>KATEGORI</span>
-                        </label>                                            
-                    </div>                    
-                </div>                      
-                            
-                <div class="form-group mt-4">
-                    <span class="has-float-label">
-                        <textarea type="text" name="isi" class="form-control" id="isi" placeholder="ISI" rows="10">{{ old('isi',@$berita->isi) }}</textarea>
-                        <label for="isi">ISI</label>
-                    </span>
-                </div>  
+                        <li role="presentation"><a class="dropdown-item" role="menuitem" id="profilebutton" href="#">Profile</a></li>
+                                                
+                        <li role="presentation">
+                        <a class="dropdown-item" role="menuitem" href="../welcome.html">Keluar</a>
+                            <!-- <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form> -->
+                        </li>
 
-                <div class="row justify-content-end">
-                    <a href="{{ route('admin.berita.index') }}" class="btn btn-batalkan mt-3 mr-2">BATALKAN</a>
-                    
-                    <button class="btn btn-simpan mt-3 mr-2" type="submit">SIMPAN</button>                        
-                </div>                    
-            </form>        
+                    </ul>
+                </li>
+            </ul>
+
+            
+                
+            
+        </div>
+    </nav>
+
+    <!-- end of navbar -->
+    
+    <div class="container">
+        <div class="row justify-content-center">    
+            <div class="col-md-11 add-berita mt-5 mb-5 p-5">
+                <h2 class="font-weight-bold">TAMBAH KONTEN</h2>
+
+                <hr>
+               
+                <form action="" method="" enctype="multipart/form-data">
+               
+                    <div class="row">
+                        <div class="col-md-6">                                         
+                            <div class="form-group">                 
+                                <input id="image" class="inputfile" name="image" type="file">                                   
+                                <label for="image"><i class="fa fa-camera mr-2 mt-3"></i> <br> Upload Gambar</label>
+                                                                                    
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <div class="form-group mt-5">
+                                <span class="has-float-label">
+                                    <input type="text" name="judul" value="" class="form-control" id="judul" placeholder="JUDUL" required>
+                                    <label for="judul">JUDUL</label>
+                                </span>
+                            </div>
+                            
+                            <label class="form-group has-float-label">
+                                <select class="form-control" name="id_kategori" id="id_kategori">
+                                    <option>-- Kategori --</option>                                
+                                    
+                                    <option value="lifestyle">Lifestyle</option>
+                                    <option value="tips karir">Tips Karir</option>
+                                    <option value="keahlian">Keahlian</option>
+                                    <option value="tentang perusahaan">Tentang Perusahaan</option>
+                                    <option value="berita umum">Berita Umum</option>
+
+                                </select>
+                                <span>KATEGORI</span>
+                            </label>                                            
+                        </div>                    
+                    </div>                      
+                                
+                    <div class="form-group mt-4">
+                        <span class="has-float-label">
+                            <textarea type="text" name="isi" class="form-control" id="isi" placeholder="ISI" rows="10"></textarea>
+                            <label for="isi">ISI</label>
+                        </span>
+                    </div>  
+
+                    <div class="row justify-content-end">
+                        <a href="berita-list-admin.html" class="btn btn-batalkan mt-3 mr-2">BATALKAN</a>
+                        
+                        <!-- <button class="btn btn-simpan mt-3 mr-2" type="submit">SIMPAN</button> -->
+                        <a class="btn btn-simpan mt-3 mr-2" href="berita-list-admin.html">SIMPAN</a>
+                    </div>                    
+                </form>        
+            </div>
         </div>
     </div>
-</div>
 
-@endsection
+    <!-- js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>   
+
+    <script>
+    $(document).on('click','.deleteBerita',function(){
+        var userID=$(this).attr('data-userid');    
+        $('#id_berita').val(userID); 
+        $('#deleteModal').modal('show'); 
+    });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+
+        $(document).ready(function() {
+            $('.js-example-basic-single').select2();
+        });
+
+        $(document).ready(function() {        
+
+            $("#menu-toggle").click(function(e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        });
+    </script>
+</body>
+</html>

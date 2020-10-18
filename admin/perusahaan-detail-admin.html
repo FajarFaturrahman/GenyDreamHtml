@@ -1,128 +1,211 @@
-@extends('layouts.admin-master')
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-@section('content')
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>GenyDream | Detail Perusahaan</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 
 
-<!-- Styles -->
-<link rel="stylesheet" href="{{ asset('css/admin/perusahaan-admin.css') }}">    
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
+    <!-- bootstrap select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 
-<div class="flat-row detail-page p-3">
-    <div class="container py-5">
-        <div class="col-md-9 col-sm-8 wrap-responsive mx-auto py-2">
-            <div class="user-info-detail">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-                <!-- detail header -->
-                <div class="row detail-header box-shadow pb-5">                                                    
-                    <img class="jumbotron img-fluid" src="https://image.freepik.com/free-photo/construction-site_53876-14088.jpg" alt="">
-                                                        
-                    <div class="col-md-7">
-                        <div class="image-default">
-                            <label class=newbtn>
-                                <img class="rounded-circle" id="pictures" src="{{ asset('images/default-image.png') }}" alt="...">
-                                            
-                            </label>
-                        </div>
+    <!-- slick carousel -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css">
 
-                        <div class="username-info">
-                            <h3 class="company-name">{{ $perusahaan->nama }}</h3>
-                            <p class="user-status">Free User</p>
-                        </div>                            
-                    </div>                                            
-                </div>
-                <!-- end of detail header -->
+    <!-- Styles -->
+    <link href="../assets/css/admin/perusahaan-admin.css" rel="stylesheet">
 
-                <!-- button box -->
-                <div class="row button-row box-shadow mt-5 p-4">
-                    <div class="col-md-4 text-center">
-                        <a href="{{ route('admin.perusahaan.index') }}" class="btn btn-back mt-2"><i class="fa fa-arrow-left mr-2"></i>KEMBALI KE LIST</a>
+</head>
+
+<body>
+    <header class="main-header">
+
+    <!-- navbar -->
+
+    <nav class="navbar navbar-expand-lg flex-row pl-4 sticky-top">
+        <a class="navbar-brand" href="#">
+            <img src="../assets/images/LogoGenyDream.png" alt="">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav" id="navbar-nav">                
+                <li class="nav-item">
+                    <a class="nav-link " data-value="contact" href="#"><img src="../assets/images/cil_chat-bubble.png" alt=""></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " data-value="contact" href="#"><img src="../assets/images/clarity_notification-line.png" alt=""></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <button class="btn btn-default" type="button" id="menu1" data-toggle="dropdown">
+                        <img id="profilebutton" style=" width: 30px; height:30px;" src="../assets/images/mentor-img.png">
+
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                        
+                        <li role="presentation"><a class="dropdown-item" role="menuitem" id="profilebutton" href="#">Profile</a></li>
+                                                
+                        <li role="presentation">
+                        <a class="dropdown-item" role="menuitem" href="../welcome.html">Keluar</a>
+                            <!-- <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form> -->
+                        </li>
+
+                    </ul>
+                </li>
+            </ul>
+
+            
+                
+            
+        </div>
+    </nav>
+
+    <!-- end of navbar -->
+    <div class="flat-row detail-page p-3">
+        <div class="container py-5">
+            <div class="col-md-9 col-sm-8 wrap-responsive mx-auto py-2">
+                <div class="user-info-detail">
+
+                    <!-- detail header -->
+                    <div class="row detail-header box-shadow pb-5">                                                    
+                        <img class="jumbotron img-fluid" src="https://image.freepik.com/free-photo/construction-site_53876-14088.jpg" alt="">
+                                                            
+                        <div class="col-md-7">
+                            <div class="image-default">
+                                <label class=newbtn>
+                                    <img class="rounded-circle" id="pictures" src="../assets/images/default-image.png" alt="...">
+                                                
+                                </label>
+                            </div>
+
+                            <div class="username-info w-50">
+                                <h3 class="company-name">PT. GOJEK INDONESIA</h3>
+                                <p class="user-status">Free User</p>
+                            </div>                            
+                        </div>                                            
                     </div>
+                    <!-- end of detail header -->
 
-                    <div class="col-md-8">
-                        <div class="row justify-content-center">
-                            <a href="{{ route('admin.perusahaan.edit',$perusahaan->id) }}" class="btn btn-edit mr-2 mt-2"><i class="fa fa-pencil mr-2"></i>EDIT</a>
-                            <button class="btn btn-delete mr-2 mt-2" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash mr-2"></i>DELETE</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- end of button box -->
-
-                <!-- basic info -->
-                <div class="card  row basic-info box-shadow mt-5 p-4">                        
-                    <div class="basic-info-content w-100">
-                        <div class="d-flex justify-content-between basic-info-header">                                                                
-                            <h3 class="header-title">BASIC INFO</h3>                            
+                    <!-- button box -->
+                    <div class="row button-row box-shadow mt-5 p-4">
+                        <div class="col-md-4 text-center">
+                            <a href="perusahaan-list-admin.html" class="btn btn-back mt-2"><i class="fa fa-arrow-left mr-2"></i>KEMBALI KE LIST</a>
                         </div>
 
-                        <hr>
-
-                        <div class="row basic-info-body">
-                            <div class="col-md-5">
-
-                                <p class="info-title mt-5">Nama Perusahaan</p>
-                                <p class="text-uppercase">{{ $perusahaan->nama }}</p>
-
-                                <p class="info-title mt-5">Telepon</p>
-                                <p>{{ $perusahaan->no_telp }}</p>                                
-                                            
-                                <p class="info-title mt-5">E-mail</p>
-                                <p>{{ $perusahaan->email }}</p>                                
-                            </div>    
-
-                            <div class="col-md-6">                                    
-
-                                <p class="info-title mt-5">Nama Penanggung Jawab</p>
-                                <p class="text-capitalize">{{ $perusahaan->penanggung_jawab }}</p>       
-                                            
-                                <p class="info-title mt-5">Kota</p>
-                                <p class="text-capitalize">kota bandung</p>
-
-                                <p class="info-title mt-5">Alamat</p>
-                                <p>{{ $perusahaan->alamat }}</p>
+                        <div class="col-md-8">
+                            <div class="row justify-content-center">
+                                <a href="perusahaan-add-admin.html" class="btn btn-edit mr-2 mt-2"><i class="fa fa-pencil mr-2"></i>EDIT</a>
+                                <button class="btn btn-delete mr-2 mt-2" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash mr-2"></i>DELETE</button>
                             </div>
                         </div>
-                    </div>                                                
+                    </div>
+                    <!-- end of button box -->
+
+                    <!-- basic info -->
+                    <div class="card  row basic-info box-shadow mt-5 p-4">                        
+                        <div class="basic-info-content w-100">
+                            <div class="d-flex justify-content-between basic-info-header">                                                                
+                                <h3 class="header-title">BASIC INFO</h3>                            
+                            </div>
+
+                            <hr>
+
+                            <div class="row basic-info-body">
+                                <div class="col-md-5">
+
+                                    <p class="info-title mt-5">Nama Perusahaan</p>
+                                    <p class="text-uppercase">PT. GOJEK INDONESIA</p>
+
+                                    <p class="info-title mt-5">Telepon</p>
+                                    <p>(704) 555-0127</p>                                
+                                                
+                                    <p class="info-title mt-5">E-mail</p>
+                                    <p>gojekindonesia@gmail.com</p>                                
+                                </div>    
+
+                                <div class="col-md-6">                                    
+
+                                    <p class="info-title mt-5">Nama Penanggung Jawab</p>
+                                    <p class="text-capitalize">Nadiem Anwar Makarim</p>       
+                                                
+                                    <p class="info-title mt-5">Kota</p>
+                                    <p class="text-capitalize">kota Jakarta Pusat</p>
+
+                                    <p class="info-title mt-5">Alamat</p>
+                                    <p>Jl. Gunung Sahari Raya No.2M, Gn. Sahari Utara, Sawah Besar, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10720, Indonesia.</p>
+                                </div>
+                            </div>
+                        </div>                                                
+                    </div>
+                    <!-- end of basic info -->
                 </div>
-                <!-- end of basic info -->
-            </div>
-        </div>    
-    </div>        
-</div>
+            </div>    
+        </div>        
+    </div>
 
-<!-- modal delete -->
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-md" role="document">
-        <div class="modal-content">
-            <div class="modal-header pl-3 pr-3">
-                <h5 class="modal-title font-weight-bold" id="ModalDelete">KONFIRMASI HAPUS DATA</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>                
-            </div>            
-                        
-            <div class="modal-body modal-basic-info">                    
-                
-                <div class="img-delete-container col-md-3 mx-auto">
-                        <img src="{{ asset('images/jam_triangle-danger.png') }}" class="img-fluid img-delete" alt="">
-                    </div>          
-
-                <div class="box-text-delete pt-3 mt-5 d-flex">                    
-                    <img src="{{ asset('images/ant-design_info-circle-outlined-black.png') }}" alt="" class="img-fluid img-info mt-1 mr-2 ml-2"> 
-                    <p>Apakah kamu yakin untuk menghapus data tersebut?</p>
-                </div>
-
-            </div>
-            <div class="modal-footer">
+    <!-- modal delete -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header pl-3 pr-3">
+                    <h5 class="modal-title font-weight-bold" id="ModalDelete">KONFIRMASI HAPUS DATA</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>                
+                </div>            
+                            
+                <div class="modal-body modal-basic-info">                    
                     
-                <button type="button" class="btn btn-cancel font-weight-bold" data-dismiss="modal">BATAL</button>
-                <form action="{{ route('admin.perusahaan.delete',$perusahaan->id) }}" method="POST">
-                    @method('DELETE')
-                    @csrf
-                    <button class="btn btn-delete font-weight-bold">DELETE</button>
-                </form>
-            </div>                        
+                    <div class="img-delete-container col-md-3 mx-auto">
+                            <img src="../assets/images/jam_triangle-danger.png" class="img-fluid img-delete" alt="">
+                        </div>          
+
+                    <div class="box-text-delete pt-3 mt-5 d-flex">                    
+                        <img src="../assets/images/ant-design_info-circle-outlined-black.png" alt="" class="img-fluid img-info mt-1 mr-2 ml-2"> 
+                        <p>Apakah kamu yakin untuk menghapus data tersebut?</p>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                        
+                    <button type="button" class="btn btn-cancel font-weight-bold" data-dismiss="modal">BATAL</button>
+                    <!-- <form action="{{ route('admin.perusahaan.delete',$perusahaan->id) }}" method="POST">
+                        
+                        <button class="btn btn-delete font-weight-bold">DELETE</button>
+                    </form> -->
+                </div>                        
+            </div>
         </div>
     </div>
-</div>
-<!-- end of modal delete -->
-@endsection
+    <!-- end of modal delete -->
+
+
+    <!-- js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>   
+</body>
+</html>

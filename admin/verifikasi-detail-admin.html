@@ -1,88 +1,191 @@
-@extends('admin.sidebar-admin-master.sidebar-admin-master')
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-@section('content-dashboard')
-<link rel="stylesheet" href="{{ asset('css/admin/verifikasi-pembayaran.css') }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<div class="container">
-    
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <div class="col-md-12 page-header box-shadow rounded pt-3 pb-2 pl-4">
-        <h4 class="font-weight-bold">DETAIL PEMBAYARAN</h4>
-    </div>    
+    <title>GenyDream | Detail Verifikasi Pembayaran</title>
 
-    <div class="row mt-5">
-        <div class="col-md-8 mt-2">
-            <div class="card info-paket-container box-shadow p-5">
-                <h3 class="box-title mb-0 font-weight-bold">INFO PAKET</h3>
-                <hr class="mt-0">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 
-                <div class="box-text pt-3 mt-5 d-flex">                    
-                    <img src="{{ asset('images/ant-design_info-circle-outlined-black.png') }}" alt="" class="img-fluid img-info mt-1 mr-2 ml-2"> 
-                    <p>Kamu akan membeli paket Geny Premium Seharga <span class="font-weight-bold">Rp. 120.000,00</span></p>                
-                </div>
 
-                <p class="mt-3 text-right"><u>Syarat dan Ketentuan Berlaku</u></p>
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
-                <p class="metode-pembayaran-title font-weight-bold mt-3">METODE PEMBAYARAN</p>
+    <!-- bootstrap select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 
-                <p class="font-weight-bold">Pembayaran via <span class="nama-metode">Bank BCA</span></p>                
-            </div>
-        </div>
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <div class="col-md-4 mt-2">
-            <div class="card info-data-lainnya-container box-shadow p-4">
-                <h3 class="font-weight-bold">Data Lainnya</h3>
+    <!-- slick carousel -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css">
 
-                <p class="info-title mb-0 mt-5">Nama Pengguna</p>
-                <p class="info-content">PT. GOJEK INDONESIA</p>
+    <!-- Styles -->
+    <link href="../assets/css/admin/verifikasi-pembayaran.css" rel="stylesheet">
 
-                <p class="info-title mb-0">EMAIL</p>
-                <p class="info-content">gojekindonesia@gmail.com</p>
+</head>
 
-                <p class="info-title mb-0">STATUS</p>
-                <p class="info-content">diproses</p>
-            </div>
+<body>
+    <header class="main-header">
 
-            <div class="d-flex mt-4">
-                <button class="btn btn-delete mr-3" data-toggle="modal" data-target="#deleteModal"><img src="{{ asset('images/mdi_delete-white.png') }}" alt=""></button>
-                <a href="#" class="btn btn-verifikasi">VERIFIKASI</a>
-            </div>
-        </div>
-    </div>
+    <!-- navbar -->
 
-</div>
-    
-<!-- modal delete -->
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-md" role="document">
-        <div class="modal-content">
-            <div class="modal-header pl-3 pr-3">
-                <h5 class="modal-title font-weight-bold" id="ModalDelete">KONFIRMASI HAPUS DATA</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>                
-            </div>            
+    <nav class="navbar navbar-expand-lg flex-row pl-4 sticky-top">
+        <a class="navbar-brand" href="#">
+            <img src="../assets/images/LogoGenyDream.png" alt="">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav" id="navbar-nav">                
+                <li class="nav-item">
+                    <a class="nav-link " data-value="contact" href="#"><img src="../assets/images/cil_chat-bubble.png" alt=""></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " data-value="contact" href="#"><img src="../assets/images/clarity_notification-line.png" alt=""></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <button class="btn btn-default" type="button" id="menu1" data-toggle="dropdown">
+                        <img id="profilebutton" style=" width: 30px; height:30px;" src="../assets/images/mentor-img.png">
+
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
                         
-            <div class="modal-body modal-basic-info">                    
-                
-                <div class="img-delete-container col-md-3 mx-auto">
-                        <img src="{{ asset('images/jam_triangle-danger.png') }}" class="img-fluid img-delete" alt="">
-                    </div>          
+                        <li role="presentation"><a class="dropdown-item" role="menuitem" id="profilebutton" href="#">Profile</a></li>
+                                                
+                        <li role="presentation">
+                        <a class="dropdown-item" role="menuitem" href="../welcome.html">Keluar</a>
+                            <!-- <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form> -->
+                        </li>
 
-                <div class="box-text-delete pt-3 mt-5 d-flex">                    
-                    <img src="{{ asset('images/ant-design_info-circle-outlined-black.png') }}" alt="" class="img-fluid img-info mt-1 mr-2 ml-2"> 
-                    <p>Apakah kamu yakin untuk menghapus data tersebut?</p>
+                    </ul>
+                </li>
+            </ul>
+
+            
+                
+            
+        </div>
+    </nav>
+
+    <!-- end of navbar -->
+    <div class="container my-4">
+        
+
+        <div class="col-md-12 page-header box-shadow rounded pt-3 pb-2 pl-4">
+            <h4 class="font-weight-bold">DETAIL PEMBAYARAN</h4>
+        </div>    
+
+        <div class="row mt-5">
+            <div class="col-md-8 mt-2">
+                <div class="card info-paket-container box-shadow p-5">
+                    <h3 class="box-title mb-0 font-weight-bold">INFO PAKET</h3>
+                    <hr class="mt-0">
+
+                    <div class="box-text pt-3 mt-5 d-flex">                    
+                        <img src="../assets/images/ant-design_info-circle-outlined-black.png" alt="" class="img-fluid img-info mt-1 mr-2 ml-2"> 
+                        <p>Kamu akan membeli paket Geny Premium Seharga <span class="font-weight-bold">Rp. 120.000,00</span></p>                
+                    </div>
+
+                    <p class="mt-3 text-right"><u>Syarat dan Ketentuan Berlaku</u></p>
+
+                    <p class="metode-pembayaran-title font-weight-bold mt-3">METODE PEMBAYARAN</p>
+
+                    <p class="font-weight-bold">Pembayaran via <span class="nama-metode">Bank BCA</span></p>                
+                </div>
+            </div>
+
+            <div class="col-md-4 mt-2">
+                <div class="card info-data-lainnya-container box-shadow p-4">
+                    <h3 class="font-weight-bold">Data Lainnya</h3>
+
+                    <p class="info-title mb-0 mt-5">Nama Pengguna</p>
+                    <p class="info-content">PT. GOJEK INDONESIA</p>
+
+                    <p class="info-title mb-0">EMAIL</p>
+                    <p class="info-content">gojekindonesia@gmail.com</p>
+
+                    <p class="info-title mb-0">STATUS</p>
+                    <p class="info-content">diproses</p>
                 </div>
 
+                <div class="d-flex mt-4">
+                    <button class="btn btn-delete mr-3" data-toggle="modal" data-target="#deleteModal"><img src="../assets/images/mdi_delete-white.png" alt=""></button>
+                    <a href="#" class="btn btn-verifikasi">VERIFIKASI</a>
+                </div>
             </div>
-            <div class="modal-footer">
+        </div>
+
+    </div>
+        
+    <!-- modal delete -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header pl-3 pr-3">
+                    <h5 class="modal-title font-weight-bold" id="ModalDelete">KONFIRMASI HAPUS DATA</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>                
+                </div>            
+                            
+                <div class="modal-body modal-basic-info">                    
                     
-                <button type="button" class="btn btn-cancel font-weight-bold pl-4 pr-4 mr-2" data-dismiss="modal">BATAL</button>    
-                <button class="btn btn-delete font-weight-bold pl-4 pr-4">DELETE</button>
-                
-            </div>                        
+                    <div class="img-delete-container col-md-3 mx-auto">
+                            <img src="../assets/images/jam_triangle-danger.png" class="img-fluid img-delete" alt="">
+                        </div>          
+
+                    <div class="box-text-delete pt-3 mt-5 d-flex">                    
+                        <img src="../assets/images/ant-design_info-circle-outlined-black.png" alt="" class="img-fluid img-info mt-1 mr-2 ml-2"> 
+                        <p>Apakah kamu yakin untuk menghapus data tersebut?</p>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                        
+                    <button type="button" class="btn btn-cancel font-weight-bold pl-4 pr-4 mr-2" data-dismiss="modal">BATAL</button>    
+                    <button class="btn btn-delete font-weight-bold pl-4 pr-4">DELETE</button>
+                    
+                </div>                        
+            </div>
         </div>
     </div>
-</div>
-<!-- end of modal delete -->
-@endsection
+    <!-- end of modal delete -->
+
+
+    <!-- js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>   
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+        });        
+
+        $(document).ready(function() {        
+
+            $("#menu-toggle").click(function(e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        });
+    </script>
+
+</body>
+</html>

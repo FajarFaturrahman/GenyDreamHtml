@@ -1,131 +1,277 @@
-@extends('admin.sidebar-admin-master.sidebar-admin-master')
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-@section('content-dashboard')
-<link rel="stylesheet" href="{{ asset('css/admin/berita-admin.css') }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<div class="col-md-12 page-header box-shadow rounded pt-3 pb-2 pl-4">
-        <h4 class="font-weight-bold">KELOLA KONTEN</h4>
-    </div>
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>GenyDream | Kelola Berita</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 
 
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
-    <div class="row mt-5 pl-3 pr-3 justify-content-between">
-        <a href="{{ route('admin.berita.add') }}" class="btn btn-lg pt-3 btn-tambah-berita"><i class="fa fa-plus mr-3"></i>TAMBAH KONTEN</a>
+    <!-- bootstrap select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 
-        <div class="form mt-2">
-            <form action="{{ route('admin.berita.search') }}" method="GET">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control form-search" name="search" placeholder="Cari Nama Konten" aria-label="Cari Nama Konten">
-                    <div class="input-group-append">
-                        <button class="btn btn-search" type="submit"><i class="fa fa-search"></i></button>
-                    </div>
-                </div>
-            </form>
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- slick carousel -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css">
+
+    <!-- Styles -->
+    <link href="../assets/css/admin/berita-admin.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <header class="main-header">
+
+    <!-- navbar -->
+
+    <nav class="navbar navbar-expand-lg flex-row pl-4 sticky-top">
+        <a class="navbar-brand" href="#">
+            <img src="../assets/images/LogoGenyDream.png" alt="">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav" id="navbar-nav">                
+                <li class="nav-item">
+                    <a class="nav-link " data-value="contact" href="#"><img src="../assets/images/cil_chat-bubble.png" alt=""></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " data-value="contact" href="#"><img src="../assets/images/clarity_notification-line.png" alt=""></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <button class="btn btn-default" type="button" id="menu1" data-toggle="dropdown">
+                        <img id="profilebutton" style=" width: 30px; height:30px;" src="../assets/images/mentor-img.png">
+
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                        
+                        <li role="presentation"><a class="dropdown-item" role="menuitem" id="profilebutton" href="#">Profile</a></li>
+                                                
+                        <li role="presentation">
+                        <a class="dropdown-item" role="menuitem" href="../welcome.html">Keluar</a>
+                            <!-- <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form> -->
+                        </li>
+
+                    </ul>
+                </li>
+            </ul>
+
+            
+                
+            
         </div>
-    </div>
+    </nav>
 
-    <!-- sort by -->
-    <div class="row mt-4 pl-3 pr-3 berita-menu justify-content-center">       
-        <a href="{{ route('admin.berita.index') }}" class="btn btn-link text-capitalize {{ request()->route()->named('admin.berita.index') ? 'active' : '' }}">ALL</a>
-        <a href="{{ route('admin.berita.lifestyle') }}" class="btn btn-link text-capitalize {{ request()->route()->named('admin.berita.lifestyle') ? 'active' : '' }}">Lifestyle</a>
-        <a href="{{ route('admin.berita.tipsKarir') }}" class="btn btn-link text-capitalize {{ request()->route()->named('admin.berita.tipsKarir') ? 'active' : '' }}">Tips Karir</a>
-        <a href="{{ route('admin.berita.keahlian') }}" class="btn btn-link text-capitalize {{ request()->route()->named('admin.berita.keahlian') ? 'active' : '' }}">Keahlian</a>
-        <a href="{{ route('admin.berita.tentang.perusahaan') }}" class="btn btn-link text-capitalize {{ request()->route()->named('admin.berita.tentang.perusahaan') ? 'active' : '' }}">Tentang Perusahaan</a>       
-        <a href="{{ route('admin.berita.berita.umum') }}" class="btn btn-link text-capitalize {{ request()->route()->named('admin.berita.berita.umum') ? 'active' : '' }}">Berita Umum</a>       
+    <!-- end of navbar -->
 
-    </div>
+    <div class="mt-5 mb-5" id="wrapper">
 
-    <hr>
+        <!-- sidebar -->
+        <div class="border-right" id="sidebar-wrapper">            
+            <div class="list-group list-group-flush">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                <a href="admin-dashboard.html" class="list-group-item list-group-item-action"><img src="../assets/images/gg_menu-grid-gray.png" alt="" class="img-fluid mr-2">DASHBOARD</a>
+                <a href="perusahaan-list-admin.html" class="list-group-item list-group-item-action "><img src="../assets/images/bi_building-gray.png" alt="" class="img-fluid mr-2">KELOLA PERUSAHAAN</a>
+                <a href="user-list-admin.html" class="list-group-item list-group-item-action"><img src="../assets/images/ant-design_user-outlined-gray.png" alt="" class="img-fluid mr-2">KELOLA USER</a>
+                <a href="verifikasi-pembayaran-admin.html" class="list-group-item list-group-item-action"><img src="../assets/images/la_money-bill-solid-gray.png" alt="" class="img-fluid mr-2">VERIFIKASI PEMBAYARAN</a>
+                <a href="berita-list-admin.html" class="list-group-item list-group-item-action "><img src="../assets/images/bx_bx-news-gray.png" alt="" class="img-fluid mr-2">KELOLA KONTEN</a>
 
-    <div class="row mt-4 pl-3 pr-3">        
-        @foreach($listBerita as $berita)
-            <div class="col-md-3 mt-2">
-                <div class="card box-shadow-card p-2">
-                    <div class="card-body">
-                        <div class="row justify-content-between">
-                            <img src="{{ URL::to('/') }}/images_input/{{ $berita->gambar }}" alt="image-berita" class="img-berita-list img-fluid">
-
-                            <div class="dropdown">
-                                <button class="btn btn-drop" type="button" id="dropdownMenuButton"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-ellipsis-v"></i>
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="{{ route('admin.berita.edit',$berita->id) }}"><img src="{{ asset('images/mdi_pencil.png') }}" alt="">EDIT</a>
-                                    <button class="dropdown-item mt-2 deleteBerita"  data-userid="{{ $berita->id }}"><img src="{{ asset('images/mdi_delete.png') }}" alt="">DELETE</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="info-berita row mt-2">
-                            <p class="kategori-berita"><span class="font-weight-bold">{{ $berita->kategori->nama }}</span> - Updated on <span>{{ $berita->updated_at }}</span></p>                             
-                        </div>
-
-                        <div class="row">
-                            <a href="{{ route('admin.berita.detail', $berita->id) }}" class="berita-title p-0"><h5 class="font-weight-bold">{{ $berita->judul }}</h5></a>                       
-                        </div>                        
-                    </div>
-                </div>
-            </div>    
-        @endforeach    
-    </div>
-
-    <div class="row justify-content-center mt-4">
-        {{ $listBerita->links() }} 
-    </div>
-
-    
-</div>
-
-<!-- modal delete -->
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-md" role="document">
-        <div class="modal-content">
-            <div class="modal-header pl-3 pr-3">
-                <h5 class="modal-title font-weight-bold" id="ModalDelete">KONFIRMASI HAPUS DATA</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <a href="#" class="list-group-item list-group-item-action list-item-out mt-5"><i class="fa fa-arrow-left mr-3"></i>KELUAR</a>
             </div>
-            <form action="{{ route('admin.berita.delete.modal') }}" method="POST">
-                @method('DELETE')
-                @csrf
-                <div class="modal-body modal-basic-info">
+        </div>
+        <!-- end of sidebar -->
 
-                    <div class="img-delete-container col-md-3 mx-auto">
-                        <img src="{{ asset('images/jam_triangle-danger.png') }}"
-                            class="img-fluid img-delete" alt="">
+        <div id="page-content-wrapper">
+            <!-- content -->
+            <div class="container-fluid">
+                <button class="btn btn-primary mb-3" onclick="openNav()">Open Sidebar</button>
+                
+                <div class="container">
+
+                    <div class="col-md-12 page-header box-shadow rounded pt-3 pb-2 pl-4">   
+                        <h4 class="font-weight-bold">KELOLA KONTEN</h4>
                     </div>
-
-                    <div class="box-text-delete pt-3 mt-5 d-flex">
-                        <img src="{{ asset('images/ant-design_info-circle-outlined-black.png') }}"
-                            alt="" class="img-fluid img-info mt-1 mr-2 ml-2">
-                        <p>Apakah kamu yakin untuk menghapus data tersebut?</p>
-                        <input type="hidden" name="id_berita" id="id_berita">
+            
+            
+            
+                    <div class="row mt-5 pl-3 pr-3 justify-content-between">
+                        <a href="berita-add-admin.html" class="btn btn-lg pt-3 btn-tambah-berita"><i class="fa fa-plus mr-3"></i>TAMBAH KONTEN</a>
+            
+                        <div class="form mt-2">
+                            <form action="" method="GET">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control form-search" name="search" placeholder="Cari Nama Konten" aria-label="Cari Nama Konten">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-search" type="submit"><i class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-
-                </div>
-                <div class="modal-footer">
-
-                    <button type="button" class="btn btn-cancel font-weight-bold" data-dismiss="modal">BATAL</button>                
-                    <button class="btn btn-delete font-weight-bold">DELETE</button>
+            
+                    <!-- sort by -->
+                    <div class="row mt-4 pl-3 pr-3 berita-menu justify-content-center">       
+                        <a href="" class="btn btn-link text-capitalize ">ALL</a>
+                        <a href="" class="btn btn-link text-capitalize ">Lifestyle</a>
+                        <a href="" class="btn btn-link text-capitalize ">Tips Karir</a>
+                        <a href="" class="btn btn-link text-capitalize ">Keahlian</a>
+                        <a href="" class="btn btn-link text-capitalize ">Tentang Perusahaan</a>       
+                        <a href="" class="btn btn-link text-capitalize ">Berita Umum</a>       
+            
+                    </div>
+            
+                    <hr>
+            
+                    <div class="row mt-4 pl-3 pr-3">        
+                        
+                            <div class="col-md-3 mt-2">
+                                <div class="card box-shadow-card p-2">
+                                    <div class="card-body">
+                                        <div class="row justify-content-between">
+                                            <img src="../Assets/images/backgroud-gedung.png" alt="image-berita" class="img-berita-list img-fluid">
+            
+                                            <div class="dropdown">
+                                                <button class="btn btn-drop" type="button" id="dropdownMenuButton"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fa fa-ellipsis-v"></i>
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="berita-edit-admin.html"><img src="../assets/images/mdi_pencil.png" alt="">EDIT</a>
+                                                    <button class="dropdown-item mt-2 deleteBerita"  data-toggle="modal" data-target="#deleteModal"><img src="../assets/images/mdi_delete.png" alt="">DELETE</button>
+                                                </div>
+                                            </div>
+                                        </div>
+            
+                                        <div class="info-berita row mt-2">
+                                            <p class="kategori-berita"><span class="font-weight-bold">Lorem Ipsum</span> - Updated on <span>20-10-2020</span></p>                             
+                                        </div>
+            
+                                        <div class="row">
+                                            <a href="berita-detail-admin.html" class="berita-title p-0"><h5 class="font-weight-bold">Lorem Ipsum Dolor</h5></a>                       
+                                        </div>                        
+                                    </div>
+                                </div>
+                            </div>    
+                        
+                    </div>
+            
+                    <!-- <div class="row justify-content-center mt-4">
+                        {{ $listBerita->links() }} 
+                    </div> -->
+            
                     
                 </div>
-            </form>                
+                
+            </div>
+        </div>
+
+    </div>    
+
+    
+
+    <!-- modal delete -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header pl-3 pr-3">
+                    <h5 class="modal-title font-weight-bold" id="ModalDelete">KONFIRMASI HAPUS DATA</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="" method="">                    
+                    <div class="modal-body modal-basic-info">
+
+                        <div class="img-delete-container col-md-3 mx-auto">
+                            <img src="../assets/images/jam_triangle-danger.png"
+                                class="img-fluid img-delete" alt="">
+                        </div>
+
+                        <div class="box-text-delete pt-3 mt-5 d-flex">
+                            <img src="../assets/images/ant-design_info-circle-outlined-black.png"
+                                alt="" class="img-fluid img-info mt-1 mr-2 ml-2">
+                            <p>Apakah kamu yakin untuk menghapus data tersebut?</p>
+                            <input type="hidden" name="id_berita" id="id_berita">
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-cancel font-weight-bold" data-dismiss="modal">BATAL</button>                
+                        <button class="btn btn-delete font-weight-bold">DELETE</button>
+                        
+                    </div>
+                </form>                
+            </div>
         </div>
     </div>
-</div>
-<!-- end of modal delete -->
+    <!-- end of modal delete -->
 
-@endsection
+    <!-- js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>   
 
-@section('js-dashboard')
-<script>
-$(document).on('click','.deleteBerita',function(){
-    var userID=$(this).attr('data-userid');    
-    $('#id_berita').val(userID); 
-    $('#deleteModal').modal('show'); 
-});
-</script>
-@endsection
+    <script>
+    // $(document).on('click','.deleteBerita',function(){
+    //     var userID=$(this).attr('data-userid');    
+    //     $('#id_berita').val(userID); 
+    //     $('#deleteModal').modal('show'); 
+    // });
+    // </script>
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+
+        $(document).ready(function() {
+            $('.js-example-basic-single').select2();
+        });
+
+        $(document).ready(function() {        
+
+            $("#menu-toggle").click(function(e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        });
+    </script>
+
+    <script>
+        function openNav() {
+        document.getElementById("sidebar-wrapper").style.width = "250px";
+        document.getElementById("page-content-wrapper").style.marginLeft = "250px";
+        }
+
+        function closeNav() {
+        document.getElementById("sidebar-wrapper").style.width = "0";
+        document.getElementById("page-content-wrapper").style.marginLeft= "0";
+        }
+    </script>
+</body>
+</html>
+

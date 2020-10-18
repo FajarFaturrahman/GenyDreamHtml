@@ -1,3 +1,146 @@
+:root {
+    --input-padding-x: 1.5rem;
+    --input-padding-y: .75rem;
+}
+
+body {
+    font-family: 'Source Sans Pro';
+}
+
+/* navbar */
+.navbar {
+    background: white;
+}
+
+.nav-link,
+.navbar-brand {
+    color: #BDBDBD;
+    cursor: pointer;
+}
+
+.active{
+    color: #68C8D8;
+}
+
+.nav-link {
+    margin-right: 1em !important;
+}
+
+.nav-link:hover {
+    background: #f4f4f4;
+    color: #3F95A9;
+}
+
+#navbar-nav {
+    margin-left: auto;
+}
+
+.navbar-toggle {
+    background: #ffffff !important;
+}
+
+#navButton {
+    color: #3F95A9;
+    border: solid 1px #3F95A9;
+    border-radius: 100px;
+}
+
+#navButton:hover {
+    background: #3F95A9;
+    color: #ffffff;
+}
+
+.navbar-toggler-icon {
+    background-image: url('https://cdn4.iconfinder.com/data/icons/wirecons-free-vector-icons/32/menu-alt-512.png');
+}
+
+#profilebutton {
+    height: 30px;
+}
+
+.dropdown-menu{
+    left:-120px;
+}
+
+.dropdown-menu hr{    
+    border: 1px solid rgb(63, 149, 169, 0.1);
+    margin-left: 5px;    
+    margin-right: 5px;
+}
+
+
+/* sidebar */
+
+body{
+    background-color: rgb(63, 149, 169, 0.1);
+}
+/* sidebar */
+
+#sidebar-wrapper {
+    height: 75%;   
+    width: 0;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 10px;
+    background-color: white;    
+    position: fixed;
+    z-index: 1;      
+    overflow-x: hidden;    
+    transition: 0.5s;
+    padding-top: 60px;    
+  }
+  
+#sidebar-wrapper .closebtn{
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;  
+}  
+  #sidebar-wrapper .list-group {
+    width: 15rem;    
+  }
+
+  @media screen and (max-height: 450px) {
+    .sidebar {padding-top: 15px;}    
+  }
+
+  .active{
+    color: #68C8D8;
+  }
+
+  .list-group-item-action{
+    background-color: rgb(63, 149, 169, 0);
+    margin-top: 20px;
+    border: none;
+  }
+
+  .list-group-item-action:hover{
+    background-color: rgb(63, 149, 169, 0.1);
+    border: none;
+    margin-left: -5px;
+    border-left: 10px solid #68C8D8;
+    color: #68C8D8;
+  }
+
+  .list-item-out{
+    background-color: rgb(63, 149, 169, 0);
+    margin-top: 20px;
+    border: none;        
+  }
+
+  .list-item-out:hover{
+    background-color: rgb(235, 87, 87, 0.1);
+    border: none;
+    color: #EB5757;
+    border-left: 5px solid #EB5757;
+  }  
+
+  .page-content-wrapper{
+    transition: margin-left .5s;
+    padding: 1px;
+  }
+
+/* end of sidebar */
+
 .box-shadow{
     background-color: white;    
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);

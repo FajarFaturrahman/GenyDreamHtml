@@ -1,82 +1,173 @@
-@extends('layouts.admin-master')
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-@section('content')
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>GenyDream | Tambah dan Edit Perusahaan</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 
 
-<!-- Styles -->
-<link rel="stylesheet" href="{{ asset('css/admin/perusahaan-admin.css') }}">    
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
-<div class="container">
-    <div class="row justify-content-center">    
-        <div class="col-md-11 add-lowongan mt-5 mb-5 p-5">
-            <h2 class="font-weight-bold">TAMBAH PERUSAHAAN</h2>
+    <!-- bootstrap select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 
-            <hr>
-            @if(session('success'))
-            <div class="alert alert-success mt-3">
-                {{ session('success') }}
-            </div>
-            @endif
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-            @if(session('error'))
-            <div class="alert alert-error mt-3">
-                {{ session('error') }}
-            </div>
-            @endif
-            <form action="{{ url('admin/perusahaan', @$perusahaan->id) }}" method="POST">
-            @csrf
-            @if(!empty($perusahaan))
-                @method('PATCH')
-            @endif
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group mt-5">
-                            <span class="has-float-label">
-                                <input type="text" name="nama" value="{{ old('nama',@$perusahaan->nama) }}" class="form-control" id="nama_perusahaan" placeholder="NAMA PERUSAHAAN" required>
-                                <label for="nama_perusahaan">NAMA PERUSAHAAN</label>
-                            </span>
-                        </div>                    
+    <!-- slick carousel -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css">
 
-                        <div class="form-group mt-4">
-                            <span class="has-float-label">
-                                <input type="text" name="penanggung_jawab" value="{{ old('penanggung_jawab',@$perusahaan->penanggung_jawab) }}" class="form-control" id="nama_penanggung_jawab" placeholder="NAMA PENANGGUNG JAWAB" required>
-                                <label for="nama_penanggung_jawab">NAMA PENANGGUNG JAWAB</label>
-                            </span>
-                        </div>
-                            
-                        <div class="form-group mt-4">
-                            <span class="has-float-label">
-                                <input type="text" name="no_telp" value="{{ old('no_telp',@$perusahaan->no_telp) }}" class="form-control" id="no_telp" placeholder="NO TELEPON" required>
-                                <label for="no_telp">NO TELEPON</label>
-                            </span>
-                        </div>
-                    </div>
+    <!-- Styles -->
+    <link href="../assets/css/admin/perusahaan-admin.css" rel="stylesheet">
 
-                    <div class="col-md-6">
+</head>
 
-                        <div class="form-group mt-5">
-                            <span class="has-float-label">
-                                <input type="email" name="email" value="{{ old('email',@$perusahaan->email) }}" class="form-control" id="email" placeholder="EMAIL" required>
-                                <label for="email">EMAIL</label>
-                            </span>
-                        </div>
-                        <div class="form-group mt-4">
-                            <span class="has-float-label">
-                                <textarea type="text" name="alamat" class="form-control" id="alamat" placeholder="ALAMAT" rows="10">{{ old('alamat',@$perusahaan->alamat) }}</textarea>
-                                <label for="alamat">ALAMAT</label>
-                            </span>
-                        </div>                                       
+<body>
+    <header class="main-header">
+
+    <!-- navbar -->
+
+    <nav class="navbar navbar-expand-lg flex-row pl-4 sticky-top">
+        <a class="navbar-brand" href="#">
+            <img src="../assets/images/LogoGenyDream.png" alt="">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav" id="navbar-nav">                
+                <li class="nav-item">
+                    <a class="nav-link " data-value="contact" href="#"><img src="../assets/images/cil_chat-bubble.png" alt=""></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " data-value="contact" href="#"><img src="../assets/images/clarity_notification-line.png" alt=""></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <button class="btn btn-default" type="button" id="menu1" data-toggle="dropdown">
+                        <img id="profilebutton" style=" width: 30px; height:30px;" src="../assets/images/mentor-img.png">
+
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
                         
-                        <div class="row justify-content-end">
-                            <a href="{{ route('admin.perusahaan.index') }}" class="btn btn-batalkan mt-3 mr-2">BATALKAN</a>
-                            <button class="btn btn-simpan mt-3 mr-2" type="submit">SIMPAN</button>                        
-                        </div>                    
-                    </div>
-                </div>                      
+                        <li role="presentation"><a class="dropdown-item" role="menuitem" id="profilebutton" href="#">Profile</a></li>
+                                                
+                        <li role="presentation">
+                        <a class="dropdown-item" role="menuitem" href="../welcome.html">Keluar</a>
+                            <!-- <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form> -->
+                        </li>
+
+                    </ul>
+                </li>
+            </ul>
+
+            
+                
+            
+        </div>
+    </nav>
+
+    <!-- end of navbar -->
+
+    <div class="container">
+        <div class="row justify-content-center">    
+            <div class="col-md-11 add-lowongan mt-5 mb-5 p-5">
+                <h2 class="font-weight-bold">TAMBAH PERUSAHAAN</h2>
+
+                <hr>                
+                <form action="{{ url('admin/perusahaan', @$perusahaan->id) }}" method="POST">
+                
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group mt-5">
+                                <span class="has-float-label">
+                                    <input type="text" name="nama" value="" class="form-control" id="nama_perusahaan" placeholder="NAMA PERUSAHAAN" required>
+                                    <label for="nama_perusahaan">NAMA PERUSAHAAN</label>
+                                </span>
+                            </div>                    
+
+                            <div class="form-group mt-4">
+                                <span class="has-float-label">
+                                    <input type="text" name="penanggung_jawab" value="" class="form-control" id="nama_penanggung_jawab" placeholder="NAMA PENANGGUNG JAWAB" required>
+                                    <label for="nama_penanggung_jawab">NAMA PENANGGUNG JAWAB</label>
+                                </span>
+                            </div>
+                                
+                            <div class="form-group mt-4">
+                                <span class="has-float-label">
+                                    <input type="text" name="no_telp" value="" class="form-control" id="no_telp" placeholder="NO TELEPON" required>
+                                    <label for="no_telp">NO TELEPON</label>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <div class="form-group mt-5">
+                                <span class="has-float-label">
+                                    <input type="email" name="email" value="" class="form-control" id="email" placeholder="EMAIL" required>
+                                    <label for="email">EMAIL</label>
+                                </span>
+                            </div>
+                            <div class="form-group mt-4">
+                                <span class="has-float-label">
+                                    <textarea type="text" name="alamat" class="form-control" id="alamat" placeholder="ALAMAT" rows="10"></textarea>
+                                    <label for="alamat">ALAMAT</label>
+                                </span>
+                            </div>                                       
                             
-            </form>        
+                            <div class="row justify-content-end">
+                                <a href="perusahaan-list-admin.html" class="btn btn-batalkan mt-3 mr-2">BATALKAN</a>
+
+                                <!-- <button class="btn btn-simpan mt-3 mr-2" type="submit">SIMPAN</button>                         -->
+                                <a class="btn btn-simpan mt-3 mr-2" href="perusahaan-list-admin.html">SIMPAN</a>
+                            </div>                    
+                        </div>
+                    </div>                      
+                                
+                </form>        
+            </div>
         </div>
     </div>
-</div>
 
-@endsection
+    
+    <!-- js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>   
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+
+        $(document).ready(function() {
+            $('.js-example-basic-single').select2();
+        });
+
+        $(document).ready(function() {        
+
+            $("#menu-toggle").click(function(e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        });
+    </script>
+</body>
+</html>

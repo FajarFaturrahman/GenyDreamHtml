@@ -1,74 +1,231 @@
-@extends('admin.sidebar-admin-master.sidebar-admin-master')
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-@section('content-dashboard')
-<link rel="stylesheet" href="{{ asset('css/admin/user-admin.css') }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<div class="container">
-    
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <div class="col-md-12 page-header box-shadow rounded pt-3 pb-2 pl-4">
-        <h4 class="font-weight-bold">KELOLA USER</h4>
-    </div>    
+    <title>GenyDream | Kelola User</title>
 
-    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 
-    <div class="row mt-5 pl-3 pr-3 justify-content-between">
-        <a href="{{ route('admin.user.add') }}"  class="btn btn-lg pt-3 btn-tambah-user"><i class="fa fa-plus mr-3"></i>TAMBAH USER</a>
 
-        <div class="form mt-2">
-            <form action="{{ route('admin.user.search') }}">
-                <div class="input-group mb-3">
-                    <input type="text" name="search" class="form-control form-search" placeholder="Cari Nama User" aria-label="Cari Nama User">
-                    <div class="input-group-append">
-                        <button class="btn btn-search" type="submit"><i class="fa fa-search"></i></button>
-                    </div>
-                </div>
-            </form>
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <!-- bootstrap select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- slick carousel -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css">
+
+    <!-- Styles -->
+    <link href="../assets/css/admin/user-admin.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <header class="main-header">
+
+    <!-- navbar -->
+
+    <nav class="navbar navbar-expand-lg flex-row pl-4 sticky-top">
+        <a class="navbar-brand" href="#">
+            <img src="../assets/images/LogoGenyDream.png" alt="">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav" id="navbar-nav">                
+                <li class="nav-item">
+                    <a class="nav-link " data-value="contact" href="#"><img src="../assets/images/cil_chat-bubble.png" alt=""></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " data-value="contact" href="#"><img src="../assets/images/clarity_notification-line.png" alt=""></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <button class="btn btn-default" type="button" id="menu1" data-toggle="dropdown">
+                        <img id="profilebutton" style=" width: 30px; height:30px;" src="../assets/images/mentor-img.png">
+
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                        
+                        <li role="presentation"><a class="dropdown-item" role="menuitem" id="profilebutton" href="#">Profile</a></li>
+                                                
+                        <li role="presentation">
+                        <a class="dropdown-item" role="menuitem" href="../welcome.html">Keluar</a>
+                            <!-- <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form> -->
+                        </li>
+
+                    </ul>
+                </li>
+            </ul>
+
+            
+                
+            
         </div>
-    </div>
+    </nav>
 
-    <!-- sort by -->
-    <div class="row mt-4 pl-3 pr-3 menu justify-content-center">        
+    <!-- end of navbar -->
 
-        <a href="{{ route('admin.user.index') }}" class="btn btn-link {{ request()->route()->named('admin.user.index') ? 'active' : '' }}">ALL</a>
-        <a href="{{ route('admin.user.name.asc') }}" class="btn btn-link {{ request()->route()->named('admin.user.name.asc') ? 'active' : '' }}">A-Z</a>
-        <a href="{{ route('admin.user.name.desc') }}" class="btn btn-link {{ request()->route()->named('admin.user.name.desc') ? 'active' : '' }}">Z-A</a>
-        <a href="{{ route('admin.user.updated') }}" class="btn btn-link {{ request()->route()->named('admin.user.updated') ? 'active' : '' }}">UPDATED</a>
-        <a href="{{ route('admin.user.older') }}" class="btn btn-link {{ request()->route()->named('admin.user.older') ? 'active' : '' }}">OLDER</a>        
+    <div class="mt-5 mb-5" id="wrapper">
+
+        <!-- sidebar -->
+        <div class="border-right" id="sidebar-wrapper">            
+            <div class="list-group list-group-flush">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                <a href="admin-dashboard.html" class="list-group-item list-group-item-action"><img src="../assets/images/gg_menu-grid-gray.png" alt="" class="img-fluid mr-2">DASHBOARD</a>
+                <a href="perusahaan-list-admin.html" class="list-group-item list-group-item-action "><img src="../assets/images/bi_building-gray.png" alt="" class="img-fluid mr-2">KELOLA PERUSAHAAN</a>
+                <a href="user-list-admin.html" class="list-group-item list-group-item-action"><img src="../assets/images/ant-design_user-outlined-gray.png" alt="" class="img-fluid mr-2">KELOLA USER</a>
+                <a href="verifikasi-pembayaran-admin.html" class="list-group-item list-group-item-action"><img src="../assets/images/la_money-bill-solid-gray.png" alt="" class="img-fluid mr-2">VERIFIKASI PEMBAYARAN</a>
+                <a href="berita-list-admin.html" class="list-group-item list-group-item-action "><img src="../assets/images/bx_bx-news-gray.png" alt="" class="img-fluid mr-2">KELOLA KONTEN</a>
+
+                <a href="#" class="list-group-item list-group-item-action list-item-out mt-5"><i class="fa fa-arrow-left mr-3"></i>KELUAR</a>
+            </div>
+        </div>
+        <!-- end of sidebar -->
+
+        <div id="page-content-wrapper">
+            <!-- content -->
+            <div class="container-fluid">
+                <button class="btn btn-primary mb-3" onclick="openNav()">Open Sidebar</button>
+                
+                <div class="container">
         
-    </div>
 
-    <hr>
-
-    <div class="row mt-4 pl-3 pr-3">
-        <div class="table-responsive bg-white mb-5 mt-5" style="overflow-x:auto;">          
-            <table class="table table-hover table-borderless text-center">
-                <thead>
-                    <tr>                        
-                        <th>USERNAME</th>
-                        <th>EMAIL</th>
-                        <th>PASSWORD</th>                        
-                        <th>OPSI</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($listUser as $user)
-                        <tr>                        
-                            <td>{{ $user->username }}</td>
-                            <td>{{ $user->email }}</td>
-                            <td>{{ $user->password }}</td>                                               
-                            <td><a href="{{ route('admin.user.detail',$user->id) }}" class="btn btn-detail">DETAIL <i class="fa fa-angle-right ml-3"></i></a></td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    <div class="col-md-12 page-header box-shadow rounded pt-3 pb-2 pl-4">
+                        <h4 class="font-weight-bold">KELOLA USER</h4>
+                    </div>    
+            
+                    
+            
+                    <div class="row mt-5 pl-3 pr-3 justify-content-between">
+                        <a href="user-add-admin.html"  class="btn btn-lg pt-3 btn-tambah-user"><i class="fa fa-plus mr-3"></i>TAMBAH USER</a>
+            
+                        <div class="form mt-2">
+                            <form action="">
+                                <div class="input-group mb-3">
+                                    <input type="text" name="search" class="form-control form-search" placeholder="Cari Nama User" aria-label="Cari Nama User">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-search" type="submit"><i class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+            
+                    <!-- sort by -->
+                    <div class="row mt-4 pl-3 pr-3 menu justify-content-center">        
+            
+                        <a href="#" class="btn btn-link ">ALL</a>
+                        <a href="#" class="btn btn-link">A-Z</a>
+                        <a href="#" class="btn btn-link">Z-A</a>
+                        <a href="#" class="btn btn-link">UPDATED</a>
+                        <a href="#" class="btn btn-link">OLDER</a>        
+                        
+                    </div>
+            
+                    <hr>
+            
+                    <div class="row mt-4 pl-3 pr-3">
+                        <div class="table-responsive bg-white mb-5 mt-5" style="overflow-x:auto;">          
+                            <table class="table table-hover table-borderless text-center">
+                                <thead>
+                                    <tr>                        
+                                        <th>USERNAME</th>
+                                        <th>EMAIL</th>
+                                        <th>PASSWORD</th>                        
+                                        <th>OPSI</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                    <tr>                        
+                                        <td>Anna Minerva</td>
+                                        <td>annaminerva@gmail.com</td>
+                                        <td>anna123$%dasd1212$#2</td>                                               
+                                        <td><a href="user-detail-admin.html" class="btn btn-detail">DETAIL <i class="fa fa-angle-right ml-3"></i></a></td>
+                                    </tr>
+                                    
+                                    <tr>                        
+                                        <td>Anna Minerva</td>
+                                        <td>annaminerva@gmail.com</td>
+                                        <td>anna123$%dasd1212$#2</td>                                               
+                                        <td><a href="user-detail-admin.html" class="btn btn-detail">DETAIL <i class="fa fa-angle-right ml-3"></i></a></td>
+                                    </tr>
+                                    
+                                    <tr>                        
+                                        <td>Anna Minerva</td>
+                                        <td>annaminerva@gmail.com</td>
+                                        <td>anna123$%dasd1212$#2</td>                                               
+                                        <td><a href="user-detail-admin.html" class="btn btn-detail">DETAIL <i class="fa fa-angle-right ml-3"></i></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+            
+                    <!-- <div class="row justify-content-center mt-4">
+                        {{ $listUser->links() }} 
+                    </div> -->
+            
+                </div>
+                
+            </div>
         </div>
-    </div>
 
-    <div class="row justify-content-center mt-4">
-        {{ $listUser->links() }} 
-    </div>
-
-</div>
+    </div>    
     
-@endsection
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>   
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+
+        $(document).ready(function() {
+            $('.js-example-basic-single').select2();
+        });
+
+        $(document).ready(function() {        
+
+            $("#menu-toggle").click(function(e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        });
+    </script>
+
+    <script>
+        function openNav() {
+        document.getElementById("sidebar-wrapper").style.width = "250px";
+        document.getElementById("page-content-wrapper").style.marginLeft = "250px";
+        }
+
+        function closeNav() {
+        document.getElementById("sidebar-wrapper").style.width = "0";
+        document.getElementById("page-content-wrapper").style.marginLeft= "0";
+        }
+    </script>
+</body>
+</html>
