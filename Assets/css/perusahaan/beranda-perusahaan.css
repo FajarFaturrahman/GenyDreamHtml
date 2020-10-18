@@ -43,7 +43,7 @@ body {
 /* wrap */
 
 .wrap-image-header {
-    background: url('/images/Background1.png');
+    background: url('../../images/Background1.png');
     height: 200px;
     background-repeat: no-repeat;
     background-size: cover;
@@ -246,16 +246,15 @@ hr {
     margin-right: auto;
 }
 
-textarea:hover, 
-input:hover, 
-textarea:active, 
-input:active, 
-textarea:focus, 
+textarea:hover,
+input:hover,
+textarea:active,
+input:active,
+textarea:focus,
 input:focus,
-label:focus
-{
-    outline:0px !important;
-    -webkit-appearance:none;
+label:focus {
+    outline: 0px !important;
+    -webkit-appearance: none;
     box-shadow: none !important;
 }
 
