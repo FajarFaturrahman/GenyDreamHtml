@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>GenyDream</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" rel="stylesheet">
+
+    <!-- js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+
+    <!-- Styles -->
+    <link href="../assets/css/perusahaan/lowongan-perusahaan.css" rel="stylesheet">
+
+</head>
+<div class="container-fluid">
+
+    <div class="row py-5 p-5">
+        <div class="col-md-10">
+            <h3 class="font-weight-bold">Daftar Lowongan</h3>
+            <p>Berikut daftar lowongan yang telah anda buat, cek secara berkala untuk menemukan pelamar sesuai kriteria
+                perusahaanmu </p>
+        </div>
+    </div>
+
+    <div class="row pl-5 justify-content-between">
+        <div class="col-md-9">
+            <select class="select select-sortby p-2 mb-4" name="sort_by" id="sort-by">
+                <option>SORT BY</option>
+                <option value="asc">Terbaru</option>
+                <option value="desc">Terlama</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <a href="add-lowongan.html" class="btn btn-primary btn-add-lowongan" id=""><img
+                    src="../assets/images/icons8_advertising.png" alt=""> Upload Buat Lowongan</a>
+        </div>
+    </div>
+
+    <div class="row pl-5 pr-5 pb-5 pt-1">
+        <div class="col-lg-3 col-md-4 mt-3">
+            <div class="card lowongan-kerja pb-3">
+                <div class="row ml-1 justify-content-between">
+                    <p class="mt-3 mb-0 update-time"><i class="fa fa-clock-o p-1"></i>1 jam yang lalu</p>
+
+                    <div class="right-button pr-4">
+                        <button class="btn btn-link mt-2"><img src="../assets/images/ant-design_share-alt-outlined.png"
+                                alt=""></button>
+                    </div>
+                </div>
+
+                <hr class="mr-2 ml-2">
+
+                <div class="card-image mx-auto">
+                    <img src="../assets/images/gambarPertamina.png" alt="" class="card-img-top">
+                </div>
+
+                <div class="card-body d-flex flex-column p-0">
+
+                    <div class="job-position ml-2 mt-4">
+                        <h6 class="font-weight-bold">Web Developer</h6>
+                        <p>Geny Dream</p>
+                    </div>
+
+
+                    <div class="job-pelamar ml-2 mr-2">
+                        <p class=" mt-2 jml-pelamar-tag"><img src="../assets/images/la_user-tie-solid-black.png" alt=""
+                                class="img-fluid mr-2 mb-1">20 pelamar</p>
+                    </div>
+
+                    <div class="row justify-content-end pr-3">
+                        <div class="col-md-7">
+                            <a href="detail-lowongan-perusahaan.html"
+                                class="btn btn-lg btn-block btn-detail">DETAIL</i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</html>

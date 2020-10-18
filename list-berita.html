@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>GenyDream</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" rel="stylesheet">
+
+    <!-- js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+
+    <!-- Styles -->
+    <link href="assets/css/perusahaan/berita.css" rel="stylesheet">
+
+</head>
+
+<img src="assets/images/beritalistimg.png" alt="" class="img-fluid mt-5 mb-5">
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="d-inline berita-menu text-center mt-1">
+            <a href="{{ route('list.berita') }}"
+                class="font-weight-bold ml-4 mr-4 {{ request()->route()->named('list.berita') ? 'active' : '' }}">All</a>
+            <a href="{{ route('list.berita.lifestyle') }}"
+                class="font-weight-bold ml-4 mr-4 {{ request()->route()->named('list.berita.lifestyle') ? 'active' : '' }}">Lifestyle</a>
+            <a href="{{ route('list.berita.tipsKarir') }}"
+                class="font-weight-bold ml-4 mr-4 {{ request()->route()->named('list.berita.tipsKarir') ? 'active' : '' }}">Tips
+                Karir</a>
+            <a href="{{ route('list.berita.keahlian') }}"
+                class="font-weight-bold ml-4 mr-4 {{ request()->route()->named('list.berita.keahlian') ? 'active' : '' }}">Keahlian</a>
+            <a href="{{ route('list.berita.tentang.perusahaan') }}"
+                class="font-weight-bold ml-4 mr-4 {{ request()->route()->named('list.berita.tentang.perusahaan') ? 'active' : '' }}">Tentang
+                Perusahaan</a>
+            <a href="{{ route('list.berita.berita.umum') }}"
+                class="font-weight-bold ml-4 mr-4 {{ request()->route()->named('list.berita.berita.umum') ? 'active' : '' }}">Berita
+                Umum</a>
+        </div>
+
+        <form action="{{ route('list.berita.search') }}" method="GET">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control form-search" name="search" placeholder="Cari Judul Berita"
+                    aria-label="Cari Judul Berita">
+                <div class="input-group-append">
+                    <button class="btn btn-search" type="submit"><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <h4 class="font-weight-bold">List Berita</h4>
+    <hr class="list-berita-line">
+
+    <div class="row py-5">
+
+        <div class="col-md-4">
+            <div class="content-body mr-4">
+                <img src="assets/images/1.jpg" class="img-fluid img-list-berita" alt="">
+
+                <div class="info-berita d-flex mt-2 p-1">
+                    <p class="font-weight-bold kategori-berita">Tech</p>
+                    <p class="ml-1 mr-1">-</p>
+                    <p class="waktu"> Updated on <span>22.00</span></p>
+                </div>
+
+                <h3 class="berita-title font-weight-bold ml-1">Judul Berita</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-4">
+        Selengkapnya
+    </div>
+</div>
+@endsection

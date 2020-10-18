@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="">
+
+    <title>GenyDream</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" rel="stylesheet">
+
+    <!-- js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+
+    <!-- Styles -->
+    <link href="../assets/css/perusahaan/add-lowongan-perusahaan.css" rel="stylesheet">
+
+</head>
+<!-- navbar -->
+
+<nav class="navbar navbar-expand-lg flex-row pl-4 sticky-top">
+    <a class="navbar-brand" href="#">
+        <img src="../assets/images/LogoGenyDream.png" alt="">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav" id="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" data-value="beranda" href="">BERANDA</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-value="list-lowongan" href="}">LOWONGAN KERJA</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " data-value="list-kursus" href="#">KURSUS</a>
+            </li>
+            <li class="nav-item dropdown">
+                <button class="btn btn-default" type="button" id="menu1" data-toggle="dropdown">
+                    <img id="profilebutton" style=" width: 30px; height:30px;" src="../assets/images/mentor-img.png">
+
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                    <li role="presentation"><a class="dropdown-item" role="menuitem" id="profilebutton"
+                            href="">Profile</a></li>
+                    <li role="presentation">
+                        <a class="dropdown-item" role="menuitem" href=""
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                        <form id="logout-form" action="" method="POST" style="display: none;">
+
+                        </form>
+                    </li>
+
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+
+<div class="row pl-4 justify-content-center">
+    <div class="col-md-11 add-lowongan mt-5 mb-5 p-5">
+        <h2 class="font-weight-bold">BUAT LOWONGAN BARU</h2>
+
+        <hr>
+
+        <form action="">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group mt-5">
+                        <span class="has-float-label">
+                            <input type="text" name="nama_lowongan" value="" class="form-control" id="nama_lowongan"
+                                placeholder="NAMA LOWONGAN">
+                            <label for="nama_lowongan">NAMA LOWONGAN</label>
+                        </span>
+                    </div>
+
+                    <div class="form-group mt-4">
+                        <span class="has-float-label">
+                            <select class="form-control" id="kategori" name="kategori" title="Career">
+                                <option>Job Category</option>
+                                <option value="administrasi">Administrasi</option>
+                                <option value="akuntansi dan keuangan">Akuntansi dan Keuangan</option>
+                                <option value="konstruksi">Konstruksi</option>
+                                <option value="hukum">Hukum</option>
+                                <option value="ilmu pengetahuan">Ilmu Pengetahuan</option>
+                                <option value="jasa">Jasa/Pelayanan</option>
+                                <option value="keahlian teknik">Keahlian Teknik</option>
+                                <option value="manufaktur">Manufaktur</option>
+                                <option value="pelayanan kesehatan">Pelayanan Kesehatan</option>
+                                <option value="pemasaran">Pemasaran</option>
+                                <option value="pendidikan dan pelatihan">Pendidikan/Pelatihan & Pengembangan</option>
+                                <option value="penjualan">Penjualan</option>
+                                <option value="sumber daya manusia">Personalia/SDM/HR</option>
+                                <option value="komunikasi">Komunikasi</option>
+                                <option value="teknologi informasi">Teknologi Informasi</option>
+                            </select>
+                            <label for="kategori">Job Category</label>
+                        </span>
+                    </div>
+
+                    <div class="form-group mt-4">
+                        <span class="has-float-label">
+                            <input type="date" name="tenggat_waktu" value="" class="form-control" id="tenggat_waktu"
+                                placeholder="TENGGAT WAKTU">
+                            <label for="tenggat_waktu">TENGGAT WAKTU</label>
+                        </span>
+                    </div>
+
+                    <div class="salary-container mt-4">
+                        <p class="salary-title mb-2">SALARY</p>
+                        <div class="row">
+                            <div class="form-group mt-1 col-md-6">
+                                <span class="has-float-label">
+                                    <input type="text" name="gaji_minimum" value="" class="form-control"
+                                        id="gaji_minimum" placeholder="MINIMUM">
+                                    <label for="gaji_minimum">MINIMUM</label>
+                                </span>
+                            </div>
+
+                            <div class="form-group mt-1 col-md-6">
+                                <span class="has-float-label">
+                                    <input type="text" name="gaji_maksimum" value="" class="form-control"
+                                        id="gaji_maksimum" placeholder="MAKSIMUM">
+                                    <label for="gaji_maksimum">MAKSIMUM</label>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row pl-3">
+                        <div class="form-check form-check-inline d-block mt-3">
+                            <input class="form-check-input" type="checkbox" name="hanya_tampilkan_salary_minimum"
+                                id="hanya_tampilkan_salary_minimum">
+                            <label class="form-check-label" for="hanya_tampilkan_salary_minimum">HANYA TAMPILKAN SALARY
+                                MINIMUM</label>
+                        </div>
+
+                        <div class="form-check form-check-inline d-block mt-3">
+                            <input class="form-check-input" type="checkbox" name="tidak_tampilkan_salary"
+                                id="tidak_tampilkan_salary">
+                            <label class="form-check-label" for="tidak_tampilkan_salary">TIDAK TAMPILKAN SALARY</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group mt-4">
+                        <span class="has-float-label">
+                            <textarea type="text" name="deskripsi" value="" class="form-control" id="deskripsi"
+                                placeholder="DESKRIPSI" rows="10"></textarea>
+                            <label for="deskripsi">DESKRIPSI</label>
+                        </span>
+                    </div>
+
+                    <div class="skills-container mt-4 mb-5">
+                        <p class="salary-title mb-2">SKILL YANG DIBUTUHKAN</p>
+
+                        <div class="form-group mt-1">
+                            <span class="has-float-label">
+                                <input type="text" data-role="tagsinput" name="nama_skill" value="" class="form-control"
+                                    id="nama_skill">
+                                <label for="nama_skill">NAMA SKILL</label>
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <button class="btn btn-simpan mt-5">SIMPAN</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<footer id=" dk-footer" class="dk-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-4">
+                <div class="dk-footer-box-info">
+                    <a href="index.html" class="footer-logo">
+                        <img src="../assets/images/LogoGenyWhite.png" class="img-fluid">
+                    </a>
+                    <p class="footer-info-text">
+                        Geny Dream adalah Aplikasi untuk menyiapkan para pengguna masuk ke dalam dunia pekerjaan dan
+                        mendapatkan pekerjaan yang diinginkan.
+                    </p>
+                    <div class="footer-social-link">
+                        <h3>Follow us</h3>
+                        <ul style="margin-bottom: 30px;">
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-google-plus"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- End Social link -->
+                </div>
+
+            </div>
+            <!-- End Col -->
+            <div class="col-md-12 col-lg-8">
+
+                <!-- End Contact Row -->
+                <div class="row">
+                    <div class="col-md-12 col-lg-6">
+                        <div class="footer-widget footer-left-widget">
+                            <div class="section-heading">
+                                <h3>Useful Links</h3>
+                                <span class="animate-border border-black"></span>
+                            </div>
+                            <ul>
+                                <li>
+                                    <a href="#">About us</a>
+                                </li>
+                                <li>
+                                    <a href="#">Services</a>
+                                </li>
+                                <li>
+                                    <a href="#">Projects</a>
+                                </li>
+                                <li>
+                                    <a href="#">Our Team</a>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <a href="#">Contact us</a>
+                                </li>
+                                <li>
+                                    <a href="#">Blog</a>
+                                </li>
+                                <li>
+                                    <a href="#">Testimonials</a>
+                                </li>
+                                <li>
+                                    <a href="#">Faq</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- End Footer Widget -->
+                    </div>
+                    <!-- End col -->
+                    <div class="col-md-12 col-lg-6">
+                        <div class="footer-widget">
+                            <div class="section-heading">
+                                <h3>Lainnya</h3>
+                                <span class="animate-border border-black"></span>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="contact-us">
+                                        <div class="contact-icon">
+                                            <i class="fa fa-map-o" aria-hidden="true"></i>
+                                        </div>
+                                        <!-- End contact Icon -->
+                                        <div class="contact-info">
+                                            <h3>Indonesia</h3>
+                                            <p>Jalan Jendral Sudirman</p>
+                                        </div>
+                                        <!-- End Contact Info -->
+                                    </div>
+                                    <!-- End Contact Us -->
+                                </div>
+                                <!-- End Col -->
+                                <div class="col-md-12">
+                                    <div class="contact-us">
+
+                                        <div class="contact-icon">
+                                            <i class="fa fa-volume-control-phone" aria-hidden="true"></i>
+                                        </div>
+                                        <!-- End contact Icon -->
+                                        <div class="contact-info">
+                                            <h3>+628 2222 </h3>
+                                            <p>Hubungi Kami</p>
+                                        </div>
+                                        <!-- End Contact Info -->
+                                    </div>
+                                </div>
+                                <!-- End Col -->
+                            </div>
+                        </div>
+                        <!-- End footer widget -->
+                    </div>
+                    <!-- End Col -->
+                </div>
+                <!-- End Row -->
+            </div>
+            <!-- End Col -->
+        </div>
+        <!-- End Widget Row -->
+    </div>
+    <!-- End Contact Container -->
+
+
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <span>Copyright © 2020, All Right Reserved GenyDream</span>
+                </div>
+
+            </div>
+            <!-- End Row -->
+        </div>
+        <!-- End Copyright Container -->
+    </div>
+    <!-- End Copyright -->
+
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+
+<!-- custom select -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+<!-- tags input -->
+<script src="../assets/js/tagsinput.js"></script>
+
+
+
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+
+
+</html>
