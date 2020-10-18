@@ -1,492 +1,805 @@
-@extends('layouts.applicant-master')
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-@section('content')
-<link rel="stylesheet" type="text/css" href="{{ asset('css/applicant/profile.css') }}" />
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<div class="flat-row profile-page p-3">
-    <div class="container py-5">
-        <div class="row">
-            <div class="col-md-9 col-sm-8 wrap-responsive py-2">
-                <div class="user-info-detail">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-                    <!-- profile header -->
-                    <div class="row profile-header box-shadow pb-5">                                                    
-                        <img class="jumbotron img-fluid" src="https://image.freepik.com/free-photo/construction-site_53876-14088.jpg" alt="">
-                                                
-                        <div class="col-md-7">
-                            <div class="image-default">
-                                <label class=newbtn>
-                                    <img class="rounded-circle" id="pictures" src="https://i.ibb.co/MsW3Ry1/100k-ai-faces-5.jpg" alt="...">
-                                    <input id="pic" class='pis' onchange="readURL(this);" type="file">
-                                </label>
-                            </div>
+    <title>GenyDream | Profile</title>
 
-                            <div class="username-info">
-                                <h3 class="company-name">{{ $profile->nama_lengkap }}</h3>
-                                <p class="user-status">Free User</p>
-                            </div>
-                        </div>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 
-                        <div class="col-md-5">
-                            <div class="d-flex flex-row justify-content-around mt-4">
-                                <button class="btn btn-lg btn-preview">PREVIEW</button>
 
-                                <button class="btn btn-lg btn-export"><i class="fa fa-file"></i>EXPORT TO PDF</button>                                                                
-                            </div>
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <!-- bootstrap select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- slick carousel -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css">
+
+    <!-- js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+
+    <!-- Styles -->    
+    <link rel="stylesheet" type="text/css" href="../assets/css/applicant/profile.css" />
+
+</head>
+
+<body>
+    <header class="main-header">
+
+        <!-- navbar -->
+    
+        <nav class="navbar navbar-expand-lg flex-row pl-4 sticky-top">
+            <a class="navbar-brand" href="#">
+                <img src="../assets/images/LogoGenyDream.png" alt="">
+            </a>
+    
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav" id="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" data-value="about" href="beranda.html">BERANDA</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-value="portfolio" href="lowongan-kerja.html">LOWONGAN KERJA</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-value="blog" href="../list-berita.html">TIPS DAN BERITA</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " data-value="team" href="#">FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " data-value="contact" href="#"><img src="../assets/images/cil_chat-bubble.png" alt=""></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " data-value="contact" href="#"><img src="../assets/images/clarity_notification-line.png" alt=""></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <button class="btn btn-default" type="button" id="menu1" data-toggle="dropdown">
+                            <img id="profilebutton" style=" width: 30px; height:30px;" src="../assets/images/mentor-img.png">
+    
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
                             
-                            <p class="pull-right font-weight-bold mt-3 mr-3 upgrade-text">If you want to upgrade your account                                 
-                                <br>
-                                <a href="{{ route('pelamar.buy.premium') }}" class="upgrade-button">CLICK HERE</a>
-                            </p>
-                        </div>                        
-                    </div>
+                            <li role="presentation"><a class="dropdown-item" role="menuitem" id="profilebutton" href="profile.html">Profile</a></li>
+                        <li>
+                            <a class="dropdown-item" role="menuitem" data-value="team" href="#">Notification</a>
+                        </li>
+                        <hr>
 
-                    <!-- basic info -->
-                    <div class="row basic-info box-shadow mt-5 p-4">                        
-                        <div class="basic-info-content w-100">
-                            <div class="d-flex justify-content-between basic-info-header">                                                                
-                                <h3 class="header-title">BASIC INFO</h3>
-                                <button class="btn btn-show-modal" data-toggle="modal" data-target="#basicInfoModal"><i class="fa fa-pencil mr-2"></i>EDIT BASIC INFO</button>
-                            </div>
+                        <li>
+                            <a class="dropdown-item" role="menuitem" data-value="team" href="lowongan-kerja.html"><img class="img-fluid mr-2" src="../assets/images/ant-design_file-search-outlined-black.png" alt="">Geny Hire</a>
+                        </li>
 
-                            <hr>
+                        <li>
+                            <a class="dropdown-item" role="menuitem" data-value="team" href="kursus.html"><img class="img-fluid mr-2" src="../assets/images/la_user-graduate-solid-black.png" alt="">Geny Education</a>
+                        </li>
 
-                            <div class="row basic-info-body">
-                                <div class="col-md-5">
+                        <li>
+                            <a class="dropdown-item" role="menuitem" data-value="team" href="#"><img class="img-fluid mr-2" src="../assets/images/la_user-tie-solid-black.png" alt="">Geny Intern</a>
+                        </li>
 
-                                    <p class="info-title mt-5">Nama</p>
-                                    <p>{{ $profile->nama_lengkap }}</p>
+                        <li>
+                            <a class="dropdown-item" role="menuitem" data-value="team" href="#"><img class="img-fluid mr-2" src="../assets/images/ic_outline-assessment-black.png" alt="">Geny Assessment</a>
+                        </li>
 
-                                    <p class="info-title mt-5">Gelar Depan</p>
-                                    <p>{{ $profile->gelar_depan }}</p>
+                        <hr>
 
-                                    <p class="info-title mt-5">Tempat, Tanggal Lahir</p>
-                                    <p>{{ $profile->ttl }}</p>                                    
+                        <li>
+                            <a class="dropdown-item premium-link" role="menuitem" data-value="team" href="payment/premium-offer.html"><img class="img-fluid mr-2" src="../assets/images/star1.png" alt="">Go Premium</a>
+                        </li>
+                        <li role="presentation">
+                            <a class="dropdown-item" role="menuitem" href="../welcome.html">Keluar</a>
+                            <!-- <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form> -->
+                        </li>
 
-                                    <p class="info-title mt-5">Gender</p>
-                                    <p>{{ $profile->gender }}</p>
-
-                                    {{-- <p class="info-title mt-5">E-mail</p>
-                                    <p>{{ $profile->user->email }}</p>
-                                    <!-- pake if udah verified atau belum kalau udh jadinya display none -->
-                                    <p class="mb-1"><img src="{{ asset('images/ant-design_info-circle-outlined-red.png') }}" class="img-warning mr-1">Your email address is not yet verified.</p>                         --}}
-                                </div>    
-
-                                <div class="col-md-6">
-
-                                    <p class="info-title mt-5">No KTP</p>
-                                    <p>{{ $profile->no_ktp }}</p>
-
-                                    <p class="info-title mt-5">Gelar Belakang</p>
-                                    <p>{{ $profile->gelar_belakang }}</p>
-
-                                    <p class="info-title mt-5">Usia</p>
-                                    <p>{{ $profile->usia }}</p>
-
-                                    <p class="info-title mt-5">Telepon</p>
-                                    <p>{{ $profile->no_hp }}</p>                                
-
-                                    <p class="info-title mt-5">Alamat</p>
-                                    <p>{{ $profile->alamat }}</p>
-                                </div>
-                            </div>
-                        </div>                                                
-                    </div>
-
-                    <!-- description -->
-                    <div class="row description box-shadow mt-5 p-4">
-                        <div class="description-content w-100">
-                            <div class="d-flex justify-content-between about-header">                                                                
-                                <h3 class="header-title mr-1">DESKRIPSI</h3>
-                                <button class="btn btn-show-modal"data-toggle="modal" data-target="#descriptionModal"><i class="fa fa-pencil mr-2"></i>EDIT DESCRIPTION</button>
-                            </div>
-
-                            <hr>
-
-                            <p class="description mt-5">{{ $profile->deskripsi_diri }}</p>
-                        </div>
-                    </div>
-
-                    <!-- education -->
-                    <div class="row education box-shadow mt-5 p-4">
-                        <div class="education-content w-100">
-                            <div class="d-flex justify-content-between education-header">                                                                
-                                <h3 class="header-title">PENDIDIKAN TERAKHIR</h3>
-                                <button class="btn btn-show-modal" data-toggle="modal" data-target="#educationModal"><i class="fa fa-plus mr-2"></i>TAMBAH PENDIDIKAN</button>
-                            </div>
-
-                            <hr>
-
-                            <div class="education-body">
-                                @foreach ($profile->pendidikan as $edu)
-                                    
-                                <div class="education-row mt-2">
-                                    <div class="d-flex">
-                                        <img src="{{ asset('images/la_user-graduate-solid.png') }}" alt="" class="education-img">
-
-                                        <p class="education-level mt-4 ml-4">{{ $edu->jenjang->nama_jenjang }}</p>
-                                    </div>
-
-                                    <div class="education-detail pl-4 mt-3">
-                                        <h3 class="university-name mb-1">{{ $edu->nama_sekolah }}</h3>
-                                        <p class="major text-capitalize">{{ $edu->jurusan }}</p>        
-                                        
-                                        <div class="row">
-                                            <div class="col-md-8">
-                                                <div class="d-flex duration-of-education mt-2">
-                                                    <img src="{{ asset('images/ant-design_clock-circle-outlined.png') }}" alt="">
-                                                    <p class="ml-1">Dari {{ Carbon\Carbon::parse($edu->tgl_mulai)->format('M Y') }}  sampai {{ Carbon\Carbon::parse($edu->tgl_akhir)->format('M Y') }} </p>
-                                                </div>                                            
-                                            </div>
-
-                                            <div class="col-md-4">
-                                                <p class="final-score">Nilai Akhir : {{ $edu->nilai_akhir }}</p>
-                                            </div>
-                                        </div>
-
-                                        <div class="d-flex btn-editdelete">
-                                            <button class="btn btn-edit btn-edit-pendidikan mr-3" 
-                                            data-pendidikanId       ="{{ $edu->id }}" 
-                                            data-jenjang            ="{{ $edu->id_jenjang }}" 
-                                            data-sekolah            ="{{ $edu->nama_sekolah }}" 
-                                            data-jurusan            ="{{ $edu->jurusan }}" 
-                                            data-bulan-mulai        ="{{ Carbon\Carbon::parse($edu->tgl_mulai)->format('m') }}" 
-                                            data-bulan-akhir        ="{{ Carbon\Carbon::parse($edu->tgl_akhir)->format('m') }}" 
-                                            data-tahun-mulai        ="{{ Carbon\Carbon::parse($edu->tgl_mulai)->format('Y') }}" 
-                                            data-tahun-akhir        ="{{ Carbon\Carbon::parse($edu->tgl_akhir)->format('Y') }}" 
-                                            data-nilai-akhir        ="{{ $edu->nilai_akhir }}"><img src="{{ asset('images/mdi_pencil.png') }}" 
-                                            alt=""></button>
-
-                                            <button class="btn btn-delete btn-delete-pendidikan" 
-                                            data-idPendidikan="{{ $edu->id }}"><img src="{{ asset('images/mdi_delete.png') }}" alt=""></button>
-                                        </div>
-                                    </div>
-                                </div>                                                                                                
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- work experience -->
-                    <div class="row work-experience box-shadow mt-5 p-4">
-                        <div class="work-experience-content w-100">
-                            <div class="d-flex justify-content-between work-experience-header">                                                                
-                                <h3 class="header-title">PEKERJAAAN TERAKHIR</h3>
-                                <button class="btn btn-show-modal" data-toggle="modal" data-target="#workModal"><i class="fa fa-plus mr-2"></i>TAMBAH PEKERJAAN</button>
-                            </div>
-
-                            <hr>
-
-                            <div class="work-experience-body">
-                                <div class="work-experience-row mt-2">
-                                @foreach ($profile->pekerjaan as $job)
-                                    
-                                  
-                                    <img src="{{ asset('images/la_user-tie-solid-blue.png') }}" alt="" class="work-experience-img">                                        
-                                    
-                                    <div class="work-experience-detail pl-4 mt-3">
-                                        <h3 class="company-name mb-1">{{ $job->nama_perusahaan }}</h3>
-                                        <p class="job-title text-capitalize">{{ $job->jabatan_terakhir }}</p>        
-                                                                                
-                                        <div class="d-flex duration-of-work mt-4">
-                                            <img src="{{ asset('images/ant-design_clock-circle-outlined.png') }}" alt="">
-                                            <p class="ml-1">From {{ Carbon\Carbon::parse($job->tgl_mulai)->format('M Y') }} sampai {{ Carbon\Carbon::parse($job->tgl_akhir)->format('M Y') }}</p>
-                                        </div>                                                                                                                                    
-                                        
-                                        <div class="d-flex btn-editdelete">
-                                        <button class="btn btn-edit btn-edit-pekerjaan mr-3" 
-                                        data-id-pekerjaan       ="{{ $job->id }}" 
-                                        data-nama-perusahaan    ="{{ $job->nama_perusahaan }}"
-                                        data-jabatan            ="{{ $job->jabatan_terakhir }}"
-                                        data-bulan-mulai        ="{{ Carbon\Carbon::parse($job->tgl_mulai)->format('m') }}" 
-                                        data-bulan-akhir        ="{{ Carbon\Carbon::parse($job->tgl_akhir)->format('m') }}" 
-                                        data-tahun-mulai        ="{{ Carbon\Carbon::parse($job->tgl_mulai)->format('Y') }}" 
-                                        data-tahun-akhir        ="{{ Carbon\Carbon::parse($job->tgl_akhir)->format('Y') }}" ><img src="{{ asset('images/mdi_pencil.png') }}" alt=""></button>
-
-                                            <button class="btn btn-delete btn-delete-pekerjaan" 
-                                            data-id-pekerjaan="{{ $job->id }}"><img src="{{ asset('images/mdi_delete.png') }}" alt=""></button>
-                                        </div>
-                                    </div>
-                                </div>                                                                                                
-                                @endforeach 
-                                
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Skills -->
-                    <div class="row skills box-shadow mt-5 p-4">
-                        <div class="skills-content w-100">
-                            <div class="d-flex justify-content-between skills-header">                                                                
-                                <h3 class="header-title mr-1">TAMBAH SKILL</h3>
-                                <button class="btn btn-show-modal"data-toggle="modal" data-target="#skillsModal"><i class="fa fa-plus mr-2"></i>ADD SKILL</button>
-                            </div>
-
-                            <hr>
-
-                            <div class="skills-body">
-
-                                @foreach ($profile->keahlian as $skill)
-                                <div class="container skill-content pr-5 pl-5 pt-3 pb-3 skill-edit" 
-                                    data-skillID="{{ $skill->id }}"
-                                    data-nama-skill="{{ $skill->nama_keahlian }}"
-                                    data-persentase="{{ $skill->persentase }}"
-                                    style="cursor: pointer">
-                                    <p class="skill-name font-weight-bold">{{$skill->nama_keahlian}}</p>
-
-                                    <div class="progress-container d-flex">
-                                        <div class="progress flex-fill mt-1 mr-2">
-                                        <div class="progress-bar" role="progressbar" style="width: {{ $skill->persentase }}%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                        <p class="flex-shrink percentage">{{ $skill->persentase }}%</p>
-                                    </div> 
-                                </div>
-                                @endforeach
-            
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- kompetensi -->
-                    <div class="row competence box-shadow mt-5 p-4">
-                        <div class="competence-content w-100">
-                            <div class="d-flex justify-content-between competence-header">                                                                
-                                <h3 class="header-title mr-1">KOMPETENSI ATAU SEMINAR</h3>
-                                <button class="btn btn-show-modal"data-toggle="modal" data-target="#kompetensiModal"><i class="fa fa-plus mr-2"></i>TAMBAH KOMPETENSI</button>
-                            </div>
-
-                            <hr>
-
-                            @foreach ($profile->kompetensi as $seminar)
-                            <div class="competence-body">
-                                <div class="competence-row mt-2">
-                                    <div class="d-flex">
-                                        <img src="{{ asset('images/carbon_certificate.png') }}" alt="" class="competence-img">
-
-                                    <h3 class="competence-name mt-4 ml-4">{{ $seminar->nama_kompetensi }}</h3>
-                                    </div>
-
-                                    <div class="education-detail pl-5 mt-3">                                        
-                                        <p class="seminar-place text-capitalize ml-3"><i class="fa fa-map-marker mr-2"></i>{{ $seminar->lokasi }}</p>
-
-                                        <p class="seminar-description ml-3">{{ $seminar->keterangan }}</p>
-                                        
-                                        <div class="row">
-                                            <div class="col-md-8">
-                                                <div class="d-flex duration-of-seminar mt-2 ml-3">
-                                                    <img src="{{ asset('images/ant-design_clock-circle-outlined.png') }}" alt="">
-                                                    <p class="ml-1">Dari {{ Carbon\Carbon::parse($seminar->tgl_mulai)->format('M Y') }} sampai {{ Carbon\Carbon::parse($seminar->tgl_akhir)->format('M Y') }} </p>
-                                                </div>                                            
-                                            </div>                                            
-                                        </div>    
-                                        
-                                        <div class="d-flex btn-editdelete">
-                                            <button class="btn btn-edit btn-edit-kompetensi mr-3" 
-                                            data-id-kompetensi      ="{{ $seminar->id }}"
-                                            data-nama-kompetensi    ="{{ $seminar->nama_kompetensi }}"
-                                            data-lokasi             ="{{ $seminar->lokasi }}"
-                                            data-keterangan         ="{{ $seminar->keterangan }}"
-                                            data-bulan-mulai        ="{{ Carbon\Carbon::parse($seminar->tgl_mulai)->format('m') }}" 
-                                            data-bulan-akhir        ="{{ Carbon\Carbon::parse($seminar->tgl_akhir)->format('m') }}" 
-                                            data-tahun-mulai        ="{{ Carbon\Carbon::parse($seminar->tgl_mulai)->format('Y') }}" 
-                                            data-tahun-akhir        ="{{ Carbon\Carbon::parse($seminar->tgl_akhir)->format('Y') }}" ><img src="{{ asset('images/mdi_pencil.png') }}" alt=""></button>
-
-                                            <button class="btn btn-delete btn-delete-kompetensi" 
-                                            data-idKompetensi="{{ $seminar->id }}"><img src="{{ asset('images/mdi_delete.png') }}" alt=""></button>
-                                        </div>
-                                    </div>
-                                </div>                                                                                                
-                            </div>
-                            @endforeach
-
-                        </div>
-                    </div>
-
-                    <!-- cv dan file pendukung -->
-                    <div class="row support-file box-shadow mt-5 p-4">
-                        <div class="support-file-content w-100">
-                            <div class="d-flex justify-content-between support-file-header">                                                                
-                                <h3 class="header-title mr-1">CV DAN FILE PENDUKUNG LAINNYA</h3>
-                                <button class="btn btn-show-modal"
-                                data-toggle="modal" 
-                                data-target="#cvModal"> <i class="fa fa-file mr-2"></i>UPDLOAD FILE </button>
-                            </div>
-
-                            <hr>
-
-                            <div class="file-body">
-                                <div class="file-row col-md-12">
-                                    <p class="file-name mt-5 font-weight-bold mb-1 ml-1">FILE CV</p>
-                                    <!-- link mengarah ke file pdfnya -->
-                                    <a href="#" class="cv-link row ml-1 p-2"><i class="fa fa-file mt-1 mr-2"></i>CV Anna Minerva.pdf</a>
-                                </div> 
-                                
-                                <div class="file-row col-md-12">
-                                    <p class="file-name mt-5 font-weight-bold mb-1 ml-1">FILE PENDUKUNG</p>
-                                    <!-- link mengarah ke file pdfnya -->
-                                    <a href="#" class="cv-link row ml-1 p-2"><i class="fa fa-file mt-1 mr-2"></i>File pendukung satu.pdf</a>
-                                </div>
-
-                                <div class="file-row col-md-12">
-                                    <p class="file-name mt-5 font-weight-bold mb-1 ml-1">FILE PENDUKUNG</p>
-                                    <!-- link mengarah ke file pdfnya -->
-                                    <a href="#" class="cv-link row ml-1 p-2"><i class="fa fa-file mt-1 mr-2"></i>File pendukung dua.pdf</a>
-                                </div>
-                            </div>
-                            
-
-                        </div>
-                    </div>
-
-                    <!-- portfolio dan sosial media -->
-                    <div class="row portfolio box-shadow mt-5 p-4">
-                        <div class="portfolio-content w-100">
-                            <div class="d-flex justify-content-between portfolio-header">                                                                
-                                <h3 class="header-title mr-1">PORTFOLIO AND SOCIAL MEDIA</h3>
-                                <button class="btn btn-show-modal"data-toggle="modal" data-target="#portofolioModal"><i class="fa fa-plus mr-2"></i>TAMBAH SOCIAL MEDIA</button>
-                            </div>
-
-                            <hr>
-
-                            <div class="portofolio-body">
-                                <div class="portofolio-row mt-2">
-                                    <div class="d-flex">
-                                        <img src="{{ asset('images/bx_bxl-facebook.png') }}" alt="" class="portofolio-img">
-
-                                        <div class="portofolio-link">
-                                            <p class="social-media-title ml-3 mb-0 font-weight-bold">FACEBOOK</p>
-                                            <a href="#" class="social-media-link ml-3">www.facebook.com/AnnaMinerva</a>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                                
-                                <div class="portofolio-row mt-2">
-                                    <div class="d-flex">
-                                        <img src="{{ asset('images/ant-design_instagram-outlined.png') }}" alt="" class="portofolio-img">
-
-                                        <div class="portofolio-link">
-                                            <p class="social-media-title ml-3 mb-0 font-weight-bold">Instagram</p>
-                                            <a href="#" class="social-media-link ml-3">www.instagram.com/AnnaMinerva</a>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-
-                                <div class="portofolio-row mt-2">
-                                    <div class="d-flex">
-                                        <img src="{{ asset('images/ant-design_twitter-outlined.png') }}" alt="" class="portofolio-img">
-
-                                        <div class="portofolio-link">
-                                            <p class="social-media-title ml-3 mb-0 font-weight-bold">Twitter</p>
-                                            <a href="#" class="social-media-link ml-3">www.twitter.com/AnnaMinerva</a>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3 col-sm-4 wrap-overflow py-2">
+    
+                        </ul>
+                    </li>
+                </ul>
+    
                 
-                <!-- info lengkapi profile -->
-                <div class="info-lengkapi-profile box-shadow p-3">
-                    <p class="info-lengkapi-title font-weight-bold">Ayo Lengkapi Profilmu</p>
+                    
+                
+            </div>
+        </nav>
+    <div class="flat-row profile-page p-3">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-md-9 col-sm-8 wrap-responsive py-2">
+                    <div class="user-info-detail">
 
-                    <div class="progress-container d-flex">
-                        <div class="progress flex-fill mt-1 mr-2">
-                            <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        <!-- profile header -->
+                        <div class="row profile-header box-shadow pb-5">                                                    
+                            <img class="jumbotron img-fluid" src="https://image.freepik.com/free-photo/construction-site_53876-14088.jpg" alt="">
+                                                    
+                            <div class="col-md-7">
+                                <div class="image-default">
+                                    <label class=newbtn>
+                                        <img class="rounded-circle" id="pictures" src="https://i.ibb.co/MsW3Ry1/100k-ai-faces-5.jpg" alt="...">
+                                        <input id="pic" class='pis' onchange="readURL(this);" type="file">
+                                    </label>
+                                </div>
+
+                                <div class="username-info">
+                                    <h3 class="company-name font-weight-bold">Anna Minerva</h3>
+                                    <p class="user-status">Free User</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-5">
+                                <div class="d-flex flex-row justify-content-around mt-4">
+                                    <button class="btn btn-lg btn-preview">PREVIEW</button>
+
+                                    <button class="btn btn-lg btn-export"><i class="fa fa-file"></i>EXPORT TO PDF</button>                                                                
+                                </div>
+                                
+                                <p class="pull-right font-weight-bold mt-3 mr-3 upgrade-text">If you want to upgrade your account                                 
+                                    <br>
+                                    <a href="payment/premium-offer.html" class="upgrade-button">CLICK HERE</a>
+                                </p>
+                            </div>                        
                         </div>
-                        <p class="flex-shrink percentage">50%</p>
-                    </div>                                    
-                </div>
 
-                <!-- notification -->
-                <div class="notification p-3 box-shadow mt-5">
-                    <p class="notification-title font-weight-bold">Cek Notifikasimu</p>
+                        <!-- basic info -->
+                        <div class="row basic-info box-shadow mt-5 p-4">                        
+                            <div class="basic-info-content w-100">
+                                <div class="d-flex justify-content-between basic-info-header">                                                                
+                                    <h3 class="header-title">BASIC INFO</h3>
+                                    <button class="btn btn-show-modal" data-toggle="modal" data-target="#basicInfoModal"><i class="fa fa-pencil mr-2"></i>EDIT BASIC INFO</button>
+                                </div>
 
-                    <div class="notif-content">
-                        <div class="d-flex">
-                            <img src="{{ asset('images/mentor-img.png') }}" alt="" class="notif-img">
+                                <hr>
 
-                            <p class="ml-4">Bessie Cooper, replied your comments</p>
+                                <div class="row basic-info-body">
+                                    <div class="col-md-5">
+
+                                        <p class="info-title mt-5">Nama</p>
+                                        <p>Anna Minerva</p>
+
+                                        <p class="info-title mt-5">Gelar Depan</p>
+                                        <p>-</p>
+
+                                        <p class="info-title mt-5">Tempat, Tanggal Lahir</p>
+                                        <p>11-11-1995</p>                                    
+
+                                        <p class="info-title mt-5">Gender</p>
+                                        <p>Perempuan</p>
+
+                                        <p class="info-title mt-5">E-mail</p>
+                                        <p>annaminerva@gmail.com</p>
+                                        <!-- pake if udah verified atau belum kalau udh jadinya display none -->
+                                        <p class="mb-1"><img src="../assets/images/ant-design_info-circle-outlined-red.png" class="img-warning mr-1">Your email address is not yet verified.</p>
+                                    </div>    
+
+                                    <div class="col-md-6">
+
+                                        <p class="info-title mt-5">No KTP</p>
+                                        <p>3204232340423</p>
+
+                                        <p class="info-title mt-5">Gelar Belakang</p>
+                                        <p>S.Kom</p>
+
+                                        <p class="info-title mt-5">Usia</p>
+                                        <p>25</p>
+
+                                        <p class="info-title mt-5">Telepon</p>
+                                        <p>088822222222</p>                                
+
+                                        <p class="info-title mt-5">Alamat</p>
+                                        <p>Jalan Ibrahim adjie No.23, Kelurahan Cijawura, Kecamatan Buahbatu, Kota Bandung, Jawa Barat, Kode Pos 40124</p>
+                                    </div>
+                                </div>
+                            </div>                                                
                         </div>
 
-                        <hr>
+                        <!-- description -->
+                        <div class="row description box-shadow mt-5 p-4">
+                            <div class="description-content w-100">
+                                <div class="d-flex justify-content-between about-header">                                                                
+                                    <h3 class="header-title mr-1">DESKRIPSI</h3>
+                                    <button class="btn btn-show-modal"data-toggle="modal" data-target="#descriptionModal"><i class="fa fa-pencil mr-2"></i>EDIT DESCRIPTION</button>
+                                </div>
 
-                        <div class="d-flex">
-                            <img src="{{ asset('images/mentor-img.png') }}" alt="" class="notif-img">
+                                <hr>
 
-                            <p class="ml-4">Bessie Cooper, replied your comments</p>
+                                <p class="description mt-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae vitae pharetra pulvinar facilisis. Morbi pellentesque purus in amet sed cras et. Tellus molestie condimentum enim et cras vitae, dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae vitae pharetra pulvinar facilisis. Morbi pellentesque purus in amet sed cras et. Tellus molestie condimentum enim et cras vitae, dui. </p>
+                            </div>
                         </div>
 
-                        <hr>
+                        <!-- education -->
+                        <div class="row education box-shadow mt-5 p-4">
+                            <div class="education-content w-100">
+                                <div class="d-flex justify-content-between education-header">                                                                
+                                    <h3 class="header-title">PENDIDIKAN TERAKHIR</h3>
+                                    <button class="btn btn-show-modal" data-toggle="modal" data-target="#educationModal"><i class="fa fa-plus mr-2"></i>TAMBAH PENDIDIKAN</button>
+                                </div>
+
+                                <hr>
+
+                                <div class="education-body">                                    
+                                        
+                                    <div class="education-row mt-2">
+                                        <div class="d-flex">
+                                            <img src="../assets/images/la_user-graduate-solid.png" alt="" class="education-img">
+
+                                            <p class="education-level mt-4 ml-4">Pergurusan Tinggi</p>
+                                        </div>
+
+                                        <div class="education-detail pl-4 mt-3">
+                                            <h3 class="university-name mb-1">Institut teknologi bandung</h3>
+                                            <p class="major text-capitalize">Informatika</p>        
+                                            
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <div class="d-flex duration-of-education mt-2">
+                                                        <img src="../assets/images/ant-design_clock-circle-outlined.png" alt="">
+                                                        <p class="ml-1">Dari Dari Agustus 2018 - Mei 2022</p>
+                                                    </div>                                            
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <p class="final-score">Nilai Akhir : 3,75</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="d-flex btn-editdelete">
+                                                <button class="btn btn-edit btn-edit-pendidikan mr-3"  data-toggle="modal" data-target="#educationModal"><img src="../assets/images/mdi_pencil.png" 
+                                                alt=""></button>
+
+                                                <button class="btn btn-delete btn-delete-pendidikan" data-toggle="modal" data-target="#deletePendidikanModal"><img src="../assets/images/mdi_delete.png" alt=""></button>
+                                            </div>
+                                        </div>
+                                    </div>                                                                                                                                    
+
+                                    <div class="education-row mt-2">
+                                        <div class="d-flex">
+                                            <img src="../assets/images/la_user-graduate-solid.png" alt="" class="education-img">
+
+                                            <p class="education-level mt-4 ml-4">Pergurusan Tinggi</p>
+                                        </div>
+
+                                        <div class="education-detail pl-4 mt-3">
+                                            <h3 class="university-name mb-1">Institut teknologi bandung</h3>
+                                            <p class="major text-capitalize">Informatika</p>        
+                                            
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <div class="d-flex duration-of-education mt-2">
+                                                        <img src="../assets/images/ant-design_clock-circle-outlined.png" alt="">
+                                                        <p class="ml-1">Dari Dari Agustus 2018 - Mei 2022</p>
+                                                    </div>                                            
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <p class="final-score">Nilai Akhir : 3,75</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="d-flex btn-editdelete">
+                                                <button class="btn btn-edit btn-edit-pendidikan mr-3"  data-toggle="modal" data-target="#educationModal"><img src="../assets/images/mdi_pencil.png" 
+                                                alt=""></button>
+
+                                                <button class="btn btn-delete btn-delete-pendidikan" data-toggle="modal" data-target="#deletePendidikanModal"><img src="../assets/images/mdi_delete.png" alt=""></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- work experience -->
+                        <div class="row work-experience box-shadow mt-5 p-4">
+                            <div class="work-experience-content w-100">
+                                <div class="d-flex justify-content-between work-experience-header">                                                                
+                                    <h3 class="header-title">PEKERJAAAN TERAKHIR</h3>
+                                    <button class="btn btn-show-modal" data-toggle="modal" data-target="#workModal"><i class="fa fa-plus mr-2"></i>TAMBAH PEKERJAAN</button>
+                                </div>
+
+                                <hr>
+
+                                <div class="work-experience-body">
+                                    <div class="work-experience-row mt-2">                                                                            
+                                    
+                                        <img src="../assets/images/la_user-tie-solid-blue.png" alt="" class="work-experience-img">                                        
+                                        
+                                        <div class="work-experience-detail pl-4 mt-3">
+                                            <h3 class="company-name mb-1">Maven Studio</h3>
+                                            <p class="job-title text-capitalize">Sebagai Frontend Developer</p>        
+                                                                                    
+                                            <div class="d-flex duration-of-work mt-4">
+                                                <img src="../assets/images/ant-design_clock-circle-outlined.png" alt="">
+                                                <p class="ml-1">Dari Januari 2019 - Mei 2020</p>
+                                            </div>                                                                                                                                    
+                                            
+                                            <div class="d-flex btn-editdelete">
+                                            <button class="btn btn-edit btn-edit-pekerjaan mr-3"  data-toggle="modal" data-target="#workModal"><img src="../assets/images/mdi_pencil.png" alt=""></button>
+
+                                                <button class="btn btn-delete btn-delete-pekerjaan" data-toggle="modal" data-target="#deletePekerjaanModal"><img src="../assets/images/mdi_delete.png" alt=""></button>
+                                            </div>
+                                        </div>
+                                    </div>                                                                                                                                                                        
+
+                                    <div class="work-experience-row mt-2">                                                                            
+                                    
+                                        <img src="../assets/images/la_user-tie-solid-blue.png" alt="" class="work-experience-img">                                        
+                                        
+                                        <div class="work-experience-detail pl-4 mt-3">
+                                            <h3 class="company-name mb-1">Maven Studio</h3>
+                                            <p class="job-title text-capitalize">Sebagai Frontend Developer</p>        
+                                                                                    
+                                            <div class="d-flex duration-of-work mt-4">
+                                                <img src="../assets/images/ant-design_clock-circle-outlined.png" alt="">
+                                                <p class="ml-1">Dari Januari 2019 - Mei 2020</p>
+                                            </div>                                                                                                                                    
+                                            
+                                            <div class="d-flex btn-editdelete">
+                                            <button class="btn btn-edit btn-edit-pekerjaan mr-3"  data-toggle="modal" data-target="#workModal"><img src="../assets/images/mdi_pencil.png" alt=""></button>
+
+                                                <button class="btn btn-delete btn-delete-pekerjaan" data-toggle="modal" data-target="#deletePekerjaanModal"><img src="../assets/images/mdi_delete.png" alt=""></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                        
+                    
+                        <!-- Skills -->
+                        <div class="row skills box-shadow mt-5 p-4">
+                            <div class="skills-content w-100">
+                                <div class="d-flex justify-content-between skills-header">                                                                
+                                    <h3 class="header-title mr-1">TAMBAH SKILL</h3>
+                                    <button class="btn btn-show-modal" data-toggle="modal" data-target="#skillsModal"><i class="fa fa-plus mr-2"></i>ADD SKILL</button>
+                                </div>
+
+                                <hr>
+
+                                <div class="skills-body">
+                                    
+                                    <div class="container skill-content pr-5 pl-5 pt-3 pb-3 skill-edit" data-toggle="modal" data-target="#skillsModal" style="cursor: pointer">
+                                        <p class="skill-name font-weight-bold">Web Development</p>
+
+                                        <div class="progress-container d-flex">
+                                            <div class="progress flex-fill mt-1 mr-2">
+                                            <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <p class="flex-shrink percentage">80%</p>
+                                        </div> 
+                                    </div>                                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- kompetensi -->
+                        <div class="row competence box-shadow mt-5 p-4">
+                            <div class="competence-content w-100">
+                                <div class="d-flex justify-content-between competence-header">                                                                
+                                    <h3 class="header-title mr-1">KOMPETENSI ATAU SEMINAR</h3>
+                                    <button class="btn btn-show-modal" data-toggle="modal" data-target="#kompetensiModal"><i class="fa fa-plus mr-2"></i>TAMBAH KOMPETENSI</button>
+                                </div>
+
+                                <hr>
+                                
+                                <div class="competence-body">
+                                    <div class="competence-row mt-2">
+                                        <div class="d-flex">
+                                            <img src="../assets/images/carbon_certificate.png" alt="" class="competence-img">
+
+                                        <h3 class="competence-name mt-4 ml-4">MASTER UI/UX COURSE</h3>
+                                        </div>
+
+                                        <div class="education-detail pl-5 mt-3">                                        
+                                            <p class="seminar-place text-capitalize ml-3"><i class="fa fa-map-marker mr-2"></i>Bandung, Jawa Barat, Indonesia</p>
+
+                                            <p class="seminar-description ml-3">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</p>
+                                            
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <div class="d-flex duration-of-seminar mt-2 ml-3">
+                                                        <img src="../assets/images/ant-design_clock-circle-outlined.png" alt="">
+                                                        <p class="ml-1">Dari Mei 2019 - Juli 2019</p>
+                                                    </div>                                            
+                                                </div>                                            
+                                            </div>    
+                                            
+                                            <div class="d-flex btn-editdelete">
+                                                <button class="btn btn-edit btn-edit-kompetensi mr-3" data-toggle="modal" data-target="#kompetensiModal"><img src="../assets/images/mdi_pencil.png" alt=""></button>
+
+                                                <button class="btn btn-delete btn-delete-kompetensi" data-toggle="modal" data-target="#deletePelatihanModal"><img src="../assets/images/mdi_delete.png" alt=""></button>
+                                            </div>
+                                        </div>
+                                    </div>                           
+                                    
+                                    <div class="competence-row mt-2">
+                                        <div class="d-flex">
+                                            <img src="../assets/images/carbon_certificate.png" alt="" class="competence-img">
+
+                                        <h3 class="competence-name mt-4 ml-4">MASTER UI/UX COURSE</h3>
+                                        </div>
+
+                                        <div class="education-detail pl-5 mt-3">                                        
+                                            <p class="seminar-place text-capitalize ml-3"><i class="fa fa-map-marker mr-2"></i>Bandung, Jawa Barat, Indonesia</p>
+
+                                            <p class="seminar-description ml-3">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</p>
+                                            
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <div class="d-flex duration-of-seminar mt-2 ml-3">
+                                                        <img src="../assets/images/ant-design_clock-circle-outlined.png" alt="">
+                                                        <p class="ml-1">Dari Mei 2019 - Juli 2019</p>
+                                                    </div>                                            
+                                                </div>                                            
+                                            </div>    
+                                            
+                                            <div class="d-flex btn-editdelete">
+                                                <button class="btn btn-edit btn-edit-kompetensi mr-3" data-toggle="modal" data-target="#kompetensiModal"><img src="../assets/images/mdi_pencil.png" alt=""></button>
+
+                                                <button class="btn btn-delete btn-delete-kompetensi" data-toggle="modal" data-target="#deletePelatihanModal"><img src="../assets/images/mdi_delete.png" alt=""></button>
+                                            </div>
+                                        </div>
+                                    </div>   
+                                </div>                                
+                            </div>
+                        </div>
+
+                        <!-- cv dan file pendukung -->
+                        <div class="row support-file box-shadow mt-5 p-4">
+                            <div class="support-file-content w-100">
+                                <div class="d-flex justify-content-between support-file-header">                                                                
+                                    <h3 class="header-title mr-1">CV DAN FILE PENDUKUNG LAINNYA</h3>
+                                    <button class="btn btn-show-modal"
+                                    data-toggle="modal" 
+                                    data-target="#cvModal"> <i class="fa fa-file mr-2"></i>UPDLOAD FILE </button>
+                                </div>
+
+                                <hr>
+
+                                <div class="file-body">
+                                    <div class="file-row col-md-12">
+                                        <p class="file-name mt-5 font-weight-bold mb-1 ml-1">FILE CV</p>
+                                        <!-- link mengarah ke file pdfnya -->
+                                        <a href="#" class="cv-link row ml-1 p-2"><i class="fa fa-file mt-1 mr-2"></i>CV Anna Minerva.pdf</a>
+                                    </div> 
+                                    
+                                    <div class="file-row col-md-12">
+                                        <p class="file-name mt-5 font-weight-bold mb-1 ml-1">FILE PENDUKUNG</p>
+                                        <!-- link mengarah ke file pdfnya -->
+                                        <a href="#" class="cv-link row ml-1 p-2"><i class="fa fa-file mt-1 mr-2"></i>File pendukung satu.pdf</a>
+                                    </div>
+
+                                    <div class="file-row col-md-12">
+                                        <p class="file-name mt-5 font-weight-bold mb-1 ml-1">FILE PENDUKUNG</p>
+                                        <!-- link mengarah ke file pdfnya -->
+                                        <a href="#" class="cv-link row ml-1 p-2"><i class="fa fa-file mt-1 mr-2"></i>File pendukung dua.pdf</a>
+                                    </div>
+                                </div>
+                                
+
+                            </div>
+                        </div>
+
+                        <!-- portfolio dan sosial media -->
+                        <div class="row portfolio box-shadow mt-5 p-4">
+                            <div class="portfolio-content w-100">
+                                <div class="d-flex justify-content-between portfolio-header">                                                                
+                                    <h3 class="header-title mr-1">PORTFOLIO AND SOCIAL MEDIA</h3>
+                                    <button class="btn btn-show-modal"data-toggle="modal" data-target="#portofolioModal"><i class="fa fa-plus mr-2"></i>TAMBAH SOCIAL MEDIA</button>
+                                </div>
+
+                                <hr>
+
+                                <div class="portofolio-body">
+                                    <div class="portofolio-row mt-2">
+                                        <div class="d-flex">
+                                            <img src="../assets/images/bx_bxl-facebook.png" alt="" class="portofolio-img">
+
+                                            <div class="portofolio-link">
+                                                <p class="social-media-title ml-3 mb-0 font-weight-bold">FACEBOOK</p>
+                                                <a href="#" class="social-media-link ml-3">www.facebook.com/AnnaMinerva</a>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="portofolio-row mt-2">
+                                        <div class="d-flex">
+                                            <img src="../assets/images/ant-design_instagram-outlined.png" alt="" class="portofolio-img">
+
+                                            <div class="portofolio-link">
+                                                <p class="social-media-title ml-3 mb-0 font-weight-bold">Instagram</p>
+                                                <a href="#" class="social-media-link ml-3">www.instagram.com/AnnaMinerva</a>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="portofolio-row mt-2">
+                                        <div class="d-flex">
+                                            <img src="../assets/images/ant-design_twitter-outlined.png" alt="" class="portofolio-img">
+
+                                            <div class="portofolio-link">
+                                                <p class="social-media-title ml-3 mb-0 font-weight-bold">Twitter</p>
+                                                <a href="#" class="social-media-link ml-3">www.twitter.com/AnnaMinerva</a>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>                        
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- temukan karir impian -->
-                <div class="dream-career p-3 box-shadow mt-5">
-                    <p class="dream-career-title font-weight-bold">Temukan Karir Impianmu</p>
+                <div class="col-md-3 col-sm-4 wrap-overflow py-2">
+                    
+                    <!-- info lengkapi profile -->
+                    <div class="info-lengkapi-profile box-shadow p-3">
+                        <p class="info-lengkapi-title font-weight-bold">Ayo Lengkapi Profilmu</p>
 
-                    <div class="dream-career-content">
-                        <p class="explain-text">ini beberapa karir pilihan kami yang mungkin cocok untuk anda</p>
+                        <div class="progress-container d-flex">
+                            <div class="progress flex-fill mt-1 mr-2">
+                                <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <p class="flex-shrink percentage">50%</p>
+                        </div>                                    
+                    </div>
 
-                        <div class="job-list mt-5">
-                            <table class="border-0">
-                                <tr>
-                                    <td class="number-list pr-3">1. </td>
-                                    <td class="job-name text-capitalize">UI Designer</td>
-                                </tr>
+                    <!-- notification -->
+                    <div class="notification p-3 box-shadow mt-5">
+                        <p class="notification-title font-weight-bold">Cek Notifikasimu</p>
 
-                                <tr>
-                                    <td class="number-list pr-3">2. </td>
-                                    <td class="job-name text-capitalize">Illustrator</td>
-                                </tr>
+                        <div class="notif-content">
+                            <div class="d-flex">
+                                <img src="{{ asset('images/mentor-img.png') }}" alt="" class="notif-img">
 
-                                <tr>
-                                    <td class="number-list pr-3">3. </td>
-                                    <td class="job-name text-capitalize">Front End developer</td>
-                                </tr>
+                                <p class="ml-4">Bessie Cooper, replied your comments</p>
+                            </div>
 
-                                <tr>
-                                    <td class="number-list pr-3">4. </td>
-                                    <td class="job-name text-capitalize">Back End Developer</td>
-                                </tr>
+                            <hr>
 
-                                <tr>
-                                    <td class="number-list pr-3">5.</td>
-                                    <td class="job-name text-capitalize">Graphic Designer</td>
-                                </tr>
+                            <div class="d-flex">
+                                <img src="{{ asset('images/mentor-img.png') }}" alt="" class="notif-img">
 
-                                <tr>
-                                    <td class="number-list pr-3">6.</td>
-                                    <td class="job-name text-capitalize">Copywritter</td>
-                                </tr>
+                                <p class="ml-4">Bessie Cooper, replied your comments</p>
+                            </div>
 
-                                <tr>
-                                    <td class="number-list pr-3">7.</td>
-                                    <td class="job-name text-capitalize">Concept Artist</td>
-                                </tr>
+                            <hr>
+                        </div>
+                    </div>
 
-                                <tr>
-                                    <td class="number-list pr-3">8.</td>
-                                    <td class="job-name text-capitalize">Android Developer</td>
-                                </tr>
-                            </table>
+                    <!-- temukan karir impian -->
+                    <div class="dream-career p-3 box-shadow mt-5">
+                        <p class="dream-career-title font-weight-bold">Temukan Karir Impianmu</p>
+
+                        <div class="dream-career-content">
+                            <p class="explain-text">ini beberapa karir pilihan kami yang mungkin cocok untuk anda</p>
+
+                            <div class="job-list mt-5">
+                                <table class="border-0">
+                                    <tr>
+                                        <td class="number-list pr-3">1. </td>
+                                        <td class="job-name text-capitalize">UI Designer</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="number-list pr-3">2. </td>
+                                        <td class="job-name text-capitalize">Illustrator</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="number-list pr-3">3. </td>
+                                        <td class="job-name text-capitalize">Front End developer</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="number-list pr-3">4. </td>
+                                        <td class="job-name text-capitalize">Back End Developer</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="number-list pr-3">5.</td>
+                                        <td class="job-name text-capitalize">Graphic Designer</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="number-list pr-3">6.</td>
+                                        <td class="job-name text-capitalize">Copywritter</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="number-list pr-3">7.</td>
+                                        <td class="job-name text-capitalize">Concept Artist</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="number-list pr-3">8.</td>
+                                        <td class="job-name text-capitalize">Android Developer</td>
+                                    </tr>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 
+<footer id=" dk-footer" class="dk-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-4">
+                <div class="dk-footer-box-info">
+                    <a href="../welcome.html" class="footer-logo">
+                        <img src="../assets/images/LogoGenyWhite.png" class="img-fluid">
+                    </a>
+                    <p class="footer-info-text">
+                        Geny Dream adalah Aplikasi untuk menyiapkan para pengguna masuk ke dalam dunia pekerjaan dan mendapatkan pekerjaan yang diinginkan.
+                    </p>
+                    <div class="footer-social-link">
+                        <h3>Follow us</h3>
+                        <ul style="margin-bottom: 30px;">
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-google-plus"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- End Social link -->
+                </div>
 
+            </div>
+            <!-- End Col -->
+            <div class="col-md-12 col-lg-8">
+
+                <!-- End Contact Row -->
+                <div class="row">
+                    <div class="col-md-12 col-lg-6">
+                        <div class="footer-widget footer-left-widget">
+                            <div class="section-heading">
+                                <h3>Useful Links</h3>
+                                <span class="animate-border border-black"></span>
+                            </div>
+                            <ul>
+                                <li>
+                                    <a href="#">About us</a>
+                                </li>
+                                <li>
+                                    <a href="#">Services</a>
+                                </li>
+                                <li>
+                                    <a href="#">Projects</a>
+                                </li>
+                                <li>
+                                    <a href="#">Our Team</a>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <a href="#">Contact us</a>
+                                </li>
+                                <li>
+                                    <a href="#">Blog</a>
+                                </li>
+                                <li>
+                                    <a href="#">Testimonials</a>
+                                </li>
+                                <li>
+                                    <a href="#">Faq</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- End Footer Widget -->
+                    </div>
+                    <!-- End col -->
+                    <div class="col-md-12 col-lg-6">
+                        <div class="footer-widget">
+                            <div class="section-heading">
+                                <h3>Lainnya</h3>
+                                <span class="animate-border border-black"></span>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="contact-us">
+                                        <div class="contact-icon">
+                                            <i class="fa fa-map-o" aria-hidden="true"></i>
+                                        </div>
+                                        <!-- End contact Icon -->
+                                        <div class="contact-info">
+                                            <h3>Indonesia</h3>
+                                            <p>Jalan Jendral Sudirman</p>
+                                        </div>
+                                        <!-- End Contact Info -->
+                                    </div>
+                                    <!-- End Contact Us -->
+                                </div>
+                                <!-- End Col -->
+                                <div class="col-md-12">
+                                    <div class="contact-us">
+
+                                        <div class="contact-icon">
+                                            <i class="fa fa-volume-control-phone" aria-hidden="true"></i>
+                                        </div>
+                                        <!-- End contact Icon -->
+                                        <div class="contact-info">
+                                            <h3>+628 2222 </h3>
+                                            <p>Hubungi Kami</p>
+                                        </div>
+                                        <!-- End Contact Info -->
+                                    </div>
+                                </div>
+                                <!-- End Col -->
+                            </div>
+                        </div>
+                        <!-- End footer widget -->
+                    </div>
+                    <!-- End Col -->
+                </div>
+                <!-- End Row -->
+            </div>
+            <!-- End Col -->
+        </div>
+        <!-- End Widget Row -->
+    </div>
+    <!-- End Contact Container -->
+
+
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <span>Copyright © 2020, All Right Reserved GenyDream</span>
+                </div>
+
+            </div>
+            <!-- End Row -->
+        </div>
+        <!-- End Copyright Container -->
+    </div>
+    <!-- End Copyright -->
+
+</footer>
 
 
 <!-- modal update basic info -->
@@ -501,9 +814,7 @@
             </div>            
             
             <!-- form -->
-            <form action="{{ route('pelamar.profile.basic.update',$profile->id) }}" method="POST">'
-                @csrf
-                @method("PATCH")
+            <form action="" method="">'                
                 <div class="modal-body modal-basic-info">
                     <!-- input image -->
                     <div class="image-default">
@@ -515,7 +826,7 @@
 
                     <div class="form-group">
                         <span class="has-float-label">
-                        <input type="text" name="nama_lengkap" value="{{ old('nama_lengkap',@$profile->nama_lengkap) }}" class="form-control" id="nama_lengkap" placeholder="NAMA LENGKAP" required="required">
+                        <input type="text" name="nama_lengkap" value="" class="form-control" id="nama_lengkap" placeholder="NAMA LENGKAP" required="required">
                             <label for="nama_lengkap">NAMA</label>
                         </span>
                     </div>
@@ -523,14 +834,14 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <span class="has-float-label">
-                                <input type="text" name="gelar_depan" value="{{ old('gelar_depan',@$profile->gelar_depan) }}" class="form-control" id="gelar_depan" placeholder="GELAR DEPAN">
+                                <input type="text" name="gelar_depan" value="" class="form-control" id="gelar_depan" placeholder="GELAR DEPAN">
                                 <label for="gelar_depan">GELAR DEPAN</label>
                             </span>
                         </div>
 
                         <div class="form-group col-md-6">
                             <span class="has-float-label">
-                                <input type="text" name="gelar_belakang" value="{{ old('gelar_belakang',@$profile->gelar_belakang) }}" class="form-control" id="gelar_belakang" placeholder="GELAR BELAKANG">
+                                <input type="text" name="gelar_belakang" value="" class="form-control" id="gelar_belakang" placeholder="GELAR BELAKANG">
                                 <label for="gelar_belakang">GELAR BELAKANG</label>
                             </span>
                         </div>
@@ -538,31 +849,31 @@
 
                     <div class="form-group">
                         <span class="has-float-label">
-                            <input type="text" name="no_ktp" value="{{ old('no_ktp',@$profile->no_ktp) }}" class="form-control" id="no_ktp" placeholder="NO KTP" required="required">
+                            <input type="text" name="no_ktp" value="" class="form-control" id="no_ktp" placeholder="NO KTP" required="required">
                             <label for="no_ktp">NO KTP</label>
                         </span>
                     </div>
 
-                    {{-- <!-- pake if email nya sudah verified atau belum -->
+                    <!-- pake if email nya sudah verified atau belum -->
                     <div class="email mb-4">
                         <p class="email-title mb-0">EMAIL</p>
                         <p class="email-user font-weight-bold">annaminerva@gmail.com</p>
                         <!-- pake if udah verified atau belum kalau udh jadinya display none -->
-                        <p class="mb-1"><img src="{{ asset('images/ant-design_info-circle-outlined-red.png') }}" class="img-warning mr-1">Your email address is not yet verified.</p>
+                        <p class="mb-1"><img src="../assets/images/ant-design_info-circle-outlined-red.png" class="img-warning mr-1">Your email address is not yet verified.</p>
                         <a href="#" class="verify-email ml-3">VERIFY NOW</a>                        
                     </div>
 
                     <div class="form-group">
                         <span class="has-float-label">
-                            <input type="text" name="email" value="{{ old('email',@$profile->email) }}" class="form-control" id="email" placeholder="UPDATE NEW EMAIL">
+                            <input type="text" name="email" value="" class="form-control" id="email" placeholder="UPDATE NEW EMAIL">
                             <label for="email">UPDATE NEW EMAIL</label>
                         </span>
-                    </div> --}}
+                    </div>
 
                     <div class="row">
                         <div class="form-group col-md-6">
                             <span class="has-float-label">
-                                <input type="text" name="no_telp" value="{{ old('no_telp',@$profile->no_telp) }}" class="form-control" id="no_telp" placeholder="NO TELEPON">
+                                <input type="text" name="no_telp" value="" class="form-control" id="no_telp" placeholder="NO TELEPON">
                                 <label for="no_telp">NO TELEPON</label>
                             </span>
                         </div>
@@ -571,8 +882,8 @@
                             <label class="form-group has-float-label">
                                 <select class="form-control custom-select" name="jen_kel">
                                     <option value="0" selected>-- Pilih Gender --</option>
-                                    <option value="p" {{ old('p',@$profile->jen_kel) == "p" ? 'selected' : '' }}>Perempuan</option>
-                                    <option value="l" {{ old('p',@$profile->jen_kel) == "l" ? 'selected' : '' }}>Laki-laki</option>                                
+                                    <option value="p">Perempuan</option>
+                                    <option value="l">Laki-laki</option>                                
                                 </select>
                                 <span>GENDER</span>
                             </label>
@@ -582,14 +893,14 @@
                     <div class="row">                        
                         <div class="form-group col-md-6">
                             <span class="has-float-label">
-                                <input type="text" name="tempat_lahir" value="{{ old('tempat_lahir',@$profile->tempat_lahir) }}" class="form-control" id="tempat_tinggal" placeholder="TEMPAT TINGGAL">
+                                <input type="text" name="tempat_lahir" value="" class="form-control" id="tempat_tinggal" placeholder="TEMPAT TINGGAL">
                                 <label for="tempat_lahir">TEMPAT LAHIR</label>
                             </span>
                         </div>
 
                         <div class="form-group col-md-6">
                             <span class="has-float-label">
-                                <input type="date" name="tgl_lahir" value="{{ old('tgl_lahir',@$profile->tgl_lahir) }}" class="form-control" id="tgl_lahir" placeholder="TANGGAL LAHIR">
+                                <input type="date" name="tgl_lahir" value="" class="form-control" id="tgl_lahir" placeholder="TANGGAL LAHIR">
                                 <label for="tgl_lahir">TANGGAL LAHIR</label>
                             </span>
                         </div>                        
@@ -597,7 +908,7 @@
 
                     <div class="form-group">
                         <span class="has-float-label">
-                            <textarea type="text" name="alamat" class="form-control" id="alamat" placeholder="ALAMAT" rows="4">{{ old('alamat',@$profile->alamat) }}</textarea>
+                            <textarea type="text" name="alamat" class="form-control" id="alamat" placeholder="ALAMAT" rows="4"></textarea>
                             <label for="alamat">ALAMAT</label>
                         </span>
                     </div>
@@ -629,16 +940,14 @@
             </div>            
             
             <!-- form -->
-            <form action="{{ route('pelamar.profile.deskripsi.update',$profile->id) }}" method="POST"> 
-                @csrf
-                @method("PATCH")
+            <form action="" method="">                 
                 <div class="modal-body modal-desctiption">                    
 
                     <p class="mt-4">Masukan deskripsi singkat tentang dirimu mulai dari keahlianmu hingga motto hidupmu!</p>
 
                     <div class="form-group">
                         <span class="has-float-label">
-                            <textarea type="text" name="deskripsi_diri"  class="form-control" id="deskripsi_diri" placeholder="DESKRIPSI" rows="10" required>{{ $profile->deskripsi_diri }}</textarea>
+                            <textarea type="text" name="deskripsi_diri"  class="form-control" id="deskripsi_diri" placeholder="DESKRIPSI" rows="10" required></textarea>
                             <label for="deskripsi_diri">DESKRIPSI</label>
                         </span>
                     </div>
@@ -670,21 +979,21 @@
             </div>            
             
             <!-- form -->
-            <form action="{{ route('pelamar.profile.create.rpendidikan') }}" method="POST"> 
-                @csrf
-                @method("post")
+            <form action="" method="">                 
+
                 <div class="modal-body modal-education mt-4">      
-                <input type="text" value="{{$profile->id}}" style="display: none" name="id_pelamar" id="id_pelamar">     
-                {{-- wrapper to remove input value when the modal is closed --}}
+                <input type="text" value="" style="display: none" name="id_pelamar" id="id_pelamar">     
+                <!-- {{-- wrapper to remove input value when the modal is closed --}} -->
                 <div id="educationModalWrapper">
                     <input type="hidden" name="id_pendidikan" id="id_pendidikan">
                 
                     <label class="form-group has-float-label">
                         <select class="form-control custom-select" name="id_jenjang" id="id_jenjang">
-                            <option selected disabled>-- Pilih Jenjang Pendidikan --</option>
-                            @foreach ($jenjang as $pendidikan)
-                            <option value="{{ $pendidikan->id }}">{{ $pendidikan->nama_jenjang }}</option>
-                            @endforeach             
+                            <option selected disabled>-- Pilih Jenjang Pendidikan --</option>                            
+                            <option value="perguruan tinggi">Perguruan Tinggi</option>                                   
+                            <option value="sekolah menengah atas">Sekolah Menengah Atas</option>                                   
+                            <option value="sekolah menengah kejuruan">Sekolah Menengah Kejuruan</option>                                   
+                            <option value="sekolah menengah pertaman">Sekolah sekolah menengah</option>
                         </select>
                         <span>PENDIDIKAN</span>
                     </label>
@@ -782,12 +1091,11 @@
             </div>            
             
             <!-- form -->
-            <form action="{{ route('pelamar.profile.create.rpekerjaan') }}" method="POST"> 
-                @csrf
-                @method("post")
+            <form action="" method=""> 
+
                 <div class="modal-body modal-work-experience mt-4">       
-                <input type="text" value="{{$profile->id}}" name="id_pelamar" id="id_pelamar" style="display: none">                             
-                {{-- wrapper to remove input value when the modal is closed --}}
+                <input type="text" value="" name="id_pelamar" id="id_pelamar" style="display: none">                             
+                <!-- {{-- wrapper to remove input value when the modal is closed --}} -->
                     <div id="workModalWrapper">
                         <input type="hidden" id="id_pekerjaan" name="id_pekerjaan">
                         <div class="form-group">
@@ -871,14 +1179,13 @@
             </div>            
             
             <!-- form -->
-            <form action="{{ route('pelamar.profile.create.rkeahlian') }}" method="POST"> 
-                @csrf
-                @method("post")
+            <form action="" method=""> 
+
                 <div class="modal-body modal-skill">                            
 
                     <div class="skill-content-modal">
-                        <input type="text" id="id_pelamar" name="id_pelamar" value="{{ $profile->id }}" style="display: none">
-                        {{-- wrapper for removing value from its input field after the modal is closed --}}
+                        <input type="text" id="id_pelamar" name="id_pelamar" value="" style="display: none">
+                        <!-- {{-- wrapper for removing value from its input field after the modal is closed --}} -->
                         <div id="skillModalWrapper">
                             <input type="hidden" name="id_skill" id="id_skill">    
                             <div class="form-group mt-4">
@@ -893,7 +1200,7 @@
                             </div>          
                             
                             <div class="form-group">                        
-                                <input type="text" class="form-control-range range-skill" id="skill_range" value="50%" style="text-align: center; border:none; text-size:2vw; background-color:#fff" disabled>                                                        
+                                <input type="text" class="form-control-range range-skill" id="skill_range" value="50%" style="text-align: center; border:none; font-size:2vw; background-color:#fff" disabled>                                                        
                             </div>
                         </div>
                     
@@ -928,12 +1235,11 @@
             </div>            
             
             <!-- form -->
-            <form action="{{ route('pelamar.profile.create.rkompetensi') }}" method="POST"> 
-                @csrf
-                @method("post")
+            <form action="" method=""> 
+                
                 <div class="modal-body modal-competence mt-4">   
-                    <input type="text" id="id_pelamar" name="id_pelamar" value="{{ $profile->id }}" style="display: none">                                 
-                    {{-- wrapper for removing the input value after the modal is closed --}}
+                    <input type="text" id="id_pelamar" name="id_pelamar" value="" style="display: none">                                 
+                    <!-- {{-- wrapper for removing the input value after the modal is closed --}} -->
                     <div id="kompetensiModalWrapper">
                         <input type="hidden" id="id_kompetensi" name="id_kompetensi">
                         <div class="form-group">
@@ -1052,7 +1358,7 @@
                             <!-- link mengarah ke file pdfnya -->
                             <div class="cv-link-modal file-container">
                                 <a href="#" class="ml-1 p-2 d-block"><i class="fa fa-file mt-1 mr-2"></i> CV Anna Minerva.pdf</a>                            
-                                <button class="btn btn-link btn-delete-file mt-3 p-2" type="button"><img src="{{ asset('images/mdi_delete.png') }}" alt="">Hapus</button>
+                                <button class="btn btn-link btn-delete-file mt-3 p-2" type="button"><img src="../assets/images/mdi_delete.png" alt="">Hapus</button>
                             </div>                            
                         </div> 
                     </div>
@@ -1155,9 +1461,7 @@
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{ route('pelamar.profile.delete.pendidikan') }}" method="POST">
-                @method('DELETE')
-                @csrf
+            <form action="" method="">                
                 <div class="modal-body">                            
                     <p class="mt-3 text-dark">Apa Anda Yakin Akan Menghapus Riwayat Pendidikan ini?</p>                
                     <input type="hidden" name="id_pendidikan" id="pendidikan_id">
@@ -1180,9 +1484,8 @@
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{ route('pelamar.profile.delete.pekerjaan') }}" method="POST">
-                @method('DELETE')
-                @csrf
+            <form action="" method="">
+                
                 <div class="modal-body">                            
                     <p class="mt-3 text-dark">Apa Anda Yakin Akan Menghapus Riwayat Pekerjaan ini?</p>                
                     <input type="hidden" name="pekerjaanID" id="pekerjaanID">
@@ -1205,9 +1508,8 @@
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{ route('pelamar.profile.delete.kompetensi') }}" method="POST">
-                @method('DELETE')
-                @csrf
+            <form action="" method="">
+                
                 <div class="modal-body">                            
                     <p class="mt-3 text-dark">Apa Anda Yakin Akan Menghapus Data Kompetensi ini?</p>                
                     <input type="hidden" name="kompetensiID" id="kompetensiID">
@@ -1230,9 +1532,8 @@
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{ route('pelamar.profile.delete.keahlian') }}" method="POST">
-                @method('DELETE')
-                @csrf
+            <form action="" method="">
+                
                 <div class="modal-body">                            
                     <p class="mt-3 text-dark">Apa Anda Yakin Akan Menghapus Data Keahlian ini?</p>                
                     <input type="hidden" name="keahlianID" id="keahlianID">
@@ -1244,9 +1545,7 @@
         </div>
     </div>
 </div>
-@endsection
 
-@section('js')
 
 <script>
 
@@ -1419,201 +1718,201 @@
 
     // pendidikan
 
-        $(document).ready(function(){
-            $(document).on('click', '.btn-edit-pendidikan', function(){
-                var pendidikanId    = $(this).attr('data-pendidikanId'),
-                    jenjang         = $(this).attr('data-jenjang'),                
-                    namaSekolah     = $(this).attr('data-sekolah'),
-                    jurusan         = $(this).attr('data-jurusan'),
-                    bulanMulai      = $(this).attr('data-bulan-mulai'),
-                    tahunMulai      = $(this).attr('data-tahun-mulai'),
-                    bulanAkhir      = $(this).attr('data-bulan-akhir'),
-                    tahunAkhir      = $(this).attr('data-tahun-akhir'),
-                    nilaiAkhir      = $(this).attr('data-nilai-akhir');
-                    bulanMulai = bulanMulai.replace(/^0+/, '');
-                    bulanAkhir = bulanAkhir.replace(/^0+/, '');
+        // $(document).ready(function(){
+        //     $(document).on('click', '.btn-edit-pendidikan', function(){
+        //         var pendidikanId    = $(this).attr('data-pendidikanId'),
+        //             jenjang         = $(this).attr('data-jenjang'),                
+        //             namaSekolah     = $(this).attr('data-sekolah'),
+        //             jurusan         = $(this).attr('data-jurusan'),
+        //             bulanMulai      = $(this).attr('data-bulan-mulai'),
+        //             tahunMulai      = $(this).attr('data-tahun-mulai'),
+        //             bulanAkhir      = $(this).attr('data-bulan-akhir'),
+        //             tahunAkhir      = $(this).attr('data-tahun-akhir'),
+        //             nilaiAkhir      = $(this).attr('data-nilai-akhir');
+        //             bulanMulai = bulanMulai.replace(/^0+/, '');
+        //             bulanAkhir = bulanAkhir.replace(/^0+/, '');
 
-                $('#id_pendidikan').val(pendidikanId);
-                $('#id_jenjang').val(jenjang);            
-                $('#nama_sekolah').val(namaSekolah);
-                $('#jurusan').val(jurusan);
-                $('#nilai_akhir').val(nilaiAkhir);
-                $('#months-start').val(bulanMulai);
-                $('#years-start').val(tahunMulai);
-                $('#months-end').val(bulanAkhir);
-                $('#years-end').val(tahunAkhir);
-                $('#educationModal').modal('show');
-            });
+        //         $('#id_pendidikan').val(pendidikanId);
+        //         $('#id_jenjang').val(jenjang);            
+        //         $('#nama_sekolah').val(namaSekolah);
+        //         $('#jurusan').val(jurusan);
+        //         $('#nilai_akhir').val(nilaiAkhir);
+        //         $('#months-start').val(bulanMulai);
+        //         $('#years-start').val(tahunMulai);
+        //         $('#months-end').val(bulanAkhir);
+        //         $('#years-end').val(tahunAkhir);
+        //         $('#educationModal').modal('show');
+        //     });
         
             // fungsi delete pendidikan
-            $(document).on('click','.btn-delete-pendidikan',function(){
-                var pendidikanID = $(this).attr('data-idPendidikan');    
-                $('#pendidikan_id').val(pendidikanID); 
-                $('#deletePendidikanModal').modal('show'); 
-            });
-        })
+        //     $(document).on('click','.btn-delete-pendidikan',function(){
+        //         var pendidikanID = $(this).attr('data-idPendidikan');    
+        //         $('#pendidikan_id').val(pendidikanID); 
+        //         $('#deletePendidikanModal').modal('show'); 
+        //     });
+        // })
     
 
     // pekerjaan
 
-        $(document).ready(function(){
-            $(document).on('click', '.btn-edit-pekerjaan', function(){
-                var pekerjaanId     = $(this).attr('data-id-pekerjaan'),
-                    namaPerusahaan  = $(this).attr('data-nama-perusahaan'),                
-                    jabatan         = $(this).attr('data-jabatan'),
-                    bulanMulai      = $(this).attr('data-bulan-mulai'),
-                    tahunMulai      = $(this).attr('data-tahun-mulai'),
-                    bulanAkhir      = $(this).attr('data-bulan-akhir'),
-                    tahunAkhir      = $(this).attr('data-tahun-akhir'),
-                    bulanMulai      = bulanMulai.replace(/^0+/, '');
-                    bulanAkhir      = bulanAkhir.replace(/^0+/, '');
+        // $(document).ready(function(){
+        //     $(document).on('click', '.btn-edit-pekerjaan', function(){
+        //         var pekerjaanId     = $(this).attr('data-id-pekerjaan'),
+        //             namaPerusahaan  = $(this).attr('data-nama-perusahaan'),                
+        //             jabatan         = $(this).attr('data-jabatan'),
+        //             bulanMulai      = $(this).attr('data-bulan-mulai'),
+        //             tahunMulai      = $(this).attr('data-tahun-mulai'),
+        //             bulanAkhir      = $(this).attr('data-bulan-akhir'),
+        //             tahunAkhir      = $(this).attr('data-tahun-akhir'),
+        //             bulanMulai      = bulanMulai.replace(/^0+/, '');
+        //             bulanAkhir      = bulanAkhir.replace(/^0+/, '');
 
-                $('#id_pekerjaan').val(pekerjaanId);         
-                $('#nama_perusahaan').val(namaPerusahaan);
-                $('#jabatan_terakhir').val(jabatan);
-                $('#months_start_work').val(bulanMulai);
-                $('#years_start_work').val(tahunMulai);
-                $('#months_end_work').val(bulanAkhir);
-                $('#years_end_work').val(tahunAkhir);
-                $('#workModal').modal('show');
+        //         $('#id_pekerjaan').val(pekerjaanId);         
+        //         $('#nama_perusahaan').val(namaPerusahaan);
+        //         $('#jabatan_terakhir').val(jabatan);
+        //         $('#months_start_work').val(bulanMulai);
+        //         $('#years_start_work').val(tahunMulai);
+        //         $('#months_end_work').val(bulanAkhir);
+        //         $('#years_end_work').val(tahunAkhir);
+        //         $('#workModal').modal('show');
                 
-            });
+        //     });
 
-            // fungsi delete pekerjaan
-            $(document).on('click','.btn-delete-pekerjaan',function(){
-                var pekerjaanId = $(this).attr('data-id-pekerjaan');    
-                $('#pekerjaanID').val(pekerjaanId); 
-                $('#deletePekerjaanModal').modal('show'); 
-            });
-        });
+        //     // fungsi delete pekerjaan
+        //     $(document).on('click','.btn-delete-pekerjaan',function(){
+        //         var pekerjaanId = $(this).attr('data-id-pekerjaan');    
+        //         $('#pekerjaanID').val(pekerjaanId); 
+        //         $('#deletePekerjaanModal').modal('show'); 
+        //     });
+        // });
 
     // kompetensi
 
-    $(document).ready(function(){
-            $(document).on('click', '.btn-edit-kompetensi', function(){
-                var kompetensiId        = $(this).attr('data-id-kompetensi'),
-                    namaKomepetensi     = $(this).attr('data-nama-kompetensi'),                
-                    lokasi              = $(this).attr('data-lokasi'),
-                    keterangan          = $(this).attr('data-keterangan'),
-                    bulanMulai          = $(this).attr('data-bulan-mulai'),
-                    tahunMulai          = $(this).attr('data-tahun-mulai'),
-                    bulanAkhir          = $(this).attr('data-bulan-akhir'),
-                    tahunAkhir          = $(this).attr('data-tahun-akhir'),
-                    bulanMulai          = bulanMulai.replace(/^0+/, '');
-                    bulanAkhir          = bulanAkhir.replace(/^0+/, '');
+    // $(document).ready(function(){
+    //         $(document).on('click', '.btn-edit-kompetensi', function(){
+    //             var kompetensiId        = $(this).attr('data-id-kompetensi'),
+    //                 namaKomepetensi     = $(this).attr('data-nama-kompetensi'),                
+    //                 lokasi              = $(this).attr('data-lokasi'),
+    //                 keterangan          = $(this).attr('data-keterangan'),
+    //                 bulanMulai          = $(this).attr('data-bulan-mulai'),
+    //                 tahunMulai          = $(this).attr('data-tahun-mulai'),
+    //                 bulanAkhir          = $(this).attr('data-bulan-akhir'),
+    //                 tahunAkhir          = $(this).attr('data-tahun-akhir'),
+    //                 bulanMulai          = bulanMulai.replace(/^0+/, '');
+    //                 bulanAkhir          = bulanAkhir.replace(/^0+/, '');
 
-                $('#id_kompetensi').val(kompetensiId);         
-                $('#nama_kompetensi').val(namaKomepetensi);
-                $('#lokasi').val(lokasi);
-                $('#keterangan').val(keterangan);
-                $('#months_start_seminar').val(bulanMulai);
-                $('#years_start_seminar').val(tahunMulai);
-                $('#months_end_seminar').val(bulanAkhir);
-                $('#years_end_seminar').val(tahunAkhir);
-                $('#kompetensiModal').modal('show');
+    //             $('#id_kompetensi').val(kompetensiId);         
+    //             $('#nama_kompetensi').val(namaKomepetensi);
+    //             $('#lokasi').val(lokasi);
+    //             $('#keterangan').val(keterangan);
+    //             $('#months_start_seminar').val(bulanMulai);
+    //             $('#years_start_seminar').val(tahunMulai);
+    //             $('#months_end_seminar').val(bulanAkhir);
+    //             $('#years_end_seminar').val(tahunAkhir);
+    //             $('#kompetensiModal').modal('show');
                 
-            });
+    //         });
 
             // fungsi delete pelatihan
-            $(document).on('click','.btn-delete-kompetensi',function(){
-                var idKompetensi = $(this).attr('data-idKompetensi');   
+        //     $(document).on('click','.btn-delete-kompetensi',function(){
+        //         var idKompetensi = $(this).attr('data-idKompetensi');   
 
-                $('#kompetensiID').val(idKompetensi); 
-                $('#deletePelatihanModal').modal('show'); 
-            });
-        });
+        //         $('#kompetensiID').val(idKompetensi); 
+        //         $('#deletePelatihanModal').modal('show'); 
+        //     });
+        // });
 
 
         // skill
 
-    $(document).ready(function(){
-            $(document).on('click', '.skill-edit', function(){
-                var skillID             = $(this).attr('data-skillID'),
-                    namaSkill           = $(this).attr('data-nama-skill'),                
-                    persentase          = $(this).attr('data-persentase'),
-                    persentaseText      = persentase+"%";                    
+    // $(document).ready(function(){
+    //         $(document).on('click', '.skill-edit', function(){
+    //             var skillID             = $(this).attr('data-skillID'),
+    //                 namaSkill           = $(this).attr('data-nama-skill'),                
+    //                 persentase          = $(this).attr('data-persentase'),
+    //                 persentaseText      = persentase+"%";                    
                 
 
-                document.getElementById('btn-delete-skill').style.display='block';                
-                $('#id_skill').val(skillID);         
-                $('#nama_keahlian').val(namaSkill);
-                $('#persentase').val(persentase);
-                $('#skill_range').val(persentaseText);
-                $('#btn-delete-skill').attr('id-skill-delete', skillID);
-                $('#skillsModal').modal('show');
+    //             document.getElementById('btn-delete-skill').style.display='block';                
+    //             $('#id_skill').val(skillID);         
+    //             $('#nama_keahlian').val(namaSkill);
+    //             $('#persentase').val(persentase);
+    //             $('#skill_range').val(persentaseText);
+    //             $('#btn-delete-skill').attr('id-skill-delete', skillID);
+    //             $('#skillsModal').modal('show');
                 
-            });
+    //         });
 
             // fungsi delete skill
-            $(document).on('click','.btn-delete-skill',function(){
-                var idSkill = $(this).attr('id-skill-delete');   
+        //     $(document).on('click','.btn-delete-skill',function(){
+        //         var idSkill = $(this).attr('id-skill-delete');   
 
-                $('#keahlianID').val(idSkill); 
-                $('#deleteKeahlianModal').modal('show'); 
-            });
-        });
+        //         $('#keahlianID').val(idSkill); 
+        //         $('#deleteKeahlianModal').modal('show'); 
+        //     });
+        // });
     
     
     // fungsi remove input value when modal is closed
 
     // education
-    $('#educationModal').on('hidden.bs.modal', function (e) {
-        $('#educationModalWrapper')
-            .find("input,textarea")
-            .val('')
-            .end()
-            .find("input[type=checkbox], input[type=radio]")
-            .prop("checked", "")
-            .end()
-            .find("select")
-            .prop("selectedIndex",0)
-            .end();
-    })
+    // $('#educationModal').on('hidden.bs.modal', function (e) {
+    //     $('#educationModalWrapper')
+    //         .find("input,textarea")
+    //         .val('')
+    //         .end()
+    //         .find("input[type=checkbox], input[type=radio]")
+    //         .prop("checked", "")
+    //         .end()
+    //         .find("select")
+    //         .prop("selectedIndex",0)
+    //         .end();
+    // })
 
     //  rpekerjaan
-    $('#workModal').on('hidden.bs.modal', function (e) {
-        $('#workModalWrapper')
-            .find("input,textarea")
-            .val('')
-            .end()
-            .find("input[type=checkbox], input[type=radio]")
-            .prop("checked", "")
-            .end()
-            .find("select")
-            .prop("selectedIndex",0)
-            .end();
-    })
+    // $('#workModal').on('hidden.bs.modal', function (e) {
+    //     $('#workModalWrapper')
+    //         .find("input,textarea")
+    //         .val('')
+    //         .end()
+    //         .find("input[type=checkbox], input[type=radio]")
+    //         .prop("checked", "")
+    //         .end()
+    //         .find("select")
+    //         .prop("selectedIndex",0)
+    //         .end();
+    // })
 
     //  rkompetensi
-    $('#kompetensiModal').on('hidden.bs.modal', function (e) {
-        $('#kompetensiModalWrapper')
-            .find("input,textarea")
-            .val('')
-            .end()
-            .find("input[type=checkbox], input[type=radio]")
-            .prop("checked", "")
-            .end()
-            .find("select")
-            .prop("selectedIndex",0)
-            .end();
-    })
+    // $('#kompetensiModal').on('hidden.bs.modal', function (e) {
+    //     $('#kompetensiModalWrapper')
+    //         .find("input,textarea")
+    //         .val('')
+    //         .end()
+    //         .find("input[type=checkbox], input[type=radio]")
+    //         .prop("checked", "")
+    //         .end()
+    //         .find("select")
+    //         .prop("selectedIndex",0)
+    //         .end();
+    // })
 
     //  skills
-    $('#skillsModal').on('hidden.bs.modal', function (e) {
-        $('#skillModalWrapper')
-            .find("input,textarea")
-            .val('')
-            .end()
-            .find("input[type=checkbox], input[type=radio]")
-            .prop("checked", "")
-            .end()
-            .find("select")
-            .prop("selectedIndex",0)
-            .end()
-            .find(".skill_range")
-            .val('50%')
-            .end();
-    })
+    // $('#skillsModal').on('hidden.bs.modal', function (e) {
+    //     $('#skillModalWrapper')
+    //         .find("input,textarea")
+    //         .val('')
+    //         .end()
+    //         .find("input[type=checkbox], input[type=radio]")
+    //         .prop("checked", "")
+    //         .end()
+    //         .find("select")
+    //         .prop("selectedIndex",0)
+    //         .end()
+    //         .find(".skill_range")
+    //         .val('50%')
+    //         .end();
+    // })
 
     
 
@@ -1623,5 +1922,7 @@
           document.getElementById('skill_range').value=val+'%'; 
     }
 </script>
+    
+</body>
 
-@endsection
+</html>

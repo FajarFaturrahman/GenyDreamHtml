@@ -1,306 +1,583 @@
-@extends('layouts.applicant-master')
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-@section('content')
-<link rel="stylesheet" href="{{ asset('css/applicant/kursus.css') }}">    
-<div class="wrap-slider">
-    <div class="container page-container">
-        <div class="page-content col-md-6 mx-auto">
-            <div class="page-title">
-                <h1 class="font-weight-bold text-center">WELCOME TO GENY DREAM COURSE</h1>                    
-            </div> <!-- end page-title -->
-        </div> <!-- end page-content -->
-    </div> <!-- end page-container -->
-</div> <!-- end page-wrap-slider -->    
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<section class="course bg-theme">
-    <div class="container py-4">
-        <form action="">
-            <div class="select-category">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>GenyDream | Kursus</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <!-- bootstrap select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- slick carousel -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css">
+
+    <!-- js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <!-- Styles -->        
+    <link rel="stylesheet" href="../assets/css/applicant/kursus.css">    
+
+</head>
+
+<body>    
+    <header class="main-header">
+
+        <!-- navbar -->
+    
+        <nav class="navbar navbar-expand-lg flex-row pl-4 sticky-top">
+            <a class="navbar-brand" href="#">
+                <img src="../assets/images/LogoGenyDream.png" alt="">
+            </a>
+    
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav" id="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" data-value="about" href="beranda.html">BERANDA</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-value="portfolio" href="lowongan-kerja.html">LOWONGAN KERJA</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-value="blog" href="../list-berita.html">TIPS DAN BERITA</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " data-value="team" href="#">FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " data-value="contact" href="#"><img src="../assets/images/cil_chat-bubble.png" alt=""></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " data-value="contact" href="#"><img src="../assets/images/clarity_notification-line.png" alt=""></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <button class="btn btn-default" type="button" id="menu1" data-toggle="dropdown">
+                            <img id="profilebutton" style=" width: 30px; height:30px;" src="../assets/images/mentor-img.png">
+    
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                            
+                            <li role="presentation"><a class="dropdown-item" role="menuitem" id="profilebutton" href="profile.html">Profile</a></li>
+                        <li>
+                            <a class="dropdown-item" role="menuitem" data-value="team" href="#">Notification</a>
+                        </li>
+                        <hr>
+
+                        <li>
+                            <a class="dropdown-item" role="menuitem" data-value="team" href="lowongan-kerja.html"><img class="img-fluid mr-2" src="../assets/images/ant-design_file-search-outlined-black.png" alt="">Geny Hire</a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" role="menuitem" data-value="team" href="kursus.html"><img class="img-fluid mr-2" src="../assets/images/la_user-graduate-solid-black.png" alt="">Geny Education</a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" role="menuitem" data-value="team" href="#"><img class="img-fluid mr-2" src="../assets/images/la_user-tie-solid-black.png" alt="">Geny Intern</a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" role="menuitem" data-value="team" href="#"><img class="img-fluid mr-2" src="../assets/images/ic_outline-assessment-black.png" alt="">Geny Assessment</a>
+                        </li>
+
+                        <hr>
+
+                        <li>
+                            <a class="dropdown-item premium-link" role="menuitem" data-value="team" href="payment/premium-offer.html"><img class="img-fluid mr-2" src="../assets/images/star1.png" alt="">Go Premium</a>
+                        </li>
+                        <li role="presentation">
+                            <a class="dropdown-item" role="menuitem" href="../welcome.html">Keluar</a>
+                            <!-- <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form> -->
+                        </li>
+
+    
+                        </ul>
+                    </li>
+                </ul>
+    
+                
+                    
+                
+            </div>
+        </nav>
+        <!-- end of navbar -->
+    <div class="wrap-slider">
+        <div class="container page-container">
+            <div class="page-content col-md-6 mx-auto">
+                <div class="page-title">
+                    <h1 class="font-weight-bold text-center">WELCOME TO GENY DREAM COURSE</h1>                    
+                </div> <!-- end page-title -->
+            </div> <!-- end page-content -->
+        </div> <!-- end page-container -->
+    </div> <!-- end page-wrap-slider -->    
+
+    <section class="course bg-theme">
+        <div class="container py-4">
+            <form action="">
+                <div class="select-category">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="row">                        
+                                <div class="col-md-6 showing pt-1 mt-2">
+                                    <p>Tampilkan 1-9 dari 50 kursus</p>
+                                </div>
+                                <div class="col-md-6 search">
+                                    <div class="buttonIn mt-2"> 
+                                        <i class="fa fa-search"></i>
+                                        <input type="text" class="form-control pl-4" id="enter" placeholder="Masukan nama kursus yang ingin anda ikuti"> 
+                                        <button class="btn pt-1" id="clear">CARI</button> 
+                                    </div> 
+                                </div>
+                            </div>                    
+                        </div>
+                        <div class="col-md-2">
+                            <div class="filter-button mt-2">
+                                <div class="dropdown">
+                                    <button class="btn btn-primary btn-dropdown"type="button" data-toggle="dropdown"><i class="fa fa-filter pr-2" aria-hidden="true"></i>Filter</button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">HTML</a></li>
+                                        <li><a href="#">CSS</a></li>
+                                        <li><a href="#">JavaScript</a></li>
+                                    </ul>                            
+                                </div>
+                            </div>                    
+                        </div>
+                    </div>
+                </div>
+                <!-- end select category -->
+            </form>        
+
+            <div class="poluler-category mt-5">
                 <div class="row">
-                    <div class="col-md-10">
-                        <div class="row">                        
-                            <div class="col-md-6 showing pt-1 mt-2">
-                                <p>Tampilkan 1-9 dari 50 kursus</p>
-                            </div>
-                            <div class="col-md-6 search">
-                                <div class="buttonIn mt-2"> 
-                                    <i class="fa fa-search"></i>
-                                    <input type="text" class="form-control pl-4" id="enter" placeholder="Masukan nama kursus yang ingin anda ikuti"> 
-                                    <button class="btn pt-1" id="clear">CARI</button> 
-                                </div> 
-                            </div>
-                        </div>                    
+                    <h4 class="font-weight-bold">KATEGORI PALING POPULER</h4>
+                </div>
+                <div class="row button-category mt-5">
+                    <div class="col-md-3 p-0 text-center category mt-2">
+                        <button class="btn btn-white border" type="button" id="teknologi">TEKNOLOGI</button>
                     </div>
-                    <div class="col-md-2">
-                        <div class="filter-button mt-2">
-                            <div class="dropdown">
-                                <button class="btn btn-primary btn-dropdown"type="button" data-toggle="dropdown"><i class="fa fa-filter pr-2" aria-hidden="true"></i>Filter</button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">HTML</a></li>
-                                    <li><a href="#">CSS</a></li>
-                                    <li><a href="#">JavaScript</a></li>
-                                </ul>                            
-                            </div>
-                        </div>                    
+                    <div class="col-md-3 p-0 text-center category mt-2">
+                        <button class="btn btn-whit border" type="button" id="komunikasi">KOMUNIKASI</button>
+                    </div>
+                    <div class="col-md-3 p-0 text-center category mt-2">
+                        <button class="btn btn-white border" type="button" id="seni">SENI DAN KEMANUSIAAN</button>
+                    </div>
+                    <div class="col-md-3 p-0 text-center category mt-2">
+                        <button class="btn btn-white border" type="button" id="bisnis">BISNIS DAN KEUANGAN</button>
                     </div>
                 </div>
             </div>
-            <!-- end select category -->
-        </form>        
+            <!-- end button category -->
 
-        <div class="poluler-category mt-5">
-            <div class="row">
-                <h4 class="font-weight-bold">KATEGORI PALING POPULER</h4>
-            </div>
-            <div class="row button-category mt-5">
-                <div class="col-md-3 p-0 text-center category mt-2">
-                    <button class="btn btn-white border" type="button" id="teknologi">TEKNOLOGI</button>
+            <div class="kursus mt-5">
+                <div class="row">
+                    <h4 class="font-weight-bold">KURSUS TERBARU</h4> 
+                </div>            
+                <div class="row mt-5 kursus-list">   
+                    <div class="col-lg-4 col-md-6 mt-2">
+                        <div class="card kursus-card">                        
+                            <div class="header mx-auto mt-2">
+                                <img src="../assets/images/course-img1.png" class="img-fluid" alt="">
+                            </div>
+
+                            <div class="card-body">
+                                <h6 class="course-category font-weight-bold">Seni dan kemanusiaan</h6>
+                                
+                                <h4 class="card-title course-name">PAINTING AND SKETCH COURSE</h4>
+                                
+                                <p class="mentor">By Dianne Russell</p>
+                                
+                                <div class="row mt-5 footer-card">
+                                    <div class="col-md-6 price-col">                                    
+                                        <p class="price-tag mt-2"><span class="font-weight-bold">PRICE : </span>Rp 100.000</p>
+                                    </div>
+                                    <div class="col-md-6 detail">
+                                        <a href="kursus-detail.html" class="btn btn-lg btn-block">Detail</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                
+
+                    <div class="col-lg-4 col-md-6 mt-2">
+                        <div class="card kursus-card">                        
+                            <div class="header mx-auto mt-2">
+                                <img src="../assets/images/course-img1.png" class="img-fluid" alt="">
+                            </div>
+
+                            <div class="card-body">
+                                <h6 class="course-category font-weight-bold">Seni dan kemanusiaan</h6>
+                                
+                                <h4 class="card-title course-name">PAINTING AND SKETCH COURSE</h4>
+                                
+                                <p class="mentor">By Dianne Russell</p>
+                                
+                                <div class="row mt-5 footer-card">
+                                    <div class="col-md-6 price-col">                                    
+                                        <p class="price-tag mt-2"><span class="font-weight-bold">PRICE : </span>Rp 100.000</p>
+                                    </div>
+                                    <div class="col-md-6 detail">
+                                        <a href="kursus-detail.html" class="btn btn-lg btn-block">Detail</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                
+
+                    <div class="col-lg-4 col-md-6 mt-2">
+                        <div class="card kursus-card">                        
+                            <div class="header mx-auto mt-2">
+                                <img src="../assets/images/course-img1.png" class="img-fluid" alt="">
+                            </div>
+
+                            <div class="card-body">
+                                <h6 class="course-category font-weight-bold">Seni dan kemanusiaan</h6>
+                                
+                                <h4 class="card-title course-name">PAINTING AND SKETCH COURSE</h4>
+                                
+                                <p class="mentor">By Dianne Russell</p>
+                                
+                                <div class="row mt-5 footer-card">
+                                    <div class="col-md-6 price-col">                                    
+                                        <p class="price-tag mt-2"><span class="font-weight-bold">PRICE : </span>Rp 100.000</p>
+                                    </div>
+                                    <div class="col-md-6 detail">
+                                        <a href="kursus-detail.html" class="btn btn-lg btn-block">Detail</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                
+
+                    <div class="col-lg-4 col-md-6 mt-2">
+                        <div class="card kursus-card">                        
+                            <div class="header mx-auto mt-2">
+                                <img src="../assets/images/course-img1.png" class="img-fluid" alt="">
+                            </div>
+
+                            <div class="card-body">
+                                <h6 class="course-category font-weight-bold">Seni dan kemanusiaan</h6>
+                                
+                                <h4 class="card-title course-name">PAINTING AND SKETCH COURSE</h4>
+                                
+                                <p class="mentor">By Dianne Russell</p>
+                                
+                                <div class="row mt-5 footer-card">
+                                    <div class="col-md-6 price-col">                                    
+                                        <p class="price-tag mt-2"><span class="font-weight-bold">PRICE : </span>Rp 100.000</p>
+                                    </div>
+                                    <div class="col-md-6 detail">
+                                        <a href="kursus-detail.html" class="btn btn-lg btn-block">Detail</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                
+
+                    <div class="col-lg-4 col-md-6 mt-2">
+                        <div class="card kursus-card">                        
+                            <div class="header mx-auto mt-2">
+                                <img src="../assets/images/course-img1.png" class="img-fluid" alt="">
+                            </div>
+
+                            <div class="card-body">
+                                <h6 class="course-category font-weight-bold">Seni dan kemanusiaan</h6>
+                                
+                                <h4 class="card-title course-name">PAINTING AND SKETCH COURSE</h4>
+                                
+                                <p class="mentor">By Dianne Russell</p>
+                                
+                                <div class="row mt-5 footer-card">
+                                    <div class="col-md-6 price-col">                                    
+                                        <p class="price-tag mt-2"><span class="font-weight-bold">PRICE : </span>Rp 100.000</p>
+                                    </div>
+                                    <div class="col-md-6 detail">
+                                        <a href="kursus-detail.html" class="btn btn-lg btn-block">Detail</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                
+
+                    <div class="col-lg-4 col-md-6 mt-2">
+                        <div class="card kursus-card">                        
+                            <div class="header mx-auto mt-2">
+                                <img src="../assets/images/course-img1.png" class="img-fluid" alt="">
+                            </div>
+
+                            <div class="card-body">
+                                <h6 class="course-category font-weight-bold">Seni dan kemanusiaan</h6>
+                                
+                                <h4 class="card-title course-name">PAINTING AND SKETCH COURSE</h4>
+                                
+                                <p class="mentor">By Dianne Russell</p>
+                                
+                                <div class="row mt-5 footer-card">
+                                    <div class="col-md-6 price-col">                                    
+                                        <p class="price-tag mt-2"><span class="font-weight-bold">PRICE : </span>Rp 100.000</p>
+                                    </div>
+                                    <div class="col-md-6 detail">
+                                        <a href="kursus-detail.html" class="btn btn-lg btn-block">Detail</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                
+
+                    <div class="col-lg-4 col-md-6 mt-2">
+                        <div class="card kursus-card">                        
+                            <div class="header mx-auto mt-2">
+                                <img src="../assets/images/course-img1.png" class="img-fluid" alt="">
+                            </div>
+
+                            <div class="card-body">
+                                <h6 class="course-category font-weight-bold">Seni dan kemanusiaan</h6>
+                                
+                                <h4 class="card-title course-name">PAINTING AND SKETCH COURSE</h4>
+                                
+                                <p class="mentor">By Dianne Russell</p>
+                                
+                                <div class="row mt-5 footer-card">
+                                    <div class="col-md-6 price-col">                                    
+                                        <p class="price-tag mt-2"><span class="font-weight-bold">PRICE : </span>Rp 100.000</p>
+                                    </div>
+                                    <div class="col-md-6 detail">
+                                        <a href="kursus-detail.html" class="btn btn-lg btn-block">Detail</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                
+
+                    <div class="col-lg-4 col-md-6 mt-2">
+                        <div class="card kursus-card">                        
+                            <div class="header mx-auto mt-2">
+                                <img src="../assets/images/course-img1.png" class="img-fluid" alt="">
+                            </div>
+
+                            <div class="card-body">
+                                <h6 class="course-category font-weight-bold">Seni dan kemanusiaan</h6>
+                                
+                                <h4 class="card-title course-name">PAINTING AND SKETCH COURSE</h4>
+                                
+                                <p class="mentor">By Dianne Russell</p>
+                                
+                                <div class="row mt-5 footer-card">
+                                    <div class="col-md-6 price-col">                                    
+                                        <p class="price-tag mt-2"><span class="font-weight-bold">PRICE : </span>Rp 100.000</p>
+                                    </div>
+                                    <div class="col-md-6 detail">
+                                        <a href="kursus-detail.html" class="btn btn-lg btn-block">Detail</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                
+
+                    <div class="col-lg-4 col-md-6 mt-2">
+                        <div class="card kursus-card">                        
+                            <div class="header mx-auto mt-2">
+                                <img src="../assets/images/course-img1.png" class="img-fluid" alt="">
+                            </div>
+
+                            <div class="card-body">
+                                <h6 class="course-category font-weight-bold">Seni dan kemanusiaan</h6>
+                                
+                                <h4 class="card-title course-name">PAINTING AND SKETCH COURSE</h4>
+                                
+                                <p class="mentor">By Dianne Russell</p>
+                                
+                                <div class="row mt-5 footer-card">
+                                    <div class="col-md-6 price-col">                                    
+                                        <p class="price-tag mt-2"><span class="font-weight-bold">PRICE : </span>Rp 100.000</p>
+                                    </div>
+                                    <div class="col-md-6 detail">
+                                        <a href="kursus-detail.html" class="btn btn-lg btn-block">Detail</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                
                 </div>
-                <div class="col-md-3 p-0 text-center category mt-2">
-                    <button class="btn btn-whit border" type="button" id="komunikasi">KOMUNIKASI</button>
-                </div>
-                <div class="col-md-3 p-0 text-center category mt-2">
-                    <button class="btn btn-white border" type="button" id="seni">SENI DAN KEMANUSIAAN</button>
-                </div>
-                <div class="col-md-3 p-0 text-center category mt-2">
-                    <button class="btn btn-white border" type="button" id="bisnis">BISNIS DAN KEUANGAN</button>
-                </div>
-            </div>
-        </div>
-        <!-- end button category -->
-
-        <div class="kursus mt-5">
-            <div class="row">
-                <h4 class="font-weight-bold">KURSUS TERBARU</h4> 
-            </div>            
-            <div class="row mt-5 kursus-list">   
-                <div class="col-lg-4 col-md-6 mt-2">
-                    <div class="card kursus-card">                        
-                        <div class="header mx-auto mt-2">
-                            <img src="{{ asset('/images/course-img1.png') }}" class="img-fluid" alt="">
-                        </div>
-
-                        <div class="card-body">
-                            <h6 class="course-category font-weight-bold">Seni dan kemanusiaan</h6>
-                            
-                            <h4 class="card-title course-name">PAINTING AND SKETCH COURSE</h4>
-                            
-                            <p class="mentor">By Dianne Russell</p>
-                            
-                            <div class="row mt-5 footer-card">
-                                <div class="col-md-6 price-col">                                    
-                                    <p class="price-tag mt-2"><span class="font-weight-bold">PRICE : </span>Rp 100.000</p>
-                                </div>
-                                <div class="col-md-6 detail">
-                                    <a href="{{ route('pelamar.kursus.detail') }}" class="btn btn-lg btn-block">Detail</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>                
-
-                <div class="col-lg-4 col-md-6 mt-2">
-                    <div class="card kursus-card">                        
-                        <div class="header mx-auto mt-2">
-                            <img src="{{ asset('/images/course-img1.png') }}" class="img-fluid" alt="">
-                        </div>
-
-                        <div class="card-body">
-                            <h6 class="course-category font-weight-bold">Seni dan kemanusiaan</h6>
-                            
-                            <h4 class="card-title course-name">PAINTING AND SKETCH COURSE</h4>
-                            
-                            <p class="mentor">By Dianne Russell</p>
-                            
-                            <div class="row mt-5 footer-card">
-                                <div class="col-md-6 price-col">                                    
-                                    <p class="price-tag mt-2"><span class="font-weight-bold">PRICE : </span>Rp 100.000</p>
-                                </div>
-                                <div class="col-md-6 detail">
-                                    <a href="{{ route('pelamar.kursus.detail') }}" class="btn btn-lg btn-block">Detail</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>                
-
-                <div class="col-lg-4 col-md-6 mt-2">
-                    <div class="card kursus-card">                        
-                        <div class="header mx-auto mt-2">
-                            <img src="{{ asset('/images/course-img1.png') }}" class="img-fluid" alt="">
-                        </div>
-
-                        <div class="card-body">
-                            <h6 class="course-category font-weight-bold">Seni dan kemanusiaan</h6>
-                            
-                            <h4 class="card-title course-name">PAINTING AND SKETCH COURSE</h4>
-                            
-                            <p class="mentor">By Dianne Russell</p>
-                            
-                            <div class="row mt-5 footer-card">
-                                <div class="col-md-6 price-col">                                    
-                                    <p class="price-tag mt-2"><span class="font-weight-bold">PRICE : </span>Rp 100.000</p>
-                                </div>
-                                <div class="col-md-6 detail">
-                                    <a href="{{ route('pelamar.kursus.detail') }}" class="btn btn-lg btn-block">Detail</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>                
-
-                <div class="col-lg-4 col-md-6 mt-2">
-                    <div class="card kursus-card">                        
-                        <div class="header mx-auto mt-2">
-                            <img src="{{ asset('/images/course-img1.png') }}" class="img-fluid" alt="">
-                        </div>
-
-                        <div class="card-body">
-                            <h6 class="course-category font-weight-bold">Seni dan kemanusiaan</h6>
-                            
-                            <h4 class="card-title course-name">PAINTING AND SKETCH COURSE</h4>
-                            
-                            <p class="mentor">By Dianne Russell</p>
-                            
-                            <div class="row mt-5 footer-card">
-                                <div class="col-md-6 price-col">                                    
-                                    <p class="price-tag mt-2"><span class="font-weight-bold">PRICE : </span>Rp 100.000</p>
-                                </div>
-                                <div class="col-md-6 detail">
-                                    <a href="{{ route('pelamar.kursus.detail') }}" class="btn btn-lg btn-block">Detail</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>                
-
-                <div class="col-lg-4 col-md-6 mt-2">
-                    <div class="card kursus-card">                        
-                        <div class="header mx-auto mt-2">
-                            <img src="{{ asset('/images/course-img1.png') }}" class="img-fluid" alt="">
-                        </div>
-
-                        <div class="card-body">
-                            <h6 class="course-category font-weight-bold">Seni dan kemanusiaan</h6>
-                            
-                            <h4 class="card-title course-name">PAINTING AND SKETCH COURSE</h4>
-                            
-                            <p class="mentor">By Dianne Russell</p>
-                            
-                            <div class="row mt-5 footer-card">
-                                <div class="col-md-6 price-col">                                    
-                                    <p class="price-tag mt-2"><span class="font-weight-bold">PRICE : </span>Rp 100.000</p>
-                                </div>
-                                <div class="col-md-6 detail">
-                                    <a href="{{ route('pelamar.kursus.detail') }}" class="btn btn-lg btn-block">Detail</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>                
-
-                <div class="col-lg-4 col-md-6 mt-2">
-                    <div class="card kursus-card">                        
-                        <div class="header mx-auto mt-2">
-                            <img src="{{ asset('/images/course-img1.png') }}" class="img-fluid" alt="">
-                        </div>
-
-                        <div class="card-body">
-                            <h6 class="course-category font-weight-bold">Seni dan kemanusiaan</h6>
-                            
-                            <h4 class="card-title course-name">PAINTING AND SKETCH COURSE</h4>
-                            
-                            <p class="mentor">By Dianne Russell</p>
-                            
-                            <div class="row mt-5 footer-card">
-                                <div class="col-md-6 price-col">                                    
-                                    <p class="price-tag mt-2"><span class="font-weight-bold">PRICE : </span>Rp 100.000</p>
-                                </div>
-                                <div class="col-md-6 detail">
-                                    <a href="{{ route('pelamar.kursus.detail') }}" class="btn btn-lg btn-block">Detail</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>                
-
-                <div class="col-lg-4 col-md-6 mt-2">
-                    <div class="card kursus-card">                        
-                        <div class="header mx-auto mt-2">
-                            <img src="{{ asset('/images/course-img1.png') }}" class="img-fluid" alt="">
-                        </div>
-
-                        <div class="card-body">
-                            <h6 class="course-category font-weight-bold">Seni dan kemanusiaan</h6>
-                            
-                            <h4 class="card-title course-name">PAINTING AND SKETCH COURSE</h4>
-                            
-                            <p class="mentor">By Dianne Russell</p>
-                            
-                            <div class="row mt-5 footer-card">
-                                <div class="col-md-6 price-col">                                    
-                                    <p class="price-tag mt-2"><span class="font-weight-bold">PRICE : </span>Rp 100.000</p>
-                                </div>
-                                <div class="col-md-6 detail">
-                                    <a href="{{ route('pelamar.kursus.detail') }}" class="btn btn-lg btn-block">Detail</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>                
-
-                <div class="col-lg-4 col-md-6 mt-2">
-                    <div class="card kursus-card">                        
-                        <div class="header mx-auto mt-2">
-                            <img src="{{ asset('/images/course-img1.png') }}" class="img-fluid" alt="">
-                        </div>
-
-                        <div class="card-body">
-                            <h6 class="course-category font-weight-bold">Seni dan kemanusiaan</h6>
-                            
-                            <h4 class="card-title course-name">PAINTING AND SKETCH COURSE</h4>
-                            
-                            <p class="mentor">By Dianne Russell</p>
-                            
-                            <div class="row mt-5 footer-card">
-                                <div class="col-md-6 price-col">                                    
-                                    <p class="price-tag mt-2"><span class="font-weight-bold">PRICE : </span>Rp 100.000</p>
-                                </div>
-                                <div class="col-md-6 detail">
-                                    <a href="{{ route('pelamar.kursus.detail') }}" class="btn btn-lg btn-block">Detail</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>                
-
-                <div class="col-lg-4 col-md-6 mt-2">
-                    <div class="card kursus-card">                        
-                        <div class="header mx-auto mt-2">
-                            <img src="{{ asset('/images/course-img1.png') }}" class="img-fluid" alt="">
-                        </div>
-
-                        <div class="card-body">
-                            <h6 class="course-category font-weight-bold">Seni dan kemanusiaan</h6>
-                            
-                            <h4 class="card-title course-name">PAINTING AND SKETCH COURSE</h4>
-                            
-                            <p class="mentor">By Dianne Russell</p>
-                            
-                            <div class="row mt-5 footer-card">
-                                <div class="col-md-6 price-col">                                    
-                                    <p class="price-tag mt-2"><span class="font-weight-bold">PRICE : </span>Rp 100.000</p>
-                                </div>
-                                <div class="col-md-6 detail">
-                                    <a href="{{ route('pelamar.kursus.detail') }}" class="btn btn-lg btn-block">Detail</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>                
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-@endsection
+    <footer id=" dk-footer" class="dk-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-4">
+                    <div class="dk-footer-box-info">
+                        <a href="../welcome.html" class="footer-logo">
+                            <img src="../assets/images/LogoGenyWhite.png" class="img-fluid">
+                        </a>
+                        <p class="footer-info-text">
+                            Geny Dream adalah Aplikasi untuk menyiapkan para pengguna masuk ke dalam dunia pekerjaan dan mendapatkan pekerjaan yang diinginkan.
+                        </p>
+                        <div class="footer-social-link">
+                            <h3>Follow us</h3>
+                            <ul style="margin-bottom: 30px;">
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-google-plus"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-linkedin"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-instagram"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- End Social link -->
+                    </div>
+
+                </div>
+                <!-- End Col -->
+                <div class="col-md-12 col-lg-8">
+
+                    <!-- End Contact Row -->
+                    <div class="row">
+                        <div class="col-md-12 col-lg-6">
+                            <div class="footer-widget footer-left-widget">
+                                <div class="section-heading">
+                                    <h3>Useful Links</h3>
+                                    <span class="animate-border border-black"></span>
+                                </div>
+                                <ul>
+                                    <li>
+                                        <a href="#">About us</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Services</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Projects</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Our Team</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <a href="#">Contact us</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Blog</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Testimonials</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Faq</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- End Footer Widget -->
+                        </div>
+                        <!-- End col -->
+                        <div class="col-md-12 col-lg-6">
+                            <div class="footer-widget">
+                                <div class="section-heading">
+                                    <h3>Lainnya</h3>
+                                    <span class="animate-border border-black"></span>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="contact-us">
+                                            <div class="contact-icon">
+                                                <i class="fa fa-map-o" aria-hidden="true"></i>
+                                            </div>
+                                            <!-- End contact Icon -->
+                                            <div class="contact-info">
+                                                <h3>Indonesia</h3>
+                                                <p>Jalan Jendral Sudirman</p>
+                                            </div>
+                                            <!-- End Contact Info -->
+                                        </div>
+                                        <!-- End Contact Us -->
+                                    </div>
+                                    <!-- End Col -->
+                                    <div class="col-md-12">
+                                        <div class="contact-us">
+
+                                            <div class="contact-icon">
+                                                <i class="fa fa-volume-control-phone" aria-hidden="true"></i>
+                                            </div>
+                                            <!-- End contact Icon -->
+                                            <div class="contact-info">
+                                                <h3>+628 2222 </h3>
+                                                <p>Hubungi Kami</p>
+                                            </div>
+                                            <!-- End Contact Info -->
+                                        </div>
+                                    </div>
+                                    <!-- End Col -->
+                                </div>
+                            </div>
+                            <!-- End footer widget -->
+                        </div>
+                        <!-- End Col -->
+                    </div>
+                    <!-- End Row -->
+                </div>
+                <!-- End Col -->
+            </div>
+            <!-- End Widget Row -->
+        </div>
+        <!-- End Contact Container -->
+
+
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <span>Copyright © 2020, All Right Reserved GenyDream</span>
+                    </div>
+
+                </div>
+                <!-- End Row -->
+            </div>
+            <!-- End Copyright Container -->
+        </div>
+        <!-- End Copyright -->
+
+    </footer>
+</body>
+</html>

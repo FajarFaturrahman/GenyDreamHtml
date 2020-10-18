@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>GenyDream</title>
+    <title>GenyDream | Beranda</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
@@ -27,8 +27,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css">
 
+    <!-- js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
     <!-- Styles -->    
-    <link href="..assets/css/applicant/beranda-applicant.css" rel="stylesheet">
+    <link href="../assets/css/applicant/beranda-applicant.css" rel="stylesheet">
 
 </head>
 
@@ -39,7 +44,7 @@
 
     <nav class="navbar navbar-expand-lg flex-row pl-4 sticky-top">
         <a class="navbar-brand" href="#">
-            <img src="{{asset('/images/LogoGenyDream.png') }}" alt="">
+            <img src="../assets/images/LogoGenyDream.png" alt="">
         </a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,62 +54,62 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav" id="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link {{ request()->route()->named('pelamar.beranda') ? 'active' : '' }}" data-value="about" href="{{ route('pelamar.beranda') }}">BERANDA</a>
+                    <a class="nav-link" data-value="about" href="beranda.html">BERANDA</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->route()->named('pelamar.loker') ? 'active' : '' }}" data-value="portfolio" href="{{ route('pelamar.loker') }}">LOWONGAN KERJA</a>
+                    <a class="nav-link" data-value="portfolio" href="lowongan-kerja.html">LOWONGAN KERJA</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->route()->named('list.berita') ? 'active' : '' }}" data-value="blog" href="{{ route('list.berita') }}">TIPS DAN BERITA</a>
+                    <a class="nav-link" data-value="blog" href="../list-berita.html">TIPS DAN BERITA</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " data-value="team" href="#">FAQ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " data-value="contact" href="#"><img src="{{ asset('images/cil_chat-bubble.png') }}" alt=""></a>
+                    <a class="nav-link " data-value="contact" href="#"><img src="../assets/images/cil_chat-bubble.png" alt=""></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " data-value="contact" href="#"><img src="{{ asset('images/clarity_notification-line.png') }}" alt=""></a>
+                    <a class="nav-link " data-value="contact" href="#"><img src="../assets/images/clarity_notification-line.png" alt=""></a>
                 </li>
                 <li class="nav-item dropdown">
                     <button class="btn btn-default" type="button" id="menu1" data-toggle="dropdown">
-                        <img id="profilebutton" style=" width: 30px; height:30px;" src="{{ asset('images/mentor-img.png') }}">
+                        <img id="profilebutton" style=" width: 30px; height:30px;" src="../assets/images/mentor-img.png">
 
                     </button>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
                         
-                        <li role="presentation"><a class="dropdown-item" role="menuitem" id="profilebutton" href=" {{ route('pelamar.profile') }}">Profile</a></li>
+                        <li role="presentation"><a class="dropdown-item" role="menuitem" id="profilebutton" href="profile.html">Profile</a></li>
                         <li>
                             <a class="dropdown-item" role="menuitem" data-value="team" href="#">Notification</a>
                         </li>
                         <hr>
 
                         <li>
-                            <a class="dropdown-item" role="menuitem" data-value="team" href="{{ route('pelamar.loker') }}"><img class="img-fluid mr-2" src="{{ asset('images/ant-design_file-search-outlined-black.png') }}" alt="">Geny Hire</a>
+                            <a class="dropdown-item" role="menuitem" data-value="team" href="lowongan-kerja.html"><img class="img-fluid mr-2" src="../assets/images/ant-design_file-search-outlined-black.png" alt="">Geny Hire</a>
                         </li>
 
                         <li>
-                            <a class="dropdown-item" role="menuitem" data-value="team" href="{{ route('pelamar.kursus') }}"><img class="img-fluid mr-2" src="{{ asset('images/la_user-graduate-solid-black.png') }}" alt="">Geny Education</a>
+                            <a class="dropdown-item" role="menuitem" data-value="team" href="kursus.html"><img class="img-fluid mr-2" src="../assets/images/la_user-graduate-solid-black.png" alt="">Geny Education</a>
                         </li>
 
                         <li>
-                            <a class="dropdown-item" role="menuitem" data-value="team" href="#"><img class="img-fluid mr-2" src="{{ asset('images/la_user-tie-solid-black.png') }}" alt="">Geny Intern</a>
+                            <a class="dropdown-item" role="menuitem" data-value="team" href="#"><img class="img-fluid mr-2" src="../assets/images/la_user-tie-solid-black.png" alt="">Geny Intern</a>
                         </li>
 
                         <li>
-                            <a class="dropdown-item" role="menuitem" data-value="team" href="#"><img class="img-fluid mr-2" src="{{ asset('images/ic_outline-assessment-black.png') }}" alt="">Geny Assessment</a>
+                            <a class="dropdown-item" role="menuitem" data-value="team" href="#"><img class="img-fluid mr-2" src="../assets/images/ic_outline-assessment-black.png" alt="">Geny Assessment</a>
                         </li>
 
                         <hr>
 
                         <li>
-                            <a class="dropdown-item premium-link" role="menuitem" data-value="team" href="{{ route('pelamar.buy.premium' )}}"><img class="img-fluid mr-2" src="{{ asset('images/star1.png') }}" alt="">Go Premium</a>
+                            <a class="dropdown-item premium-link" role="menuitem" data-value="team" href="payment/premium-offer.html"><img class="img-fluid mr-2" src="../assets/images/star1.png" alt="">Go Premium</a>
                         </li>
                         <li role="presentation">
-                            <a class="dropdown-item" role="menuitem" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Keluar</a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            <a class="dropdown-item" role="menuitem" href="../welcome.html">Keluar</a>
+                            <!-- <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
-                            </form>
+                            </form> -->
                         </li>
 
                     </ul>
@@ -122,12 +127,12 @@
                 <div class="row p-0">
                     <div class="col-md-3 mb-2">
                         <div class="user-info-container d-flex justify-content-start p-3">
-                            <img src="{{ asset('images/profile-image.png') }}" alt="">
+                            <img src="../assets/images/profile-image.png" alt="">
 
                             <div class="user-info-content">
                                 <p class="username mb-0">Anna Minerva</p>
                                 <p class="user-subscription">Free User</p>
-                                <a href="{{ route('pelamar.profile') }}">LIHAT PROFIL <i class="fa fa-arrow-right"></i></a>
+                                <a href="profile.html">LIHAT PROFIL <i class="fa fa-arrow-right"></i></a>
                             </div>
                         </div>
 
@@ -143,7 +148,7 @@
 
                             <a href="#" class="profile-picture d-block">Profile Picture <i class="fa fa-angle-right pull-right"></i></a>
 
-                            <a href="{{ route('pelamar.profile') }}" class="basic-information d-block mt-3">Basic Information <i class="fa fa-angle-right pull-right"></i></a>
+                            <a href="profile.html" class="basic-information d-block mt-3">Basic Information <i class="fa fa-angle-right pull-right"></i></a>
                         </div>
                     </div>
 
@@ -161,8 +166,8 @@
 
                         <div class="announcement mt-3 p-5">
                             <div class="announcement-content d-flex">
-                                <img src="{{ asset('images/announcement.png') }}" alt="">
-                                <p class="mt-2 ml-3">Temukan Pekerjaan yang sesuai untukmu selama pandemi covid-19. <a href="{{ route('pelamar.loker') }}">KLIK DISINI <i class="fa fa-arrow-right ml-2"></i></a></p>
+                                <img src="../assets/images/announcement.png" alt="">
+                                <p class="mt-2 ml-3">Temukan Pekerjaan yang sesuai untukmu selama pandemi covid-19. <a href="lowongan-kerja.html">KLIK DISINI <i class="fa fa-arrow-right ml-2"></i></a></p>
                             </div>
                         </div>
                     </div>
@@ -176,28 +181,28 @@
             <div class="row">
                 <div class="div col-lg-6 mt-4">
                         <div class="feature-content">
-                            <img src="{{ asset('images/genyhire.png') }}" alt="geny hire" class="img-fluid">
-                            <a href="{{ route('pelamar.loker') }}" class="feature-button btn pl-4 pr-4 pb-2 pt-2">MULAI SEKARANG</a>
+                            <img src="../assets/images/genyhire.png" alt="geny hire" class="img-fluid">
+                            <a href="lowongan-kerja.html" class="feature-button btn pl-4 pr-4 pb-2 pt-2">MULAI SEKARANG</a>
                         </div>
                 </div>
 
                 <div class="div col-lg-6 mt-4">
                         <div class="feature-content">
-                            <img src="{{ asset('images/genyedu.png') }}" alt="geny edu" class="img-fluid">
-                            <a href="{{ route('pelamar.kursus') }}" class="feature-button btn pl-4 pr-4 pb-2 pt-2">MULAI SEKARANG</a>
+                            <img src="../assets/images/genyedu.png" alt="geny edu" class="img-fluid">
+                            <a href="kursus.html" class="feature-button btn pl-4 pr-4 pb-2 pt-2">MULAI SEKARANG</a>
                         </div>
                 </div>
 
                 <div class="div col-lg-6 mt-4">
                         <div class="feature-content">
-                            <img src="{{ asset('images/genyintern.png') }}" alt="geny intern" class="img-fluid">
+                            <img src="../assets/images/genyintern.png" alt="geny intern" class="img-fluid">
                             <a href="#" class="feature-button btn pl-4 pr-4 pb-2 pt-2">MULAI SEKARANG</a>
                         </div>
                 </div>
 
                 <div class="div col-lg-6 mt-4">
                         <div class="feature-content">
-                            <img src="{{ asset('images/genyassest.png') }}" alt="geny assest" class="img-fluid">
+                            <img src="../assets/images/genyassest.png" alt="geny assest" class="img-fluid">
                             <a href="#" class="feature-button btn pl-4 pr-4 pb-2 pt-2">MULAI SEKARANG</a>
                         </div>
                 </div>
@@ -209,12 +214,12 @@
             <div class="container py-5">
                 <div class="row">            
                     <div class="col-md-7 image-payment-left d-none d-md-block">
-                        <img src="{{ asset('images/premiumBeranda.png') }}" alt="">
+                        <img src="../assets/images/premiumBeranda.png" alt="">
                     </div>
 
                     <div class="col-md-5 payment-title">                
                         <p class="pb-5">Apakah kamu bingung dengan karirmu ? kamu ingin cari tau tentang passionmu ? Jangan khawartir dengan Geny Dream Premium Kamu bisa mengikuti serangkaian tes yang dapat membantu perkembangan karirmu dan juga ada banyak privilege lainnya. <span class="font-weight-bold">Tunggu apa lagi ayo berlangganan sekarang!</span></p>
-                        <a href="{{ route('pelamar.buy.premium' )}}" class="btn btn-block pl-3 pr-3 mt-5">GENY DREAM PREMIUM <i class="fa fa-arrow-right ml-4"></i></a>
+                        <a href="payment/premium-offer.html" class="btn btn-block pl-3 pr-3 mt-5">GENY DREAM PREMIUM <i class="fa fa-arrow-right ml-4"></i></a>
                     </div>
                 </div>
             </div>
@@ -229,11 +234,11 @@
                             <div class="line2"></div>
                         </div>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <a href="{{ route('list.berita') }}" class="btn btn-md pl-3 pr-3 mt-3"><i class="fa fa-list-ul pr-2"></i>LIST TIPS DAN BERITA</a>
+                        <a href="../list-berita.html" class="btn btn-md pl-3 pr-3 mt-3"><i class="fa fa-list-ul pr-2"></i>LIST TIPS DAN BERITA</a>
                     </div>
 
                     <div class="col-lg-7 image-tips-berita-right d-none d-md-block">
-                        <img src="{{ asset('images/tips-berita-img.png') }}" alt="">
+                        <img src="../assets/images/tips-berita-img.png" alt="">
                     </div>
                 </div>
             </div>
@@ -253,25 +258,249 @@
                 </div>
                 
                 <div class="row mb-5">
-                    @foreach($listBerita as $berita)
-                        <div class="col-md-4">
-                            <div class="content-body mr-4" onclick="window.location='{{ route('detail.berita', $berita->id) }}'">
-                                <img src="{{ URL::to('/')}}/images_input/{{ $berita->gambar }}" class="img-fluid img-list-berita" alt="">
+                    
+                    <div class="col-md-4">
+                        <div class="content-body mr-4" onclick="window.location='../detail-berita.html'">
+                            <img src="../Assets/images/backgroud-gedung.png" class="img-fluid img-list-berita" alt="">
 
-                                <div class="info-berita d-flex mt-2 p-1">
-                                    <p class="font-weight-bold kategori-berita">{{ $berita->kategori->nama }}</p>
-                                    <p class="ml-1 mr-1">-</p>
-                                    <p class="waktu"> Updated on <span>{{ $berita->updated_at }}</span></p>
-                                </div>
-
-                                <h3 class="berita-title font-weight-bold ml-1">{{ $berita->judul }}</h3>
+                            <div class="info-berita d-flex mt-2 p-1">
+                                <p class="font-weight-bold kategori-berita">Lorem ipsum</p>
+                                <p class="ml-1 mr-1">-</p>
+                                <p class="waktu"> Updated on <span>20-20-20</span></p>
                             </div>
+
+                            <h3 class="berita-title font-weight-bold ml-1">Lorem Ipsum dolor amet</h3>
                         </div>
-                    @endforeach
+                    </div>                    
+
+                    <div class="col-md-4">
+                        <div class="content-body mr-4" onclick="window.location='../detail-berita.html'">
+                            <img src="../Assets/images/backgroud-gedung.png" class="img-fluid img-list-berita" alt="">
+
+                            <div class="info-berita d-flex mt-2 p-1">
+                                <p class="font-weight-bold kategori-berita">Lorem ipsum</p>
+                                <p class="ml-1 mr-1">-</p>
+                                <p class="waktu"> Updated on <span>20-20-20</span></p>
+                            </div>
+
+                            <h3 class="berita-title font-weight-bold ml-1">Lorem Ipsum dolor amet</h3>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="content-body mr-4" onclick="window.location='../detail-berita.html'">
+                            <img src="../Assets/images/backgroud-gedung.png" class="img-fluid img-list-berita" alt="">
+
+                            <div class="info-berita d-flex mt-2 p-1">
+                                <p class="font-weight-bold kategori-berita">Lorem ipsum</p>
+                                <p class="ml-1 mr-1">-</p>
+                                <p class="waktu"> Updated on <span>20-20-20</span></p>
+                            </div>
+
+                            <h3 class="berita-title font-weight-bold ml-1">Lorem Ipsum dolor amet</h3>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="content-body mr-4" onclick="window.location='../detail-berita.html'">
+                            <img src="../Assets/images/backgroud-gedung.png" class="img-fluid img-list-berita" alt="">
+
+                            <div class="info-berita d-flex mt-2 p-1">
+                                <p class="font-weight-bold kategori-berita">Lorem ipsum</p>
+                                <p class="ml-1 mr-1">-</p>
+                                <p class="waktu"> Updated on <span>20-20-20</span></p>
+                            </div>
+
+                            <h3 class="berita-title font-weight-bold ml-1">Lorem Ipsum dolor amet</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="content-body mr-4" onclick="window.location='../detail-berita.html'">
+                            <img src="../Assets/images/backgroud-gedung.png" class="img-fluid img-list-berita" alt="">
+
+                            <div class="info-berita d-flex mt-2 p-1">
+                                <p class="font-weight-bold kategori-berita">Lorem ipsum</p>
+                                <p class="ml-1 mr-1">-</p>
+                                <p class="waktu"> Updated on <span>20-20-20</span></p>
+                            </div>
+
+                            <h3 class="berita-title font-weight-bold ml-1">Lorem Ipsum dolor amet</h3>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="content-body mr-4" onclick="window.location='../detail-berita.html'">
+                            <img src="../Assets/images/backgroud-gedung.png" class="img-fluid img-list-berita" alt="">
+
+                            <div class="info-berita d-flex mt-2 p-1">
+                                <p class="font-weight-bold kategori-berita">Lorem ipsum</p>
+                                <p class="ml-1 mr-1">-</p>
+                                <p class="waktu"> Updated on <span>20-20-20</span></p>
+                            </div>
+
+                            <h3 class="berita-title font-weight-bold ml-1">Lorem Ipsum dolor amet</h3>
+                        </div>
+                    </div>
                 </div>      
             </div>    
             
         </section>
+
+        <footer id=" dk-footer" class="dk-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-lg-4">
+                        <div class="dk-footer-box-info">
+                            <a href="../welcome.html" class="footer-logo">
+                                <img src="../assets/images/LogoGenyWhite.png" class="img-fluid">
+                            </a>
+                            <p class="footer-info-text">
+                                Geny Dream adalah Aplikasi untuk menyiapkan para pengguna masuk ke dalam dunia pekerjaan dan mendapatkan pekerjaan yang diinginkan.
+                            </p>
+                            <div class="footer-social-link">
+                                <h3>Follow us</h3>
+                                <ul style="margin-bottom: 30px;">
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-google-plus"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-linkedin"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-instagram"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- End Social link -->
+                        </div>
+
+                    </div>
+                    <!-- End Col -->
+                    <div class="col-md-12 col-lg-8">
+
+                        <!-- End Contact Row -->
+                        <div class="row">
+                            <div class="col-md-12 col-lg-6">
+                                <div class="footer-widget footer-left-widget">
+                                    <div class="section-heading">
+                                        <h3>Useful Links</h3>
+                                        <span class="animate-border border-black"></span>
+                                    </div>
+                                    <ul>
+                                        <li>
+                                            <a href="#">About us</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Services</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Projects</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Our Team</a>
+                                        </li>
+                                    </ul>
+                                    <ul>
+                                        <li>
+                                            <a href="#">Contact us</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Blog</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Testimonials</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Faq</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- End Footer Widget -->
+                            </div>
+                            <!-- End col -->
+                            <div class="col-md-12 col-lg-6">
+                                <div class="footer-widget">
+                                    <div class="section-heading">
+                                        <h3>Lainnya</h3>
+                                        <span class="animate-border border-black"></span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="contact-us">
+                                                <div class="contact-icon">
+                                                    <i class="fa fa-map-o" aria-hidden="true"></i>
+                                                </div>
+                                                <!-- End contact Icon -->
+                                                <div class="contact-info">
+                                                    <h3>Indonesia</h3>
+                                                    <p>Jalan Jendral Sudirman</p>
+                                                </div>
+                                                <!-- End Contact Info -->
+                                            </div>
+                                            <!-- End Contact Us -->
+                                        </div>
+                                        <!-- End Col -->
+                                        <div class="col-md-12">
+                                            <div class="contact-us">
+
+                                                <div class="contact-icon">
+                                                    <i class="fa fa-volume-control-phone" aria-hidden="true"></i>
+                                                </div>
+                                                <!-- End contact Icon -->
+                                                <div class="contact-info">
+                                                    <h3>+628 2222 </h3>
+                                                    <p>Hubungi Kami</p>
+                                                </div>
+                                                <!-- End Contact Info -->
+                                            </div>
+                                        </div>
+                                        <!-- End Col -->
+                                    </div>
+                                </div>
+                                <!-- End footer widget -->
+                            </div>
+                            <!-- End Col -->
+                        </div>
+                        <!-- End Row -->
+                    </div>
+                    <!-- End Col -->
+                </div>
+                <!-- End Widget Row -->
+            </div>
+            <!-- End Contact Container -->
+
+
+            <div class="copyright">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span>Copyright © 2020, All Right Reserved GenyDream</span>
+                        </div>
+
+                    </div>
+                    <!-- End Row -->
+                </div>
+                <!-- End Copyright Container -->
+            </div>
+            <!-- End Copyright -->
+
+        </footer>
 </body>
 
 </html>
