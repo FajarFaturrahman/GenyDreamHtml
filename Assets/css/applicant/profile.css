@@ -1,0 +1,704 @@
+body{
+    background-color: rgb(63, 149, 169, 0.1);
+}
+
+.box-shadow{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: white;
+}
+
+
+/* left side */
+/* profile header */
+
+.profile-header .jumbotron{
+    margin: 0;
+    width: 100%;    
+    background-repeat: no-repeat;    
+    top: 0px;
+    background-size: cover;
+    background-position: bottom center;    
+    height: 240px;    
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, .3);
+    padding: 0;
+    border-radius: 0%;
+}
+
+.profile-header .image-default img{
+
+    width: 140px;
+    height: 140px;
+    position: absolute;
+    border-radius: 100px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    top: -80px;
+    left: 85px;    
+    margin: 0 auto;    
+    z-index: 10;
+}
+
+.profile-header .username-info{
+    float: right;
+    width: 55%;    
+}
+@media screen and (max-width: 1204px) and (min-width: 600px) {
+    .profile-header .image-default img{
+
+        width: 120px;
+        height: 120px;
+        position: absolute;
+        border-radius: 100px;
+        background-color: white;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        top: -80px;
+        left: 40px;            
+        margin: 0 auto;    
+        z-index: 10;
+    }   
+
+    .profile-header .username-info{
+        float: none;
+        margin-top: 30px;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 736px) {
+    
+    .profile-header .image-default img{
+
+        width: 120px;
+        height: 120px;
+        position: absolute;
+        border-radius: 100px;
+        background-color: white;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        top: -80px;
+        left: 107px;    
+        margin: 0 auto;    
+        z-index: 10;    
+    }   
+    .profile-header .username-info{
+        float: none;
+        margin-top: 30px;
+        width: 100%;
+
+    }
+}
+
+.profile-header #pic {
+    display: none;
+}
+
+.newbtn {
+    cursor: pointer;
+}
+
+.username{
+    font-weight: bolder;
+    text-transform: capitalize;
+}
+
+.btn-export{    
+    width: 50%;
+    height: 45px;        
+    background-color: white;
+    border: 1px solid #68C8D8;
+    color: #68C8D8;
+    font-weight: bolder;
+    font-size: 15px;        
+}
+
+.btn-export:hover{
+    background-color: #68C8D8;
+    color: white;
+}
+
+.btn-preview{
+
+    width: 50%;
+    height: 45px;
+    background-color: white;
+    border: 1px solid #68C8D8;
+    color: #68C8D8;
+    font-weight: bolder;
+    font-size: 15px;    
+    margin-right: 20px;
+}
+
+.btn-preview:hover{
+    background-color: #68C8D8;
+    color: white;
+}
+
+
+.upgrade-button{
+    background: none!important;
+    border: none;
+    padding: 0!important;            
+    color: #069;    
+    cursor: pointer;
+}
+
+
+.user-info-detail .btn-show-modal{
+    border: 1px solid #68C8D8;
+    color: #68C8D8;
+}
+
+.user-info-detail .btn-show-modal:hover{
+    border: 1px solid #68C8D8;
+    color: #68C8D8;
+    background: rgb(104, 200, 206, 0.2);
+}
+
+
+.user-info-detail .header-title{
+    font-weight: bolder;
+}
+
+.user-info-detail hr{
+    background-color: rgb(63, 149, 169, 0.1);
+    height: 1px;
+}
+/* Basic Info Section */
+
+.info-title{
+    font-weight: bolder;
+    font-size: 18px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+/* education section */
+
+.education-img{
+    display: block;        
+    width: 70px;
+    height: 70px;
+    padding: 10px;
+    background: rgb(63, 149, 169, 0.1);
+    border-radius: 100px;
+}
+
+.education-level{
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.education-detail{
+    border-left: 4px solid rgb(63, 149, 169, 0.1);
+    margin-left: 33px;
+}
+
+.education-detail .university-name{
+    text-transform: uppercase;
+    color: #3F95A9;
+    font-weight: bolder;
+}
+
+.duration-of-education{
+    color: #BDBDBD;
+    font-size: 17px;    
+}
+
+.duration-of-education img{    
+    height: 27px;
+}
+
+.final-score{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+    padding-left: 20px;    
+    border-radius: 100px;    
+    margin-right: 10px;    
+    background-color: rgb(104, 200, 216, 0.2);
+    max-width: 80%;
+    color: #68C8D8;
+    text-align: center;
+    font-weight: bold;
+}
+
+
+@media screen and (min-width: 992px){
+    .education-detail{
+        position: relative;
+    }
+
+    .btn-editdelete{
+        position: absolute;
+        top: -50px;
+        right: 30px;
+    }
+}
+
+
+/* work experience section */
+
+.work-experience-img{
+    display: block;        
+    width: 70px;
+    height: 70px;
+    padding: 10px;
+    background: rgb(63, 149, 169, 0.1);
+    border-radius: 100px;
+}
+
+.work-experience-detail{
+    border-left: 4px solid rgb(63, 149, 169, 0.1);
+    margin-left: 33px;
+}
+
+.work-experience-detail .company-name{
+    text-transform: uppercase;
+    color: #3F95A9;
+    font-weight: bolder;
+}
+
+.duration-of-work{
+    color: #BDBDBD;
+    font-size: 17px;    
+}
+
+.duration-of-work img{    
+    height: 27px;
+}
+
+
+@media screen and (min-width: 992px){
+    .work-experience-detail{
+        position: relative;
+    }
+
+    .btn-editdelete{
+        position: absolute;
+        top: -50px;
+        right: 30px;
+    }
+}
+
+
+/* skills section */
+.skill-content:hover{
+    background: rgb(104, 200, 206, 0.2);
+}
+
+.skill-name{
+    color: #4F4F4F;
+    font-size: 20px;
+}
+
+/* Competence section */
+
+.competence-img{
+    display: block;        
+    width: 70px;
+    height: 70px;
+    padding: 10px;
+    background: rgb(63, 149, 169, 0.1);
+    border-radius: 100px;
+}
+
+.competence-name{        
+    font-weight: bold;
+    color: #3F95A9;
+}
+
+.competence-detail{
+    border-left: 4px solid rgb(63, 149, 169, 0.1);
+    margin-left: 33px;
+}
+
+.seminar-place{
+    color: #219653;
+}
+.duration-of-seminar{
+    color: #BDBDBD;
+    font-size: 17px;    
+}
+
+.duration-of-seminar img{    
+    height: 27px;
+}
+
+/* cv dan file pendukung section */
+.cv-link{
+    border: 1px dashed rgb(104, 200, 206);
+    background: rgba(187, 215, 218, 0.2);
+}
+
+/* portofolio section */
+.portofolio-img{
+    display: block;        
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    background: rgb(63, 149, 169, 0.1);
+    border-radius: 100px;
+}
+
+
+
+
+/* button edit delete */
+
+.btn-edit{    
+    height: 50px;    
+    background: rgb(104, 200, 206, 0.2);
+    border-radius: 100px;
+}
+
+.btn-edit:hover{        
+    box-shadow: 5px 5px rgb(104, 200, 206);
+    transition: .3s;
+}
+
+.btn-delete{
+    height: 50px;    
+    background: rgb(235, 87, 87, 0.2);
+    border-radius: 100px;
+}
+
+.btn-delete:hover{
+    box-shadow: 5px 5px rgb(235, 87, 87);
+    transition: .3s;
+}
+
+
+
+
+
+/* Modal Update*/
+
+.btn-cancel{
+    background: #FAFAFA;
+    border-radius: 100px;
+    color: #BDBDBD;
+    width: 120px;
+}
+
+.btn-simpan{
+    background: #68C8D8;
+    border-radius: 100px;
+    color: white;
+    width: 120px;
+}
+
+.modal-footer{
+    border: none;
+}
+
+.modal-header{
+    border-bottom: 2px solid rgb(63, 149, 169, 0.1);    
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+/* basic-info modal */
+.modal .image-default img{
+
+    width: 120px;
+    height: 120px;                    
+    margin-left: 145%;
+    
+}
+
+@media screen and (max-width: 1204px) and (min-width: 600px) {
+    .modal .image-default img{
+
+        width: 120px;
+        height: 120px;                    
+        margin-left: 145%;
+        
+    }   
+    
+}
+
+@media screen and (max-width: 736px) {
+    
+    .modal .image-default img{
+
+        width: 120px;
+        height: 120px;                    
+        margin-left: 80%;
+        
+    }
+}
+
+.modal #pic {
+    display: none;
+}
+
+.img-warning{
+    height: 20px;    
+}
+
+.verify-email{
+    color: #68C8D8;    
+}
+
+
+/* education modal */
+.tgl-title{
+    font-weight: bold;
+    color: #BDBDBD;
+}
+
+/* skill modal */
+
+.btn-add-more{
+    border: 2px solid #68C8D8;
+    color: #68C8D8;
+}   
+
+.btn-delete-skill{
+    display: none;
+}
+    
+/* cv modal */
+.btn-add-cv{
+    border: 2px solid #68C8D8;
+    color: #68C8D8;
+}
+
+.btn-delete-clone-skill{
+ color: #EB5757;
+}
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfile +    label {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: #68C8D8;
+    background-color: rgb(104, 200, 206, 0.2);
+    border: 1px dashed #68C8D8;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+    background-color: rgb(104, 200, 206, 0.5);
+}
+
+.inputfile + label {
+	cursor: pointer;
+}
+
+.cv-link-modal{
+    border: 1px dashed rgb(104, 200, 206);
+    background: rgb(104, 200, 206, 0.2);
+    position: relative;    
+}
+
+.btn-delete-file{
+    color: #EB5757;    
+    
+}
+/* social media and portofolio */
+.btn-view-more{
+    border: 2px solid #68C8D8;
+    color: #68C8D8;
+}
+
+
+
+textarea:hover, 
+input:hover, 
+textarea:active, 
+input:active, 
+textarea:focus, 
+input:focus,
+label:focus
+{
+    outline:0px !important;
+    -webkit-appearance:none;
+    box-shadow: none !important;
+}
+/* floating label */
+.has-float-label{
+	display:block;
+	position:relative
+}
+.has-float-label label, .has-float-label > span{
+	position:absolute;
+	cursor:text;
+	font-size:75%;
+	opacity:1;
+	-webkit-transition:all .2s;
+	transition:all .2s;
+	top:-.5em;
+	left:.75rem;
+	z-index:3;
+	line-height:1;
+    padding:0 1px    
+}
+.has-float-label label::after, .has-float-label > span::after{
+	content:" ";
+	display:block;
+	position:absolute;
+	background:#fff;
+	height:2px;
+	top:50%;
+	left:-.2em;
+	right:-.2em;
+	z-index:-1
+}
+.has-float-label .form-control::-webkit-input-placeholder{
+	opacity:1;
+	-webkit-transition:all .2s;
+    transition:all .2s;
+    box-shadow: none;
+    
+}
+.has-float-label .form-control::-moz-placeholder{
+	opacity:1;
+	transition:all .2s;
+}
+.has-float-label .form-control:-ms-input-placeholder{
+	opacity:1;
+	transition:all .2s;
+}
+.has-float-label .form-control::placeholder{
+	opacity:0;
+	-webkit-transition:all .2s;
+	transition:all .2s;
+}
+.has-float-label .form-control:placeholder-shown:not(:focus)::-webkit-input-placeholder{
+	opacity:0;
+}
+.has-float-label .form-control:placeholder-shown:not(:focus)::-moz-placeholder{
+	opacity:0;
+}
+.has-float-label .form-control:placeholder-shown:not(:focus):-ms-input-placeholder{
+	opacity:0;
+}
+.has-float-label .form-control:placeholder-shown:not(:focus)::placeholder{
+	opacity:0;
+}
+.has-float-label .form-control:placeholder-shown:not(:focus)+*{
+	font-size:100%;
+	color: #6c757d;
+	opacity: 1;
+	top:.3em;
+}
+
+.has-float-label .form-control:placeholder-shown:not(:focus)+*{
+	font-size:100%;
+	color: #6c757d;
+	opacity: 1;
+	top:.3em;
+}
+.has-float-label .form-control:placeholder-shown:not(:focus) + * {
+	margin-top: 6px;
+}
+  
+
+/*Modal Price*/
+
+.pricing-divider {
+    border-radius: 20px;
+    background: #C64545;
+    padding: 1em 0 4em;
+    position: relative;
+}
+
+.blue .pricing-divider {
+    background: #2D5772;
+}
+
+.green .pricing-divider {
+    background: #1AA85C;
+}
+
+.red b {
+    color: #C64545
+}
+
+.blue b {
+    color: #2D5772
+}
+
+.green b {
+    color: #1AA85C
+}
+
+.pricing-divider-img {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 80px;
+}
+
+.deco-layer {
+    -webkit-transition: -webkit-transform 0.5s;
+    transition: transform 0.5s;
+}
+
+.btn-custom {
+    background: #C64545;
+    color: #fff;
+    border-radius: 20px
+}
+
+.img-float {
+    width: 50px;
+    position: absolute;
+    top: -3.5rem;
+    right: 1rem
+}
+
+.princing-item {
+    transition: all 150ms ease-out;
+}
+
+.princing-item:hover {
+    transform: scale(1.05);
+}
+
+.princing-item:hover .deco-layer--1 {
+    -webkit-transform: translate3d(15px, 0, 0);
+    transform: translate3d(15px, 0, 0);
+}
+
+.princing-item:hover .deco-layer--2 {
+    -webkit-transform: translate3d(-15px, 0, 0);
+    transform: translate3d(-15px, 0, 0);
+}
+
+
+
+/* right side */
+/* lengkapi profile */
+
+.progress{
+    border-radius: 100px;
+}
+.progress-bar{
+    border-radius: 100px;
+}
+
+
+/* notification */
+.notif-img{
+    height: 50px;
+}
+
+/* dream career */
+
+.explain-text{
+    font-size: 13px;
+}

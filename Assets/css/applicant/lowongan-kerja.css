@@ -1,0 +1,521 @@
+body{
+    background-color: rgb(63, 149, 169, 0.1);
+}
+
+/* header menu */
+.lowongan-menu-item a{    
+    color: #BDBDBD;    
+    text-decoration: none;
+}
+
+.lowongan-menu-item a:hover{    
+    color: black;    
+    text-decoration: none;
+}
+
+.lowongan-menu-item .active{    
+    color: black;    
+    text-decoration: none;
+}
+
+/* search */
+.has-search .form-control {
+    padding-left: 2.375rem;
+    position: relative;    
+    border-radius: 100px;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+
+.has-search .btn-cari {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    right: 15px;
+    border-radius: 100px;    
+    text-align: center;
+    pointer-events: none;
+    color: white;
+    background: #68C8D8;    
+}
+
+
+.select-filter select{
+    background: white;
+    border: 2px solid #68C8D8;    
+    width: 100%;    
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    background-image:
+    linear-gradient(45deg, transparent 50%, gray 50%),
+    linear-gradient(135deg, gray 50%, transparent 50%);
+  background-position:
+    calc(100% - 20px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px),
+    100% 0;
+  background-size:
+    5px 5px,
+    5px 5px,
+    2.5em 2.5em;
+  background-repeat: no-repeat;
+}
+
+.select-filter select{
+    outline: 0px transparent !important;
+}
+.select2 {
+    width:100%!important;
+}
+
+.select2-container--default .select2-selection--single{    
+    padding-top: 5px;
+    height: 44px;
+    background: white;
+    border: 2px solid #68C8D8;
+    color: #68C8D8;
+    width: 100%;    
+    outline: 0px transparent !important;
+    border-radius: 0;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {    
+    width: 45px;
+    color: #fff;    
+    padding: 20px 15px;        
+}
+
+.dropdown-toggle{
+    background: white;
+    border: 2px solid #68C8D8;    
+    height: 44px;
+    border-radius: 0;
+}
+
+.dropdown-menu {
+    min-width:inherit;    
+}
+
+.dropdown-toggle::after{
+    float: right;
+    margin-top: 10px;
+    margin-right: 5px;
+    color: gray;
+}
+
+.btn-gaji-filter{
+    color: white;
+    font-weight: bold;
+    background-color: #68C8D8;
+    border-radius: 100px;
+    
+}
+/* lowongan */
+.lowongan-terkini {
+    background: rgb(63, 149, 169, 0.1);
+}
+
+.card-img-top{
+    height: 90px;
+}
+.lowongan-kerja .update-time i {
+    color: #BDBDBD;
+    font-size: 15px;
+}
+
+
+.lowongan-kerja{
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.4);
+}
+
+.lowongan-kerja .company-location p, .lowongan-kerja .company-location i {
+    color: #219653;
+}
+
+.lowongan-kerja .job-position h6 {
+    color: #3F95A9;
+}
+
+.lowongan-kerja .job-position p {
+    color: #BDBDBD;
+    height: 20px;
+}
+
+.lowongan-kerja .job-salary{            
+    height: 50px;        
+}
+
+.lowongan-kerja .job-salary img{            
+    height: 20px;
+}
+
+.lowongan-kerja .btn-detail {
+    background: #68C8D8;
+    border-radius: 100px;
+    color: white;
+    font-size: 13px;
+    font-weight: lighter;
+}
+
+
+
+/* Detail Lowongan */
+
+.box-shadow{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: white;
+}
+
+hr{
+    background-color: rgb(63, 149, 169, 0.1);
+    height: 2px;
+}
+
+
+/* info pekerjaan */
+.company-image{
+    width: 160px;
+    height: 160px;    
+    border-radius: 100px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nama-lowongan{
+    color: #3F95A9;
+    font-weight: bolder;
+    text-transform: capitalize;
+    font-size: 24px;
+}
+
+p.nama-perusahaan{
+    color: #BDBDBD;
+    text-transform: uppercase;
+}
+
+.info-title{
+    font-weight: bolder;
+    font-size: 18px;
+    margin-bottom: 5px;    
+}
+
+.bookmark-share button{
+    border: 1px solid #68C8D8;
+    color: #68C8D8;
+    background-color: white;
+}
+
+.bookmark-share button:hover{
+    background-color: #68C8D8;
+    color: white;
+}
+
+
+/* deskripsi pekerjaan */
+.deskripsi-title{
+    font-weight: bolder;    
+}
+
+.deskripsi{
+    white-space: pre-wrap;
+}
+
+/* skill yg dibutuhkan */
+.skill-title{
+    font-weight: bolder;
+}
+
+.skill{
+    color: #3F95A9;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+    padding-left: 20px;        
+    background: rgb(63, 149, 169, 0.1);
+    margin-right: 10px;
+}
+
+/* lamar section */
+.img-info{    
+    height: 20px;
+}
+
+.klik-disini{
+    color: #68C8D8;
+    font-weight: bolder;
+}
+
+.btn-lamar-side{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-lamar-side button{
+    background: #68C8D8;    
+    padding: 15px;
+    color: white;    
+}
+
+.btn-lamar-side i{
+    color: white;
+}
+
+.btn-lamar-side button:hover{
+    background: #09707e;    
+    color: white;
+}
+
+
+/* right side */
+/* tentang perusahaan */
+.title-tentang-perusahaan{
+    font-weight: bolder;
+}
+
+.paragraph-tentang-perusahaan{
+    white-space: pre-wrap;
+}
+
+.lowongan-lain-title{
+    font-weight: bolder;
+}
+
+/* modal lamar */
+
+.modal-header{
+    border:none;
+}
+
+.img-perusahaan-modal{
+    
+    width: 140px;
+    height: 140px;    
+    border-radius: 100px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);     
+    margin: 0 auto;        
+}
+
+.nama-lowongan-modal{
+    color: black;
+    font-weight: bolder;
+    text-transform: capitalize;        
+}
+
+.nama-perusahaan-modal{
+    color: #4F4F4F;
+    font-size: 20px;
+}
+
+.box-text{
+    border: 1px dashed #3F95A9;
+    background-color: rgb(63, 149, 169, 0.1);
+    color: #4F4F4F;
+}
+
+.btn-cancel{
+    background: #FAFAFA;
+    border-radius: 100px;
+    color: #BDBDBD;
+    width: 120px;
+}
+
+.btn-lamar-modal{
+    background: #68C8D8;
+    border-radius: 100px;
+    
+    color: white;
+}
+
+.btn-lamar-modal i{
+    color: white;
+}
+
+.btn-lamar-modal:hover{
+    background: #09707e;    
+    color: white;
+}
+
+.modal-footer{
+    border: none;
+}
+
+
+/* bookmark */
+
+.select-sortby{
+    background: white;
+    border: 2px solid #68C8D8;    
+    width: 15%;    
+    
+}
+
+.select-sortby{
+    outline: 0px transparent !important;
+}
+
+
+/* sukses apply lamaran */
+.image-perusahaan img{
+
+    width: 140px;
+    height: 140px;    
+    border-radius: 100px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);     
+    margin: 0 auto;        
+}
+
+.company-name-lamaran{
+    color: #4F4F4F;
+    font-size: 20px;    
+}
+
+.btn-cek-lamaran{
+    background: #68C8D8;    
+    padding: 15px;
+    color: white; 
+    height: 60px;
+}
+
+/* list lamaran user */
+.terkirim{    
+    background-color: rgb(242, 201, 76, 0.2);
+    color: #F2C94C;
+    border-radius: 100px;
+}
+
+.terkirim .img-terkirim{
+    background-color: #F2C94C;
+    border-radius: 100px;
+}
+
+.diterima{    
+    background-color: rgb(111, 207, 151, 0.2);
+    color: #6FCF97;
+    border-radius: 100px;
+}
+
+.diterima .img-diterima{
+    background-color: #6FCF97;
+    border-radius: 100px;
+}
+
+.ditolak{    
+    background-color: rgb(235, 87, 87, 0.2);
+    color: #EB5757;
+    border-radius: 100px;
+}
+
+.ditolak .img-ditolak{
+    background-color: #EB5757;
+    border-radius: 100px;
+}
+
+textarea:hover, 
+input:hover, 
+textarea:active, 
+input:active, 
+textarea:focus, 
+input:focus,
+label:focus
+{
+    outline:0px !important;
+    -webkit-appearance:none;
+    box-shadow: none !important;
+}
+
+/* has float label */
+
+.has-float-label{
+	display:block;
+	position:relative
+}
+.has-float-label label, .has-float-label > span{
+	position:absolute;
+	cursor:text;
+	font-size:75%;
+	opacity:1;
+	-webkit-transition:all .2s;
+	transition:all .2s;
+	top:-.5em;
+	left:.75rem;
+	z-index:3;
+	line-height:1;
+    padding:0 1px    
+}
+.has-float-label label::after, .has-float-label > span::after{
+	content:" ";
+	display:block;
+	position:absolute;
+	background:#fff;
+	height:2px;
+	top:50%;
+	left:-.2em;
+	right:-.2em;
+	z-index:-1
+}
+.has-float-label .form-control::-webkit-input-placeholder{
+	opacity:1;
+	-webkit-transition:all .2s;
+    transition:all .2s;
+    box-shadow: none;
+    
+}
+.has-float-label .form-control::-moz-placeholder{
+	opacity:1;
+	transition:all .2s;
+}
+.has-float-label .form-control:-ms-input-placeholder{
+	opacity:1;
+	transition:all .2s;
+}
+.has-float-label .form-control::placeholder{
+	opacity:0;
+	-webkit-transition:all .2s;
+	transition:all .2s;
+}
+.has-float-label .form-control:placeholder-shown:not(:focus)::-webkit-input-placeholder{
+	opacity:0;
+}
+.has-float-label .form-control:placeholder-shown:not(:focus)::-moz-placeholder{
+	opacity:0;
+}
+.has-float-label .form-control:placeholder-shown:not(:focus):-ms-input-placeholder{
+	opacity:0;
+}
+.has-float-label .form-control:placeholder-shown:not(:focus)::placeholder{
+	opacity:0;
+}
+.has-float-label .form-control:placeholder-shown:not(:focus)+*{
+	font-size:100%;
+	color: #6c757d;
+	opacity: 1;
+	top:.3em;
+}
+
+.has-float-label .form-control:placeholder-shown:not(:focus)+*{
+	font-size:100%;
+	color: #6c757d;
+	opacity: 1;
+	top:.3em;
+}
+.has-float-label .form-control:placeholder-shown:not(:focus) + * {
+	margin-top: 6px;
+}
